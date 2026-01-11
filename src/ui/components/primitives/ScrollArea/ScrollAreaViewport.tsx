@@ -34,7 +34,7 @@ const shadowRight = cn(`pointer-events-none absolute top-0 right-0 block h-full
   [--scroll-area-overflow-x-end:inherit]`);
 
 const styles = tv({
-  base: `min-h-0 flex-1 overscroll-contain py-6 pr-6 pl-1`,
+  base: `min-h-0 flex-1 overscroll-contain pr-4`,
 
   slots: {
     shadowLeft: "",

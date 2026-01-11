@@ -38,10 +38,7 @@
 - [ ] Radio Group
 - [ ] Resizable
 - [ ] Scroll Area
-- [ ] Separator
-- [ ] Sheet
 - [ ] Sidebar
-- [ ] Skeleton
 - [ ] Slider
 - [ ] Sonner
 - [ ] Spinner
@@ -50,7 +47,6 @@
 - [ ] Textarea
 - [ ] Toggle Group
 - [ ] Toggle
-- [ ] Tooltip
 - [ ] Typography
 
 ### Done
@@ -97,10 +93,10 @@
 - [ ] Resizable
 - [ ] Scroll Area
 - [x] Select
-- [ ] Separator
-- [ ] Sheet
+- [x] Separator
+- [x] Sheet
 - [ ] Sidebar
-- [ ] Skeleton
+- [x] Skeleton
 - [ ] Slider
 - [ ] Sonner
 - [ ] Spinner
@@ -110,7 +106,7 @@
 - [ ] Textarea
 - [ ] Toggle Group
 - [ ] Toggle
-- [ ] Tooltip
+- [x] Tooltip
 - [ ] Typography
 
 ## Component list used in projects

@@ -8,4 +8,8 @@ export * from "./Input";
 export * from "./Label";
 export * from "./ScrollArea";
 export * from "./Select";
+export * from "./Sheet";
+export * from "./Separator";
+export * from "./Skeleton";
 export * from "./Switch";
+export * from "./Tooltip";

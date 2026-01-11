@@ -1,3 +1,8 @@
+import { Dialog } from "@base-ui/react";
+
+export const createHandle = Dialog.createHandle;
+export const Handle = Dialog.Handle;
+
 export {
   DialogBackdrop as Backdrop,
   type DialogBackdropProps as BackdropProps,

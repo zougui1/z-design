@@ -25,7 +25,7 @@ export default function HomePage() {
       <div className="mt-2 flex flex-col gap-8">
         <div className="flex gap-4">
           {variants.map((variant) => (
-            <Select.Root key={variant} items={items}>
+            <Select.Root key={variant} value="react">
               <Select.Trigger variant={variant}>
                 <Select.Value />
               </Select.Trigger>

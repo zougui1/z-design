@@ -4,8 +4,9 @@ import { Dialog as BaseDialog } from "@base-ui/react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const styles = tv({
-  base: `data-open:animate-in data-closed:animate-out data-closed:fade-out-0
-    data-open:fade-in-0 fixed inset-0 isolate bg-black/50 duration-100`,
+  base: `fixed inset-0 isolate bg-black/50 duration-100
+    data-starting-style:opacity-0
+    data-ending-style:opacity-0`,
 
   variants: {
     blur: {

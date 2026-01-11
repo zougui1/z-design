@@ -11,9 +11,10 @@ const styles = tv({
     data-ending-style:opacity-0 data-ending-style:scale-95
     ring-foreground/10 group/alert-dialog-content fixed
     top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-    gap-6 rounded-md p-6 ring-1 duration-100 outline-none
+    gap-6 rounded-md p-6 ring-1 duration-150 outline-none
     container w-auto shadow-lg flex flex-col max-h-11/12
-    min-w-[100px] md:min-w-[min(100%,400px)]`,
+    min-w-[100px] md:min-w-[min(100%,400px)] transition-all
+    scale-[calc(1-0.1*var(--nested-dialogs))] translate-y-[calc(-50%+1.25rem*var(--nested-dialogs))]`,
 
   variants: {
     variant: {
