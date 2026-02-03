@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useWindowEvent } from "./useWindowEvent";
 
 export const useWindowHasFocus = () => {
   const [hasFocus, setHasFocus] = useState(true);
+
+  useWindowEvent("blur", () => setHasFocus(false));
+  useWindowEvent("focus", () => setHasFocus(true));
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -9,13 +13,6 @@ export const useWindowHasFocus = () => {
     if (!document.hasFocus()) {
       setHasFocus(false);
     }
-
-    window.addEventListener("blur", () => {
-      setHasFocus(false);
-    });
-    window.addEventListener("focus", () => {
-      setHasFocus(true);
-    });
   }, []);
 
   return hasFocus;

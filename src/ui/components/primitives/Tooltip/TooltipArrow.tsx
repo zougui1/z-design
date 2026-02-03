@@ -11,7 +11,7 @@ export const TooltipArrow = ({ className, ...props }: TooltipArrowProps) => {
     <Tooltip.Arrow
       data-slot="tooltip-arrow"
       className={cn(
-        "bg-foreground fill-foreground z-50 size-2.5 rounded-[2px] shadow-md",
+        "bg-tooltip-background z-50 size-2.5 rounded-[2px] shadow-md",
         "data-[side=top]:-bottom-1 data-[side=top]:-rotate-45",
         "data-[side=bottom]:-top-1 data-[side=bottom]:rotate-45",
         "data-[side=left]:-right-1 data-[side=left]:rotate-45",

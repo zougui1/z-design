@@ -11,8 +11,8 @@ export const TooltipPopup = ({ className, ...props }: TooltipPopupProps) => {
     <Tooltip.Popup
       data-slot="tooltip-popup"
       className={cn(
-        `bg-foreground text-background relative z-50 w-fit rounded-md px-3
-        py-1.5 text-xs text-balance`,
+        `bg-tooltip-background text-tooltip-foreground relative z-50 w-fit
+        rounded-md px-3 py-1.5 text-xs text-balance`,
 
         "origin-(--transform-origin)",
         "transition-[opacity,transform,width,height]",

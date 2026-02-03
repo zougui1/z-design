@@ -1,86 +1,72 @@
-import { Container, Input, type InputProps } from "~/ui/components";
+import { Container, Input, Typography } from "~/ui/components";
+import { cn } from "~/ui/utils";
 
-const variants: InputProps["variant"][] = ["solid", "transparent", "outline"];
+const colors = [
+  "default",
+  "neutral",
+  "primary",
+  "secondary",
+  "success",
+  "warning",
+  "destructive",
+  "info",
+] as const;
+
+const Section = ({
+  title,
+  children,
+  className,
+}: {
+  title?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className="space-y-4">
+      {title && <Typography.H2>{title}</Typography.H2>}
+
+      <div className={cn("flex flex-wrap gap-5", className)}>{children}</div>
+    </div>
+  );
+};
 
 export default function HomePage() {
   return (
-    <Container>
-      <div className="flex flex-col gap-8">
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Input
-              key={variant}
-              variant={variant}
-              className="max-w-[25ch]"
-              placeholder="Placeholder..."
-            />
-          ))}
-        </div>
+    <Container className="flex flex-col gap-8">
+      <Section>
+        {colors.map((color) => (
+          <Input
+            key={color}
+            color={color}
+            className="w-[25ch]"
+            placeholder="Placeholder..."
+          />
+        ))}
+      </Section>
 
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Input
-              key={variant}
-              variant={variant}
-              blur
-              className="max-w-[25ch]"
-              placeholder="Placeholder..."
-            />
-          ))}
-        </div>
+      <Section title="Disabled">
+        {colors.map((color) => (
+          <Input
+            key={color}
+            color={color}
+            className="max-w-[25ch]"
+            disabled
+            placeholder="Placeholder..."
+          />
+        ))}
+      </Section>
 
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Input
-              key={variant}
-              variant={variant}
-              className="max-w-[25ch]"
-              aria-invalid
-              placeholder="Placeholder..."
-            />
-          ))}
-        </div>
-
-        <hr />
-
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Input
-              key={variant}
-              variant={variant}
-              className="max-w-[25ch]"
-              disabled
-              placeholder="Placeholder..."
-            />
-          ))}
-        </div>
-
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Input
-              key={variant}
-              variant={variant}
-              blur
-              className="max-w-[25ch]"
-              disabled
-              placeholder="Placeholder..."
-            />
-          ))}
-        </div>
-
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Input
-              key={variant}
-              variant={variant}
-              className="max-w-[25ch]"
-              disabled
-              aria-invalid
-              placeholder="Placeholder..."
-            />
-          ))}
-        </div>
-      </div>
+      <Section title="Invalid">
+        {colors.map((color) => (
+          <Input
+            key={color}
+            color={color}
+            className="max-w-[25ch]"
+            aria-invalid
+            placeholder="Placeholder..."
+          />
+        ))}
+      </Section>
     </Container>
   );
 }

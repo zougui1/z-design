@@ -1,6 +1,7 @@
 import { Trash2Icon } from "lucide-react";
-import { Container, Dialog, Select } from "~/ui/components";
-import { Test } from "../_test";
+import { Container, Select, Typography } from "~/ui/components";
+import { Test } from "./_test";
+import { cn } from "~/ui/utils";
 
 const items = [
   { label: "Select framework", value: null },
@@ -17,157 +18,93 @@ const items = [
     icon: <Trash2Icon />,
   },
 ];
-const variants = ["solid", "transparent", "outline"] as const;
+
+const renderItems = () => {
+  return items.map((item) => (
+    <Select.Item
+      key={item.label}
+      value={item.value}
+      disabled={item.disabled}
+      variant={item.variant}
+      icon={item.icon}
+    >
+      {item.label}
+    </Select.Item>
+  ));
+};
+
+const colors = [
+  "default",
+  "neutral",
+  "primary",
+  "secondary",
+  "success",
+  "warning",
+  "destructive",
+  "info",
+] as const;
+
+const Section = ({
+  title,
+  children,
+  className,
+}: {
+  title?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className="space-y-4">
+      {title && <Typography.H2>{title}</Typography.H2>}
+
+      <div className={cn("flex flex-wrap gap-5", className)}>{children}</div>
+    </div>
+  );
+};
 
 export default function HomePage() {
   return (
-    <Container>
+    <Container className="flex flex-col gap-8">
       <div className="mt-2 flex flex-col gap-8">
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Select.Root key={variant} value="react">
-              <Select.Trigger variant={variant}>
+        <Section title="Select">
+          {colors.map((color) => (
+            <Select.Root key={color} value="react">
+              <Select.Trigger color={color} className="w-[25ch]">
                 <Select.Value />
               </Select.Trigger>
 
-              <Select.Content sideOffset={8} variant={variant}>
-                {items.map((item) => (
-                  <Select.Item
-                    key={item.label}
-                    value={item.value}
-                    disabled={item.disabled}
-                    variant={item.variant}
-                    icon={item.icon}
-                  >
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Content>
+              <Select.Content>{renderItems()}</Select.Content>
             </Select.Root>
           ))}
-        </div>
+        </Section>
 
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Select.Root key={variant} items={items}>
-              <Select.Trigger variant={variant} blur>
+        <Section title="Disabled">
+          {colors.map((color) => (
+            <Select.Root key={color} items={items} disabled>
+              <Select.Trigger color={color} className="w-[25ch]">
                 <Select.Value />
               </Select.Trigger>
 
-              <Select.Content sideOffset={8} variant={variant} blur>
-                {items.map((item) => (
-                  <Select.Item
-                    key={item.label}
-                    value={item.value}
-                    disabled={item.disabled}
-                    variant={item.variant}
-                    icon={item.icon}
-                  >
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Content>
+              <Select.Content>{renderItems()}</Select.Content>
             </Select.Root>
           ))}
-        </div>
+        </Section>
 
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Select.Root key={variant} items={items}>
-              <Select.Trigger aria-invalid variant={variant}>
+        <Section title="Invalid">
+          {colors.map((color) => (
+            <Select.Root key={color} items={items}>
+              <Select.Trigger aria-invalid color={color} className="w-[25ch]">
                 <Select.Value />
               </Select.Trigger>
 
-              <Select.Content sideOffset={8} variant={variant}>
-                {items.map((item) => (
-                  <Select.Item
-                    key={item.label}
-                    value={item.value}
-                    disabled={item.disabled}
-                    variant={item.variant}
-                    icon={item.icon}
-                  >
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Content>
+              <Select.Content>{renderItems()}</Select.Content>
             </Select.Root>
           ))}
-        </div>
+        </Section>
 
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Select.Root key={variant} items={items} disabled>
-              <Select.Trigger variant={variant}>
-                <Select.Value />
-              </Select.Trigger>
-
-              <Select.Content sideOffset={8} variant={variant}>
-                {items.map((item) => (
-                  <Select.Item
-                    key={item.label}
-                    value={item.value}
-                    disabled={item.disabled}
-                    variant={item.variant}
-                    icon={item.icon}
-                  >
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Content>
-            </Select.Root>
-          ))}
-        </div>
-
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Select.Root key={variant} items={items} disabled>
-              <Select.Trigger variant={variant} blur>
-                <Select.Value />
-              </Select.Trigger>
-
-              <Select.Content sideOffset={8} variant={variant} blur>
-                {items.map((item) => (
-                  <Select.Item
-                    key={item.label}
-                    value={item.value}
-                    disabled={item.disabled}
-                    variant={item.variant}
-                    icon={item.icon}
-                  >
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Content>
-            </Select.Root>
-          ))}
-        </div>
-
-        <div className="flex gap-4">
-          {variants.map((variant) => (
-            <Select.Root key={variant} items={items} disabled>
-              <Select.Trigger aria-invalid variant={variant}>
-                <Select.Value />
-              </Select.Trigger>
-
-              <Select.Content sideOffset={8} variant={variant}>
-                {items.map((item) => (
-                  <Select.Item
-                    key={item.label}
-                    value={item.value}
-                    disabled={item.disabled}
-                    variant={item.variant}
-                    icon={item.icon}
-                  >
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Content>
-            </Select.Root>
-          ))}
-        </div>
-
-        <Test />
+        <Section title="Dialog popup">
+          <Test />
+        </Section>
       </div>
     </Container>
   );

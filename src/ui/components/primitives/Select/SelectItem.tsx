@@ -24,7 +24,7 @@ const styles = tv({
     variant: {
       default: "focus:bg-accent focus:text-accent-foreground",
       destructive:
-        "text-destructive focus:bg-destructive-accent focus:text-foreground focus:[&_svg]:text-foreground",
+        "text-destructive focus:bg-destructive-dark focus:text-destructive-foreground focus:[&_svg]:text-foreground",
     },
 
     indicatorPosition: {

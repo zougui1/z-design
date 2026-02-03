@@ -9,7 +9,7 @@ const shadowTop = cn(`before:pointer-events-none before:absolute before:top-0
   before:left-0 before:block
   before:h-[min(40px,var(--scroll-area-overflow-y-start))]
   before:w-full
-  before:bg-[linear-gradient(to_bottom,black,transparent)]
+  before:bg-[linear-gradient(to_bottom,hsl(0_0_0/.35),transparent)]
   before:transition-[height] before:content-['']
   before:[--scroll-area-overflow-y-start:inherit]`);
 
@@ -17,19 +17,19 @@ const shadowBottom = cn(`after:pointer-events-none after:absolute after:bottom-0
   after:left-0 after:block
   after:h-[min(40px,var(--scroll-area-overflow-y-end))]
   after:w-full
-  after:bg-[linear-gradient(to_top,black,transparent)]
+  after:bg-[linear-gradient(to_top,hsl(0_0_0/.35),transparent)]
   after:transition-[height] after:content-['']
   after:[--scroll-area-overflow-y-end:inherit]`);
 
 const shadowLeft = cn(`pointer-events-none absolute top-0 left-0 block h-full
   w-[min(40px,var(--scroll-area-overflow-x-start))]
-  bg-[linear-gradient(to_right,black,transparent)]
+  bg-[linear-gradient(to_right,hsl(0_0_0/.35),transparent)]
   transition-[height] content-['']
   [--scroll-area-overflow-x-start:inherit]`);
 
 const shadowRight = cn(`pointer-events-none absolute top-0 right-0 block h-full
   w-[min(40px,var(--scroll-area-overflow-x-end))]
-  bg-[linear-gradient(to_left,black,transparent)]
+  bg-[linear-gradient(to_left,hsl(0_0_0/.35),transparent)]
   transition-[height] content-['']
   [--scroll-area-overflow-x-end:inherit]`);
 

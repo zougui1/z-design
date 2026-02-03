@@ -17,22 +17,13 @@ const styles = tv({
     isolate z-50 max-h-(--available-height) min-w-[max(var(--anchor-width),calc(var(--spacing)*36))]
     origin-(--transform-origin) overflow-x-hidden overflow-y-auto
     rounded-md shadow-md duration-100
+    bg-background-light
     focus-visible:outline-primary focus-visible:outline-[3px] focus-visible:outline-offset-2`,
 
   variants: {
-    variant: {
-      solid: "bg-popover",
-      transparent: "bg-popover/85",
-      outline: "border-input border bg-popover/85",
-    },
-
     blur: {
       true: "backdrop-blur-xs",
     },
-  },
-
-  defaultVariants: {
-    variant: "outline",
   },
 });
 
@@ -55,7 +46,6 @@ export function SelectContent({
   align = "center",
   alignOffset = 0,
   alignItemWithTrigger = false,
-  variant,
   blur,
   ...props
 }: SelectContentProps) {
@@ -69,17 +59,17 @@ export function SelectContent({
         alignItemWithTrigger={alignItemWithTrigger}
         className="isolate z-50"
       >
+        <SelectScrollUpArrow />
+
         <BaseSelect.Popup
           data-slot="select-content"
-          className={styles({ variant, blur, className })}
+          className={styles({ blur, className })}
           {...props}
         >
-          <SelectScrollUpArrow />
-
           <BaseSelect.List>{children}</BaseSelect.List>
-
-          <SelectScrollDownArrow />
         </BaseSelect.Popup>
+
+        <SelectScrollDownArrow />
       </BaseSelect.Positioner>
     </BaseSelect.Portal>
   );

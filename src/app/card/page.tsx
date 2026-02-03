@@ -1,11 +1,40 @@
-import { Container, Button, Card, Label, Input } from "~/ui/components";
+import {
+  Container,
+  Button,
+  Card,
+  Label,
+  Input,
+  Typography,
+} from "~/ui/components";
 import { cn } from "~/ui/utils";
 
-const variants: Card.RootProps["variant"][] = [
-  "solid",
-  "transparent",
-  "outline",
-];
+const colors = [
+  "default",
+  "primary",
+  "secondary",
+  "success",
+  "warning",
+  "destructive",
+  "info",
+] as const;
+
+const Section = ({
+  title,
+  children,
+  className,
+}: {
+  title?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className="flex flex-col gap-4">
+      {title && <Typography.H2>{title}</Typography.H2>}
+
+      <div className={cn("flex flex-wrap gap-5", className)}>{children}</div>
+    </div>
+  );
+};
 
 const ExampleCard = ({ className, ...props }: Card.RootProps) => {
   return (
@@ -17,7 +46,7 @@ const ExampleCard = ({ className, ...props }: Card.RootProps) => {
         </Card.Description>
 
         <Card.Action>
-          <Button variant="link">Sign Up</Button>
+          <Button appearance="link">Sign Up</Button>
         </Card.Action>
       </Card.Header>
 
@@ -27,7 +56,6 @@ const ExampleCard = ({ className, ...props }: Card.RootProps) => {
             <div className="grid gap-3">
               <Label htmlFor="email">Email</Label>
               <Input
-                variant="outline"
                 id="email"
                 type="email"
                 placeholder="m@example.com"
@@ -46,17 +74,17 @@ const ExampleCard = ({ className, ...props }: Card.RootProps) => {
                 </a>
               </div>
 
-              <Input variant="outline" id="password" type="password" required />
+              <Input id="password" type="password" required />
             </div>
           </div>
         </form>
       </Card.Content>
 
       <Card.Footer className="flex-col gap-2">
-        <Button type="submit" className="w-full" color="primary">
+        <Button type="submit" className="w-full" variant="primary">
           Login
         </Button>
-        <Button variant="outline" className="w-full" color="primary">
+        <Button className="w-full" variant="secondary">
           Login with Google
         </Button>
       </Card.Footer>
@@ -67,17 +95,11 @@ const ExampleCard = ({ className, ...props }: Card.RootProps) => {
 export default function HomePage() {
   return (
     <Container>
-      <div className="flex flex-wrap gap-4">
-        {variants.map((variant) => (
-          <ExampleCard key={variant} variant={variant} />
+      <Section title="Card">
+        {colors.map((color) => (
+          <ExampleCard key={color} color={color} />
         ))}
-
-        {variants
-          .filter((v) => v !== "solid")
-          .map((variant) => (
-            <ExampleCard key={variant} variant={variant} blur />
-          ))}
-      </div>
+      </Section>
     </Container>
   );
 }

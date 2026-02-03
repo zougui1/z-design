@@ -4,45 +4,29 @@ import { tv, type VariantProps } from "tailwind-variants";
 const styles = tv({
   base: `rounded-md flex items-center gap-2 h-9 w-full min-w-0 px-3 py-1
     shadow-sm text-base md:text-sm transition-[background,color,box-shadow]
-    focus-visible:outline-offset-2 focus-visible:outline-[3px] focus-visible:outline-primary
-    aria-invalid:outline-destructive has-[input:disabled]:pointer-events-none has-[input:disabled]:opacity-50
+    focus-visible:outline-offset-2 focus-visible:outline-2
     placeholder:text-muted-foreground
     file:text-foreground file:inline-flex file:h-7 file:border-0
     file:bg-transparent file:text-sm file:font-medium
     selection:bg-default selection:text-default-foreground
-    disabled:pointer-events-none disabled:cursor-not-allowed
-    disabled:opacity-50`,
+    disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50
+    aria-invalid:ring-3 aria-invalid:ring-destructive/35`,
 
   variants: {
-    variant: {
-      solid: `bg-input
-        hover:bg-input-accent
-        focus-visible:bg-input-accent
-        aria-invalid:bg-destructive
-        aria-invalid:hover:bg-destructive-accent
-        aria-invalid:focus-visible:bg-destructive-accent
-        [&_input[aria-invalid=true]]:placeholder:text-gray-200`,
-      transparent: `bg-input/30
-        hover:bg-input-accent/30
-        focus-visible:bg-input-accent/30
-        aria-invalid:bg-destructive/30
-        aria-invalid:hover:bg-destructive-accent/30
-        aria-invalid:focus-visible:bg-destructive-accent/30`,
-      outline: `border-input border
-        hover:border-input-accent
-        focus-visible:border-input-accent
-        aria-invalid:border-destructive
-        aria-invalid:hover:border-destructive-accent
-        aria-invalid:focus-visible:border-destructive-accent`,
+    color: {
+      default: `bg-background-light focus-visible:outline-background-light!`,
+      neutral: `bg-neutral placeholder:text-neutral-foreground focus-visible:outline-neutral!`,
+      primary: `bg-primary placeholder:text-primary-foreground focus-visible:outline-primary!`,
+      secondary: `bg-secondary placeholder:text-secondary-foreground focus-visible:outline-secondary!`,
+      success: `bg-success placeholder:text-success-foreground focus-visible:outline-success!`,
+      warning: `bg-warning placeholder:text-warning-foreground focus-visible:outline-warning!`,
+      destructive: `bg-destructive placeholder:text-destructive-foreground focus-visible:outline-destructive!`,
+      info: `bg-info placeholder:text-info-foreground focus-visible:outline-info!`,
     },
 
     blur: {
       true: "backdrop-blur-xs",
     },
-  },
-
-  defaultVariants: {
-    variant: "outline",
   },
 });
 
@@ -51,11 +35,15 @@ export interface InputProps
   className?: string;
 }
 
-export const Input = ({ className, variant, blur, ...props }: InputProps) => {
+export const Input = ({
+  className,
+  color = "default",
+  ...props
+}: InputProps) => {
   return (
     <BaseInput
       data-slot="input"
-      className={styles({ variant, blur, className })}
+      className={styles({ color, className })}
       {...props}
     />
   );

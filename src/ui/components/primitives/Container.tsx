@@ -5,7 +5,7 @@ const styles = tv({
 
   variants: {
     variant: {
-      solid: "bg-background",
+      solid: "bg-background-dark",
       transparent: "bg-background/85 shadow-x-xl! shadow-primary/10",
     },
 
@@ -15,7 +15,7 @@ const styles = tv({
   },
 
   defaultVariants: {
-    variant: "transparent",
+    variant: "solid",
   },
 });
 

@@ -1,14 +1,18 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 const styles = tv({
-  base: `bg- text-card-foreground flex flex-col gap-6 rounded-xl py-6
-    shadow-md`,
+  base: `flex flex-col gap-6 rounded-lg py-6
+    shadow-md border`,
 
   variants: {
-    variant: {
-      solid: "bg-card",
-      transparent: "bg-card/50",
-      outline: "border border-card",
+    color: {
+      default: "bg-background",
+      primary: "bg-primary/10 border-primary/30!",
+      secondary: "bg-secondary/10 border-secondary/30!",
+      success: "bg-success/10 border-success/30!",
+      warning: "bg-warning/10 border-warning/30!",
+      destructive: "bg-destructive/10 border-destructive/30!",
+      info: "bg-info/10 border-info/30!",
     },
 
     blur: {
@@ -18,20 +22,22 @@ const styles = tv({
 });
 
 export interface CardRootProps
-  extends React.ComponentProps<"div">, VariantProps<typeof styles> {}
+  extends
+    Omit<React.ComponentProps<"div">, "color">,
+    VariantProps<typeof styles> {}
 
 export function CardRoot({
   className,
-  variant,
+  color = "default",
   blur,
   ...props
 }: CardRootProps) {
   return (
     <div
       data-slot="card-root"
-      data-variant={variant}
+      data-color={color}
       data-blur={blur ? "true" : undefined}
-      className={styles({ className, variant, blur })}
+      className={styles({ className, color, blur })}
       {...props}
     />
   );

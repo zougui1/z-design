@@ -4,7 +4,8 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { cn } from "~/ui/utils";
-import { BodyBackgroundImage } from "~/ui/components";
+import { Sidebar } from "~/ui/components";
+import { AppSidebar } from "~/ui/AppSidebar";
 
 export const metadata: Metadata = {
   title: "Z Design",
@@ -23,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", geist.variable)}>
       <body className="relative min-h-svh">
-        <BodyBackgroundImage />
-        {children}
+        <Sidebar.Provider>
+          <AppSidebar />
+          <Sidebar.Inset>{children}</Sidebar.Inset>
+        </Sidebar.Provider>
       </body>
     </html>
   );

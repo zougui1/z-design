@@ -14,23 +14,12 @@ const styles = tv({
     gap-6 rounded-md p-6 ring-1 duration-150 outline-none
     container w-auto shadow-lg flex flex-col max-h-11/12
     min-w-[100px] md:min-w-[min(100%,400px)] transition-all
-    scale-[calc(1-0.1*var(--nested-dialogs))] translate-y-[calc(-50%+1.25rem*var(--nested-dialogs))]`,
+    scale-[calc(1-0.1*var(--nested-dialogs))] translate-y-[calc(-50%+1.25rem*var(--nested-dialogs))]
+    bg-background border`,
 
-  variants: {
-    variant: {
-      solid: "bg-background",
-      transparent: "bg-background/85",
-      outline: "border-input border bg-background/85",
-    },
+  variants: {},
 
-    blur: {
-      true: "backdrop-blur-xs",
-    },
-  },
-
-  defaultVariants: {
-    variant: "outline",
-  },
+  defaultVariants: {},
 });
 
 export interface DialogPopupProps
@@ -45,8 +34,6 @@ export interface DialogPopupProps
 
 export function DialogPopup({
   className,
-  variant,
-  blur,
   children,
   ...props
 }: DialogPopupProps) {
@@ -70,9 +57,8 @@ export function DialogPopup({
   return (
     <BaseDialog.Popup
       data-slot="dialog-popup"
-      data-variant={variant}
       {...props}
-      className={styles({ variant, blur, className })}
+      className={styles({ className })}
     >
       {renderChildren()}
     </BaseDialog.Popup>

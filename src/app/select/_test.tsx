@@ -24,20 +24,32 @@ const items = [
   { label: "Nextjs", value: "nextjs" },
   { label: "Remix", value: "remix" },
 ];
-const variants = ["solid", "transparent", "outline"] as const;
+
+const colors = [
+  "default",
+  "neutral",
+  "primary",
+  "secondary",
+  "success",
+  "warning",
+  "destructive",
+  "info",
+] as const;
 
 export function Test() {
   return (
-    <div className="flex gap-4">
-      {variants.map((variant) => (
-        <Dialog.Root key={variant}>
+    <>
+      {colors.map((color) => (
+        <Dialog.Root key={color}>
           <Select.Root items={items}>
-            <Dialog.Trigger render={<Select.Trigger variant={variant} />}>
+            <Dialog.Trigger
+              render={<Select.Trigger color={color} />}
+              className="w-[25ch]"
+            >
               <Select.Value />
             </Dialog.Trigger>
 
             <Dialog.Content
-              variant={variant}
               hideCloseButton
               className="p-2"
               children={({ close }) => (
@@ -61,6 +73,6 @@ export function Test() {
           </Select.Root>
         </Dialog.Root>
       ))}
-    </div>
+    </>
   );
 }
