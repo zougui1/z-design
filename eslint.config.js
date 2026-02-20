@@ -36,6 +36,7 @@ export default tseslint.config(
       "import/no-anonymous-default-export": "off",
       "@typescript-eslint/no-empty-object-type": "off",
       "react/no-children-prop": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
     },
   },
   {

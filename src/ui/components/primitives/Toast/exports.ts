@@ -1,10 +1,10 @@
-import { Toast } from "@base-ui/react";
-
-const useManager = Toast.useToastManager;
-const createManager = Toast.createToastManager;
-
-export { useManager, createManager };
-
+export {
+  type ToastManager as Manager,
+  createToastManager as createManager,
+  type UseToastManagerReturnValue as UseManagerReturnValue,
+  useToastManager as useManager,
+  type ToastManagerAddOptions as ManagerAddOptions,
+} from "./manager";
 export {
   ToastAction as Action,
   type ToastActionProps as ActionProps,
@@ -25,6 +25,10 @@ export {
   ToastDescription as Description,
   type ToastDescriptionProps as DescriptionProps,
 } from "./ToastDescription";
+export {
+  ToastIcon as Icon,
+  type ToastIconProps as IconProps,
+} from "./ToastIcon";
 export {
   ToastPortal as Portal,
   type ToastPortalProps as PortalProps,

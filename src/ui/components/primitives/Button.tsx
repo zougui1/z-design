@@ -1,15 +1,19 @@
 import { Button as BaseButton } from "@base-ui/react";
 import { tv, type VariantProps } from "tailwind-variants";
+import { Spinner, type SpinnerProps } from "./Spinner";
+import { cn } from "~/ui/utils";
 
 export const buttonStyles = tv({
   base: `inline-flex items-center justify-center gap-1 shrink-0
     whitespace-nowrap text-sm font-medium
     rounded-sm cursor-pointer
     transition-all
+    relative
     disabled:pointer-events-none disabled:opacity-50
     [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0
     focus-visible:outline-2 focus-visible:outline-offset-2
     aria-invalid:ring-3 aria-invalid:ring-destructive/35`,
+
   variants: {
     appearance: {
       solid: "shadow-sm",
@@ -30,9 +34,12 @@ export const buttonStyles = tv({
     },
 
     size: {
-      default: "h-9 px-4 py-2 has-[>svg]:px-3",
-      sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-      lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+      default: `h-9 px-4 py-2
+        has-[>svg:not([data-slot=button-spinner])]:px-3`,
+      sm: `h-8 rounded-md gap-1.5 px-3
+        has-[>svg:not([data-slot=button-spinner])]:px-2.5`,
+      lg: `h-10 rounded-md px-6
+        has-[>svg:not([data-slot=button-spinner])]:px-4`,
       icon: "size-9",
       "icon-sm": "size-8",
       "icon-lg": "size-10",
@@ -42,6 +49,7 @@ export const buttonStyles = tv({
       true: "backdrop-blur-sm",
     },
   },
+
   defaultVariants: {
     appearance: "solid",
     color: "default",
@@ -262,10 +270,14 @@ const variants = {
   },
 } as const;
 
-export type ButtonProps = BaseButton.Props &
-  VariantProps<typeof buttonStyles> & {
-    variant?: keyof typeof variants;
+export interface ButtonProps
+  extends BaseButton.Props, VariantProps<typeof buttonStyles> {
+  variant?: keyof typeof variants;
+  loading?: boolean;
+  slotProps?: {
+    spinner?: SpinnerProps;
   };
+}
 
 export function Button({
   className,
@@ -274,6 +286,10 @@ export function Button({
   color,
   size = "default",
   blur,
+  loading,
+  disabled,
+  children,
+  slotProps,
   ...props
 }: ButtonProps) {
   const variantProps = {
@@ -288,13 +304,30 @@ export function Button({
       data-size={size}
       data-color={variantProps.color}
       data-blur={blur ? "true" : undefined}
+      data-loading={loading ? "true" : undefined}
       className={buttonStyles({
         ...variantProps,
         size,
         blur,
         className: String(className ?? ""),
       })}
+      disabled={disabled || loading}
       {...props}
-    />
+    >
+      {children}
+
+      {loading && (
+        <Spinner
+          data-slot="button-spinner"
+          color={color === "default" ? "neutral" : "default"}
+          {...slotProps?.spinner}
+          className={cn(
+            `absolute top-0 right-0 size-4.5 translate-x-1.5 -translate-y-1.5
+            rounded-full`,
+            slotProps?.spinner?.className,
+          )}
+        />
+      )}
+    </BaseButton>
   );
 }

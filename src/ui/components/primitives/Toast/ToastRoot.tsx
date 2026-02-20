@@ -1,7 +1,6 @@
 "use client";
 
 import { Toast as BaseToast } from "@base-ui/react";
-import styles from "../../../../app/toast2/index.module.css";
 
 import { cn } from "~/ui/utils";
 

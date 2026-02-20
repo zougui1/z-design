@@ -19,133 +19,133 @@ const componentItems: GroupNavItem[] = [
     items: [
       {
         label: "Button",
-        url: "/button",
+        url: "/primitives/button",
       },
       {
         label: "Calendar",
-        url: "/calendar",
+        url: "/primitives/calendar",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Card",
-        url: "/card",
+        url: "/primitives/card",
       },
       {
         label: "Checkbox",
-        url: "/checkbox",
+        url: "/primitives/checkbox",
       },
       {
         label: "Collapsible",
-        url: "/collapsible",
+        url: "/primitives/collapsible",
       },
       {
         label: "Combobox",
-        url: "/combobox",
+        url: "/primitives/combobox",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Command",
-        url: "/command",
+        url: "/primitives/command",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Data Table",
-        url: "/data-table",
+        url: "/primitives/data-table",
       },
       {
         label: "Date Picker",
-        url: "/date-picker",
+        url: "/primitives/date-picker",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Dialog",
-        url: "/dialog",
+        url: "/primitives/dialog",
       },
       {
         label: "Field",
-        url: "/field",
+        url: "/primitives/field",
       },
       {
         label: "Hover Card",
-        url: "/hover-card",
+        url: "/primitives/hover-card",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Input",
-        url: "/input",
+        url: "/primitives/input",
       },
       {
         label: "InputGroup",
-        url: "/input-group",
+        url: "/primitives/input-group",
       },
       {
         label: "Number Field",
-        url: "/number-field",
+        url: "/primitives/number-field",
       },
       {
         label: "Pagination",
-        url: "/pagination",
+        url: "/primitives/pagination",
       },
       {
         label: "Popover",
-        url: "/popover",
+        url: "/primitives/popover",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Progress",
-        url: "/progress",
+        url: "/primitives/progress",
       },
       {
         label: "Scroll Area",
-        url: "/scroll-area",
+        url: "/primitives/scroll-area",
       },
       {
         label: "Select",
-        url: "/select",
+        url: "/primitives/select",
       },
       {
         label: "Separator",
-        url: "/separator",
+        url: "/primitives/separator",
       },
       {
         label: "Sheet",
-        url: "/sheet",
+        url: "/primitives/sheet",
       },
       {
         label: "Sidebar",
-        url: "/sidebar",
+        url: "/primitives/sidebar",
       },
       {
         label: "Skeleton",
-        url: "/skeleton",
+        url: "/primitives/skeleton",
       },
       {
         label: "Spinner",
-        url: "/spinner",
+        url: "/primitives/spinner",
       },
       {
         label: "Switch",
-        url: "/switch",
+        url: "/primitives/switch",
       },
       {
         label: "Table",
-        url: "/table",
+        url: "/primitives/table",
       },
       {
         label: "Tabs",
-        url: "/tabs",
+        url: "/primitives/tabs",
       },
       {
         label: "Textarea",
-        url: "/textarea",
+        url: "/primitives/textarea",
       },
       {
         label: "Toast",
-        url: "/toast",
+        url: "/primitives/toast",
       },
       {
         label: "Tooltip",
-        url: "/tooltip",
+        url: "/primitives/tooltip",
       },
     ],
     collapsible: true,
@@ -155,57 +155,61 @@ const componentItems: GroupNavItem[] = [
     items: [
       {
         label: "Combobox",
-        url: "/z-combobox",
+        url: "/standard/combobox",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Data Table",
-        url: "/data-table",
+        url: "/standard/data-table",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Dialog",
-        url: "/z-dialog",
+        url: "/standard/dialog",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Hover Card",
-        url: "/z-hover-card",
+        url: "/standard/hover-card",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Scroll Area",
-        url: "/z-scroll-area",
+        url: "/standard/scroll-area",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Select",
-        url: "/z-select",
+        url: "/standard/select",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Sidebar",
-        url: "/z-sidebar",
+        url: "/standard/sidebar",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Tabs",
-        url: "/z-tabs",
+        url: "/standard/tabs",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Toast",
-        url: "/z-toast",
+        url: "/standard/toast",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "ToastButton",
-        url: "/z-toast",
+        url: "/standard/toast-button",
+      },
+      {
+        label: "ToastButton",
+        url: "/standard/toast",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Tooltip",
-        url: "/z-tooltip",
+        url: "/standard/tooltip",
         className: cn("text-muted-foreground opacity-60"),
       },
     ],

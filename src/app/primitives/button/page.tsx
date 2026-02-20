@@ -67,6 +67,20 @@ export default function HomePage() {
           ))}
         </Section>
 
+        <Section title="Button" className="flex-col">
+          {appearances.map((appearance) => (
+            <Row key={appearance}>
+              {colors.map((color) => (
+                <div key={color}>
+                  <Button appearance={appearance} color={color}>
+                    <Trash2Icon /> Click me
+                  </Button>
+                </div>
+              ))}
+            </Row>
+          ))}
+        </Section>
+
         <Section title="Disabled" className="flex-col">
           {appearances.map((appearance) => (
             <Row key={appearance}>
@@ -95,6 +109,20 @@ export default function HomePage() {
               {colors.map((color) => (
                 <div key={color}>
                   <Button aria-invalid appearance={appearance} color={color}>
+                    <Trash2Icon /> Click me
+                  </Button>
+                </div>
+              ))}
+            </Row>
+          ))}
+        </Section>
+
+        <Section title="Loading" className="flex-col">
+          {appearances.map((appearance) => (
+            <Row key={appearance}>
+              {colors.map((color) => (
+                <div key={color}>
+                  <Button appearance={appearance} color={color} loading>
                     <Trash2Icon /> Click me
                   </Button>
                 </div>
