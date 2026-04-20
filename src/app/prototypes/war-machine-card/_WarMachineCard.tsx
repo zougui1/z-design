@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { type VariantProps, tv } from "tailwind-variants";
 
-import { tv, type VariantProps } from "tailwind-variants";
-import { NumberField, InputGroup } from "~/ui/components";
+import { InputGroup, NumberField } from "~/ui/components/base";
 import { cn } from "~/ui/utils";
 
 const rarityVariants = tv({

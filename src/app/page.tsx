@@ -1,4 +1,4 @@
-import { Container, Typography } from "~/ui/components";
+import { Container, Typography } from "~/ui/components/base";
 
 export default function HomePage() {
   return (

@@ -1,0 +1,1 @@
+export * as BaseMenu from "./index.parts";

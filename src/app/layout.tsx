@@ -1,11 +1,10 @@
-import "~/styles/globals.css";
-
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
-import { cn } from "~/ui/utils";
-import { Sidebar } from "~/ui/components";
+import "~/styles/globals.css";
 import { AppSidebar } from "~/ui/AppSidebar";
+import { Sidebar } from "~/ui/components/base";
+import { cn } from "~/ui/utils";
 
 export const metadata: Metadata = {
   title: "Z Design",

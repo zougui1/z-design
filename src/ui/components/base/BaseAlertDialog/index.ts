@@ -1,0 +1,1 @@
+export * as BaseAlertDialog from "./index.parts";

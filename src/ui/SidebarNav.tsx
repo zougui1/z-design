@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Collapsible, Sidebar } from "./components";
-import { ChevronRightIcon } from "lucide-react";
+import { BaseCollapsible, Sidebar } from "./components/base";
 import { cn } from "./utils";
 
 export interface NavItem {
@@ -44,7 +43,7 @@ export const SidebarNav = (props: SidebarNavProps) => {
 
             if (item.collapsible) {
               return (
-                <Collapsible.Root
+                <BaseCollapsible.Root
                   key={item.label}
                   render={<Sidebar.MenuItem />}
                   className={cn("group/collapsible", item.className)}
@@ -52,17 +51,15 @@ export const SidebarNav = (props: SidebarNavProps) => {
                 >
                   <Sidebar.MenuButton
                     tooltip={item.label}
-                    render={<Collapsible.Trigger />}
+                    render={<BaseCollapsible.Trigger />}
                     className="w-full"
                   >
                     <span>{item.label}</span>
-                    <ChevronRightIcon
-                      className="ml-auto transition-transform duration-200
-                        group-data-open/collapsible:rotate-90"
-                    />
+
+                    <BaseCollapsible.TriggerIcon className="ml-auto" />
                   </Sidebar.MenuButton>
 
-                  <Collapsible.Content>
+                  <BaseCollapsible.Panel>
                     <Sidebar.MenuSub>
                       {item.items.map((subItem) => (
                         <Sidebar.MenuSubItem
@@ -70,18 +67,16 @@ export const SidebarNav = (props: SidebarNavProps) => {
                           className={subItem.className}
                         >
                           <Sidebar.MenuSubButton
-                            asChild
                             isActive={getIsActive(subItem)}
+                            render={<Link href={subItem.url} />}
                           >
-                            <Link href={subItem.url}>
-                              <span>{subItem.label}</span>
-                            </Link>
+                            {subItem.label}
                           </Sidebar.MenuSubButton>
                         </Sidebar.MenuSubItem>
                       ))}
                     </Sidebar.MenuSub>
-                  </Collapsible.Content>
-                </Collapsible.Root>
+                  </BaseCollapsible.Panel>
+                </BaseCollapsible.Root>
               );
             }
 
@@ -98,12 +93,10 @@ export const SidebarNav = (props: SidebarNavProps) => {
                       className={subItem.className}
                     >
                       <Sidebar.MenuSubButton
-                        asChild
                         isActive={getIsActive(subItem)}
+                        render={<Link href={subItem.url} />}
                       >
-                        <Link href={subItem.url}>
-                          <span>{subItem.label}</span>
-                        </Link>
+                        {subItem.label}
                       </Sidebar.MenuSubButton>
                     </Sidebar.MenuSubItem>
                   ))}

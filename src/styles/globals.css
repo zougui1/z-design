@@ -68,9 +68,9 @@
   --success-light: oklch(from var(--success) 56% c h);
   --success-foreground: var(--foreground);
 
-  --warning: oklch(62% 0.19482 50.951);
-  --warning-dark: oklch(from var(--warning) 52% c h);
-  --warning-light: oklch(from var(--warning) 72% c h);
+  --warning: oklch(55% 0.19482 50.951);
+  --warning-dark: oklch(from var(--warning) 45% c h);
+  --warning-light: oklch(from var(--warning) 65% c h);
   --warning-foreground: var(--foreground);
   --warning-light-foreground: var(--foreground-dark);
 
@@ -85,7 +85,7 @@
   --info-light: oklch(from var(--info) 56% c h);
   --info-foreground: var(--foreground);
 
-  --border: oklch(0.23 0.05 285);
+  --border: oklch(from var(--background) 0.23 c h);
 
   --tooltip-background: oklch(45% 0 0);
   --tooltip-foregroud: var(--foreground);
@@ -247,10 +247,6 @@
 }
 
 @layer dark {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
   body {
     @apply bg-background-dark text-foreground;
   }

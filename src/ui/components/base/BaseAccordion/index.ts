@@ -1,0 +1,1 @@
+export * as BaseAccordion from "./index.parts";

@@ -1,6 +1,6 @@
-import { Container } from "~/ui/components";
+import { Container } from "~/ui/components/base";
 
-import { WarMachineCard } from "./_WarMachineCard";
+//import { WarMachineCard } from "./_WarMachineCard";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
         className="grid auto-rows-[130px] grid-cols-[repeat(auto-fit,130px)]
           gap-6"
       >
-        <WarMachineCard name="cloudfist" />
+        {/*<WarMachineCard name="cloudfist" />
         <WarMachineCard name="earthshatterer" />
         <WarMachineCard name="sentinel" />
         <WarMachineCard name="judgement" />
@@ -21,7 +21,7 @@ export default function HomePage() {
         <WarMachineCard name="firecracker" />
         <WarMachineCard name="aegis" />
         <WarMachineCard name="curator" />
-        <WarMachineCard name="harvester" />
+        <WarMachineCard name="harvester" />*/}
       </div>
     </Container>
   );

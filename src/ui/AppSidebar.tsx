@@ -1,15 +1,15 @@
-import { Sidebar } from "./components";
-import { SidebarNav, type GroupNavItem, type NavItem } from "./SidebarNav";
+import { type GroupNavItem, type NavItem, SidebarNav } from "./SidebarNav";
+import { Sidebar } from "./components/base";
 import { cn } from "./utils";
 
 const themeItems: NavItem[] = [
   {
     label: "Colors",
-    url: "/colors",
+    url: "/theme/colors",
   },
   {
     label: "Typography",
-    url: "/typography",
+    url: "/theme/typography",
   },
 ];
 
@@ -18,134 +18,526 @@ const componentItems: GroupNavItem[] = [
     label: "Primitives",
     items: [
       {
-        label: "Button",
-        url: "/primitives/button",
+        label: "Primitive Accordion",
+        url: "/primitive/primitive-accordion",
       },
       {
-        label: "Calendar",
-        url: "/primitives/calendar",
+        label: "Primitive Alert",
+        url: "/primitive/primitive-alert",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Card",
-        url: "/primitives/card",
+        label: "Primitive Alert Dialog",
+        url: "/primitive/primitive-alert-dialog",
       },
       {
-        label: "Checkbox",
-        url: "/primitives/checkbox",
+        label: "Primitive Autocomplete",
+        url: "/primitive/primitive-autocomplete",
       },
       {
-        label: "Collapsible",
-        url: "/primitives/collapsible",
-      },
-      {
-        label: "Combobox",
-        url: "/primitives/combobox",
+        label: "Primitive Aspect Ratio",
+        url: "/primitive/primitive-aspect-ratio",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Command",
-        url: "/primitives/command",
+        label: "Primitive Avatar",
+        url: "/primitive/primitive-avatar",
+      },
+      {
+        label: "Primitive Badge",
+        url: "/primitive/primitive-badge",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Data Table",
-        url: "/primitives/data-table",
-      },
-      {
-        label: "Date Picker",
-        url: "/primitives/date-picker",
+        label: "Primitive Breadcrumb",
+        url: "/primitive/primitive-breadcrumb",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Dialog",
-        url: "/primitives/dialog",
+        label: "Primitive Button",
+        url: "/primitive/primitive-button",
       },
       {
-        label: "Field",
-        url: "/primitives/field",
-      },
-      {
-        label: "Hover Card",
-        url: "/primitives/hover-card",
+        label: "Primitive Button Group",
+        url: "/primitive/primitive-button-group",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Input",
-        url: "/primitives/input",
-      },
-      {
-        label: "InputGroup",
-        url: "/primitives/input-group",
-      },
-      {
-        label: "Number Field",
-        url: "/primitives/number-field",
-      },
-      {
-        label: "Pagination",
-        url: "/primitives/pagination",
-      },
-      {
-        label: "Popover",
-        url: "/primitives/popover",
+        label: "Primitive Calendar",
+        url: "/primitive/primitive-calendar",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Progress",
-        url: "/primitives/progress",
+        label: "Primitive Card",
+        url: "/primitive/primitive-card",
+        className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Scroll Area",
-        url: "/primitives/scroll-area",
+        label: "Primitive Carousel",
+        url: "/primitive/primitive-carousel",
+        className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Select",
-        url: "/primitives/select",
+        label: "Primitive Checkbox",
+        url: "/primitive/primitive-checkbox",
       },
       {
-        label: "Separator",
-        url: "/primitives/separator",
+        label: "Primitive Checkbox Group",
+        url: "/primitive/primitive-checkbox-group",
       },
       {
-        label: "Sheet",
-        url: "/primitives/sheet",
+        label: "Primitive Collapsible",
+        url: "/primitive/primitive-collapsible",
       },
       {
-        label: "Sidebar",
-        url: "/primitives/sidebar",
+        label: "Primitive Combobox",
+        url: "/primitive/primitive-combobox",
       },
       {
-        label: "Skeleton",
-        url: "/primitives/skeleton",
+        label: "Primitive Context Menu",
+        url: "/primitive/primitive-context-menu",
       },
       {
-        label: "Spinner",
-        url: "/primitives/spinner",
+        label: "Primitive Data Table",
+        url: "/primitive/primitive-data-table",
+        className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Switch",
-        url: "/primitives/switch",
+        label: "Primitive Date Picker",
+        url: "/primitive/primitive-date-picker",
+        className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Table",
-        url: "/primitives/table",
+        label: "Primitive Dialog",
+        url: "/primitive/primitive-dialog",
       },
       {
-        label: "Tabs",
-        url: "/primitives/tabs",
+        label: "Primitive Direction",
+        url: "/primitive/primitive-direction",
+        className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Textarea",
-        url: "/primitives/textarea",
+        label: "Primitive Drawer",
+        url: "/primitive/primitive-drawer",
       },
       {
-        label: "Toast",
-        url: "/primitives/toast",
+        label: "Primitive Empty",
+        url: "/primitive/primitive-empty",
+        className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Tooltip",
-        url: "/primitives/tooltip",
+        label: "Primitive Field",
+        url: "/primitive/primitive-field",
+      },
+      {
+        label: "Primitive Fieldset",
+        url: "/primitive/primitive-fieldset",
+      },
+      {
+        label: "Primitive Form",
+        url: "/primitive/primitive-form",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Input",
+        url: "/primitive/primitive-input",
+      },
+      {
+        label: "Primitive InputGroup",
+        url: "/primitive/primitive-input-group",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Item",
+        url: "/primitive/primitive-item",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Kbd",
+        url: "/primitive/primitive-kbd",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Label",
+        url: "/primitive/primitive-label",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Menu",
+        url: "/primitive/primitive-menu",
+      },
+      {
+        label: "Primitive Menubar",
+        url: "/primitive/primitive-menubar",
+      },
+      {
+        label: "Primitive Meter",
+        url: "/primitive/primitive-meter",
+      },
+      {
+        label: "Primitive Number Field",
+        url: "/primitive/primitive-number-field",
+      },
+      {
+        label: "Primitive Pagination",
+        url: "/primitive/primitive-pagination",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Popover",
+        url: "/primitive/primitive-popover",
+      },
+      {
+        label: "Primitive Preview Card",
+        url: "/primitive/primitive-preview-card",
+      },
+      {
+        label: "Primitive Progress",
+        url: "/primitive/primitive-progress",
+      },
+      {
+        label: "Primitive Radio",
+        url: "/primitive/primitive-radio",
+      },
+      {
+        label: "Primitive Resizable",
+        url: "/primitive/primitive-resizable",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Scroll Area",
+        url: "/primitive/primitive-scroll-area",
+      },
+      {
+        label: "Primitive Select",
+        url: "/primitive/primitive-select",
+      },
+      {
+        label: "Primitive Separator",
+        url: "/primitive/primitive-separator",
+      },
+      {
+        label: "Primitive Sidebar",
+        url: "/primitive/primitive-sidebar",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Skeleton",
+        url: "/primitive/primitive-skeleton",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Slider",
+        url: "/primitive/primitive-slider",
+      },
+      {
+        label: "Primitive Spinner",
+        url: "/primitive/primitive-spinner",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Switch",
+        url: "/primitive/primitive-switch",
+      },
+      {
+        label: "Primitive Table",
+        url: "/primitive/primitive-table",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Tabs",
+        url: "/primitive/primitive-tabs",
+      },
+      {
+        label: "Primitive Textarea",
+        url: "/primitive/primitive-textarea",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Primitive Toast",
+        url: "/primitive/primitive-toast",
+      },
+      {
+        label: "Primitive Toggle",
+        url: "/primitive/primitive-toggle",
+      },
+      {
+        label: "Primitive Toggle Group",
+        url: "/primitive/primitive-toggle-group",
+      },
+      {
+        label: "Primitive Tooltip",
+        url: "/primitive/primitive-tooltip",
+      },
+    ],
+    collapsible: true,
+  },
+  {
+    label: "Base",
+    items: [
+      {
+        label: "Base Accordion",
+        url: "/base/base-accordion",
+      },
+      {
+        label: "Base Alert",
+        url: "/base/base-alert",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Alert Dialog",
+        url: "/base/base-alert-dialog",
+      },
+      {
+        label: "Base Autocomplete",
+        url: "/base/base-autocomplete",
+      },
+      {
+        label: "Base Aspect Ratio",
+        url: "/base/base-aspect-ratio",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Avatar",
+        url: "/base/base-avatar",
+      },
+      {
+        label: "Base Badge",
+        url: "/base/base-badge",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Breadcrumb",
+        url: "/base/base-breadcrumb",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Button",
+        url: "/base/base-button",
+      },
+      {
+        label: "Base Button Group",
+        url: "/base/base-button-group",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Calendar",
+        url: "/base/base-calendar",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Card",
+        url: "/base/base-card",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Carousel",
+        url: "/base/base-carousel",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Checkbox",
+        url: "/base/base-checkbox",
+      },
+      {
+        label: "Base Checkbox Group",
+        url: "/base/base-checkbox-group",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Collapsible",
+        url: "/base/base-collapsible",
+      },
+      {
+        label: "Base Combobox",
+        url: "/base/base-combobox",
+      },
+      {
+        label: "Base Context Menu",
+        url: "/base/base-context-menu",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Data Table",
+        url: "/base/base-data-table",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Date Picker",
+        url: "/base/base-date-picker",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Dialog",
+        url: "/base/base-dialog",
+      },
+      {
+        label: "Base Direction",
+        url: "/base/base-direction",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Drawer",
+        url: "/base/base-drawer",
+      },
+      {
+        label: "Base Empty",
+        url: "/base/base-empty",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Field",
+        url: "/base/base-field",
+      },
+      {
+        label: "Base Fieldset",
+        url: "/base/base-fieldset",
+      },
+      {
+        label: "Base Form",
+        url: "/base/base-form",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Input",
+        url: "/base/base-input",
+      },
+      {
+        label: "Base Input Group",
+        url: "/base/base-input-group",
+      },
+      {
+        label: "Base Item",
+        url: "/base/base-item",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Kbd",
+        url: "/base/base-kbd",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Label",
+        url: "/base/base-label",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Menu",
+        url: "/base/base-menu",
+      },
+      {
+        label: "Base Menubar",
+        url: "/base/base-menubar",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Meter",
+        url: "/base/base-meter",
+      },
+      {
+        label: "Base Number Field",
+        url: "/base/base-number-field",
+      },
+      {
+        label: "Base Pagination",
+        url: "/base/base-pagination",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Popover",
+        url: "/base/base-popover",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Preview Card",
+        url: "/base/base-preview-card",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Progress",
+        url: "/base/base-progress",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Radio",
+        url: "/base/base-radio",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Resizable",
+        url: "/base/base-resizable",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Scroll Area",
+        url: "/base/base-scroll-area",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Select",
+        url: "/base/base-select",
+      },
+      {
+        label: "Base Separator",
+        url: "/base/base-separator",
+      },
+      {
+        label: "Base Sidebar",
+        url: "/base/base-sidebar",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Skeleton",
+        url: "/base/base-skeleton",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Slider",
+        url: "/base/base-slider",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Spinner",
+        url: "/base/base-spinner",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Switch",
+        url: "/base/base-switch",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Table",
+        url: "/base/base-table",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Tabs",
+        url: "/base/base-tabs",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Textarea",
+        url: "/base/base-textarea",
+      },
+      {
+        label: "Base Toast",
+        url: "/base/base-toast",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Toggle",
+        url: "/base/base-toggle",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Toggle Group",
+        url: "/base/base-toggle-group",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Tooltip",
+        url: "/base/base-tooltip",
       },
     ],
     collapsible: true,
@@ -154,14 +546,34 @@ const componentItems: GroupNavItem[] = [
     label: "Standard",
     items: [
       {
-        label: "Combobox",
-        url: "/standard/combobox",
+        label: "Alert",
+        url: "/standard/alert",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Data Table",
-        url: "/standard/data-table",
+        label: "Alert Dialog",
+        url: "/standard/alert-dialog",
         className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Avatar",
+        url: "/standard/avatar",
+      },
+      {
+        label: "Avatar Group",
+        url: "/standard/avatar-group",
+      },
+      {
+        label: "Button",
+        url: "/standard/button",
+      },
+      {
+        label: "Checkbox",
+        url: "/standard/checkbox",
+      },
+      {
+        label: "Combobox",
+        url: "/standard/combobox",
       },
       {
         label: "Dialog",
@@ -169,13 +581,38 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Hover Card",
-        url: "/standard/hover-card",
+        label: "Drawer",
+        url: "/standard/drawer",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Scroll Area",
-        url: "/standard/scroll-area",
+        label: "Field",
+        url: "/standard/field",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Fieldset",
+        url: "/standard/fieldset",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Input",
+        url: "/standard/input",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Menu",
+        url: "/standard/menu",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Meter",
+        url: "/standard/meter",
+        className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Number Field",
+        url: "/standard/number-field",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
@@ -184,194 +621,26 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Sidebar",
-        url: "/standard/sidebar",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Tabs",
-        url: "/standard/tabs",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Toast",
-        url: "/standard/toast",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "ToastButton",
-        url: "/standard/toast-button",
-      },
-      {
-        label: "ToastButton",
-        url: "/standard/toast",
+        label: "Separator",
+        url: "/standard/separator",
         className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Tooltip",
         url: "/standard/tooltip",
-        className: cn("text-muted-foreground opacity-60"),
       },
     ],
     collapsible: true,
-    className: cn("text-muted-foreground opacity-60"),
   },
   {
     label: "Future (next)",
-    items: [
-      {
-        label: "Accordion",
-        url: "/accordion",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Alert Dialog",
-        url: "/alert-dialog",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Alert",
-        url: "/alert",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Badge",
-        url: "/badge",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Button Group",
-        url: "/button-group",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Drawer",
-        url: "/drawer",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Dropdown",
-        url: "/dropdown",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Form",
-        url: "/form",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Hover Card",
-        url: "/hover-card",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Input Group",
-        url: "/input-group",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Label",
-        url: "/label",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Pagination",
-        url: "/pagination",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Radio Group",
-        url: "/radio-group",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Slider",
-        url: "/slider",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-    ],
+    items: [],
     collapsible: true,
     className: cn("text-muted-foreground opacity-60"),
   },
   {
     label: "Future (unknown)",
-    items: [
-      {
-        label: "Aspect Ratio",
-        url: "/aspect-ratio",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Avatar",
-        url: "/avatar",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Breadcrumb",
-        url: "/breadcrumb",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Carousel",
-        url: "/carousel",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Chart",
-        url: "/chart",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Context Menu",
-        url: "/context-menu",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Empty",
-        url: "/empty",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Input OTP",
-        url: "/input-otp",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Item",
-        url: "/item",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Kbd",
-        url: "/kbd",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Menubar",
-        url: "/menubar",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Navigation Menu",
-        url: "/navigation-menu",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Resizable",
-        url: "/resizable",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Toggle Group",
-        url: "/toggle-group",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
-        label: "Toggle",
-        url: "/toggle",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-    ],
+    items: [],
     collapsible: true,
     className: cn("text-muted-foreground opacity-60"),
   },
