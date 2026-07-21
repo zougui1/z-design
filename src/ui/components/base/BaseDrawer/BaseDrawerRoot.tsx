@@ -13,4 +13,12 @@ export const BaseDrawerRoot = (props: BaseDrawerRootProps) => {
 export namespace BaseDrawerRoot {
   export type Props = BaseDrawerRootProps;
   export type State = BaseDrawerRootState;
+  export type Actions = PrimitiveDrawer.Root.Actions;
+  export type ChangeEventDetails = PrimitiveDrawer.Root.ChangeEventDetails;
+  export type ChangeEventReason = PrimitiveDrawer.Root.ChangeEventReason;
+  export type SnapPoint = PrimitiveDrawer.Root.SnapPoint;
+  export type SnapPointChangeEventDetails =
+    PrimitiveDrawer.Root.SnapPointChangeEventDetails;
+  export type SnapPointChangeEventReason =
+    PrimitiveDrawer.Root.SnapPointChangeEventReason;
 }

@@ -4,7 +4,7 @@ import { ChevronDown, X } from "lucide-react";
 
 import { cn, cnState } from "~/ui/utils";
 
-import { BaseCombobox, BaseInputGroup } from "../../base";
+import { BaseCombobox, BaseInputGroup } from "../../../base";
 
 export interface ComboboxInputSingleProps extends BaseInputGroup.Root.Props {
   placeholder?: string;

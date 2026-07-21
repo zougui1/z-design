@@ -15,7 +15,19 @@ export const BaseDrawerContent = ({
     <PrimitiveDrawer.Content
       data-slot="drawer-content"
       {...props}
-      className={cnState("mx-auto w-full max-w-lg", className)}
+      className={cnState(
+        "mx-auto w-full max-w-lg",
+
+        "group-has-data-[slot=drawer-handle]/drawer-popup:group-data-[side=right]/drawer-viewport:pl-4",
+
+        "group-has-data-[slot=drawer-handle]/drawer-popup:group-data-[side=bottom]/drawer-viewport:pt-4",
+
+        "group-has-data-[slot=drawer-handle]/drawer-popup:group-data-[side=left]/drawer-viewport:pr-4",
+
+        "group-has-data-[slot=drawer-handle]/drawer-popup:group-data-[side=top]/drawer-viewport:pb-4",
+
+        className,
+      )}
     />
   );
 };

@@ -38,6 +38,7 @@ export default tseslint.config(
       "react/no-children-prop": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/no-namespace": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
   {

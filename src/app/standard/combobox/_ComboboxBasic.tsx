@@ -8,6 +8,9 @@ const frameworks = [
   "Nuxt.js",
   "Remix",
   "Astro",
+  "Solid",
+  "Express",
+  "Nest",
 ] as const;
 
 export function ComboboxBasic() {

@@ -10,9 +10,11 @@ export * from "./BaseDrawer";
 export * from "./BaseField";
 export * from "./BaseFieldset";
 export * from "./BaseInputGroup";
+export * from "./BaseLink";
 export * from "./BaseMenu";
 export * from "./BaseMeter";
 export * from "./BaseNumberField";
+export * from "./BasePagination";
 export * from "./BaseSeparator";
 export * from "./BaseTooltip";
 

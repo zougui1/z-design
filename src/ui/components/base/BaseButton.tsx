@@ -33,7 +33,7 @@ export const baseButtonStyles = tv({
         border-[oklch(from_var(--z-button-color)_var(--z-button-lightness)_c_h)]
         hover:bg-[oklch(from_var(--z-button-color)_l_c_h/var(--z-button-opacity))]`,
       ghost: `text-[oklch(from_var(--z-button-color)_var(--z-button-lightness)_c_h)]
-        hover:bg-[oklch(from_var(--z-button-color)_l_c_h/var(--z-button-opacity))]`,
+        hover:bg-[oklch(from_var(--z-button-color)_var(--z-button-lightness)_c_h/var(--z-button-opacity))]`,
       link: `text-[oklch(from_var(--z-button-color)_var(--z-button-lightness)_c_h)]
         underline-offset-4 hover:underline`,
     },
@@ -85,6 +85,21 @@ export const baseButtonStyles = tv({
       color: "neutral",
       variant: "solid",
       className: "text-black",
+    },
+    {
+      color: "neutral",
+      variant: "outline",
+      className: "hover:[--z-button-lightness:85%]",
+    },
+    {
+      color: "neutral",
+      variant: "ghost",
+      className: "hover:[--z-button-lightness:85%]",
+    },
+    {
+      color: "neutral",
+      variant: "link",
+      className: "hover:[--z-button-lightness:85%]",
     },
   ],
 });

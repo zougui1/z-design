@@ -1,20 +1,19 @@
 "use client";
-import { cnState } from "../../../utils";
 import { PrimitiveAutocomplete } from "../../primitives";
 
-export interface BaseAutocompleteCollectionProps extends PrimitiveAutocomplete.Collection.Props {}
+export interface BaseAutocompleteCollectionProps
+  extends PrimitiveAutocomplete.Collection.Props {}
 
-export type BaseAutocompleteCollectionState = PrimitiveAutocomplete.Collection.State;
+export type BaseAutocompleteCollectionState =
+  PrimitiveAutocomplete.Collection.State;
 
-export const BaseAutocompleteCollection = ({
-  className,
-  ...props
-}: BaseAutocompleteCollectionProps) => {
+export const BaseAutocompleteCollection = (
+  props: BaseAutocompleteCollectionProps,
+) => {
   return (
     <PrimitiveAutocomplete.Collection
       data-slot="autocomplete-collection"
       {...props}
-      className={cnState("", className)}
     />
   );
 };

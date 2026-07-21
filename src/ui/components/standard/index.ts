@@ -3,5 +3,7 @@ export * from "./AvatarGroup";
 export * from "./Button";
 export * from "./Checkbox";
 export * from "./Combobox";
+export * from "./Input";
+export * from "./Pagination";
 export * from "./Spinner";
 export * from "./Tooltip";

@@ -441,7 +441,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Pagination",
         url: "/base/base-pagination",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Popover",
@@ -598,7 +597,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Input",
         url: "/standard/input",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Menu",
@@ -614,6 +612,10 @@ const componentItems: GroupNavItem[] = [
         label: "Number Field",
         url: "/standard/number-field",
         className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Pagination",
+        url: "/standard/pagination",
       },
       {
         label: "Select",

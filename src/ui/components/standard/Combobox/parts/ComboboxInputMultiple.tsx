@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 
 import { cnState } from "~/ui/utils";
 
-import { BaseCombobox } from "../../base";
+import { BaseCombobox } from "../../../base";
 
 export interface ComboboxInputMultipleProps<Value>
   extends BaseCombobox.InputGroup.Props {
@@ -40,7 +40,7 @@ export function ComboboxInputMultiple<Value>({
         <BaseCombobox.Value
           children={(items: Value[]) => (
             <>
-              {items.map((item) => {
+              {items.map((item, i) => {
                 const value = getValue?.(item) ?? String(item);
                 const label = getLabel?.(item) ?? String(item);
                 const labelString = typeof label === "string" ? label : value;

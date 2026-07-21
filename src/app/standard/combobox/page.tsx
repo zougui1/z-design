@@ -2,6 +2,7 @@ import { Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 import { ComboboxBasic } from "./_ComboboxBasic";
+import { ComboboxCreatable } from "./_ComboboxCreatable";
 import { ComboboxMultiple } from "./_ComboboxMultiple";
 
 const Section = ({
@@ -36,6 +37,10 @@ export default function BaseComboboxPage() {
 
         <Section title="Multiple" className="flex-col">
           <ComboboxMultiple />
+        </Section>
+
+        <Section title="Creatable" className="flex-col">
+          <ComboboxCreatable />
         </Section>
       </div>
     </Container>

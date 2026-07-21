@@ -45,6 +45,7 @@ export const BaseFieldError = ({
     <PrimitiveField.Error
       data-slot="field-error"
       role="alert"
+      match
       {...props}
       className={cnState("text-destructive text-sm font-normal", className)}
     >

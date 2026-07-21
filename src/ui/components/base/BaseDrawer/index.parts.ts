@@ -8,6 +8,7 @@ export { BaseDrawerClose as Close } from "./BaseDrawerClose";
 export { BaseDrawerContent as Content } from "./BaseDrawerContent";
 export { BaseDrawerDescription as Description } from "./BaseDrawerDescription";
 export { BaseDrawerFooter as Footer } from "./BaseDrawerFooter";
+export { BaseDrawerHandle as Handle } from "./BaseDrawerHandle";
 export { BaseDrawerHeader as Header } from "./BaseDrawerHeader";
 export { BaseDrawerIndent as Indent } from "./BaseDrawerIndent";
 export { BaseDrawerIndentBackground as IndentBackground } from "./BaseDrawerIndentBackground";

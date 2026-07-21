@@ -22,4 +22,11 @@ export namespace BaseComboboxRoot {
     Multiple extends boolean | undefined = false,
   > = BaseComboboxRootProps<Value, Multiple>;
   export type State = BaseComboboxRootState;
+  export type Actions = PrimitiveCombobox.Root.Actions;
+  export type ChangeEventDetails = PrimitiveCombobox.Root.ChangeEventDetails;
+  export type ChangeEventReason = PrimitiveCombobox.Root.ChangeEventReason;
+  export type HighlightEventDetails =
+    PrimitiveCombobox.Root.HighlightEventDetails;
+  export type HighlightEventReason =
+    PrimitiveCombobox.Root.HighlightEventReason;
 }

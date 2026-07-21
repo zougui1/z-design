@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", geist.variable)}>
       <body className="relative min-h-svh">
-        <Sidebar.Provider>
+        <Sidebar.Provider className="isolate">
           <AppSidebar />
           <Sidebar.Inset>{children}</Sidebar.Inset>
         </Sidebar.Provider>
