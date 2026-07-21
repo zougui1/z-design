@@ -328,7 +328,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Card",
         url: "/base/base-card",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Carousel",

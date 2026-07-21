@@ -2,6 +2,7 @@ export * from "./BaseAccordion";
 export * from "./BaseAlertDialog";
 export * from "./BaseAutocomplete";
 export * from "./BaseAvatar";
+export * from "./BaseCard";
 export * from "./BaseCheckbox";
 export * from "./BaseCollapsible";
 export * from "./BaseCombobox";
