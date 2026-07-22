@@ -1,4 +1,4 @@
-import { Table } from "../Table";
+import { BaseTable as Table } from "../BaseTable";
 import { cn } from "../../../utils";
 
 export interface DataTableViewportProps extends Table.ViewportProps {}

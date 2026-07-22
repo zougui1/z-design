@@ -5,7 +5,7 @@ const footerStyles = tv({
 
   variants: {
     borderless: {
-      false: "border-t",
+      false: "border-border border-t",
     },
   },
 });

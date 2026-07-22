@@ -3,7 +3,7 @@
 import { mergeProps } from "@base-ui/react";
 import { flexRender, type Cell } from "@tanstack/react-table";
 
-import { Table } from "../Table";
+import { BaseTable as Table } from "../BaseTable";
 import { useDataTableContext, type ColumnDef } from "./context";
 import { cn } from "~/ui/utils";
 

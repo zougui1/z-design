@@ -554,6 +554,10 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
+        label: "Autocomplete",
+        url: "/standard/autocomplete",
+      },
+      {
         label: "Avatar",
         url: "/standard/avatar",
       },
@@ -574,6 +578,10 @@ const componentItems: GroupNavItem[] = [
         url: "/standard/combobox",
       },
       {
+        label: "Data Table",
+        url: "/standard/data-table",
+      },
+      {
         label: "Dialog",
         url: "/standard/dialog",
         className: cn("text-muted-foreground opacity-60"),
@@ -592,6 +600,10 @@ const componentItems: GroupNavItem[] = [
         label: "Fieldset",
         url: "/standard/fieldset",
         className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Form",
+        url: "/standard/form",
       },
       {
         label: "Input",
@@ -619,12 +631,15 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Select",
         url: "/standard/select",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Separator",
         url: "/standard/separator",
         className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Textarea",
+        url: "/standard/textarea",
       },
       {
         label: "Tooltip",

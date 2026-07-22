@@ -16,12 +16,13 @@ export const BaseAutocompleteItem = ({
       data-slot="autocomplete-item"
       {...props}
       className={cnState(
-        `flex cursor-pointer items-center gap-2 py-2 pr-8 pl-4 text-base
-        leading-4 outline-hidden select-none data-highlighted:relative
-        data-highlighted:z-0 data-highlighted:before:absolute
-        data-highlighted:before:inset-x-2 data-highlighted:before:inset-y-0
-        data-highlighted:before:z-[-1] data-highlighted:before:rounded-sm
-        data-highlighted:before:bg-gray-900`,
+        `data-highlighted:bg-accent data-highlighted:text-accent-foreground
+        not-data-[variant=destructive]:data-highlighted:**:text-accent-foreground
+        relative flex w-full cursor-default items-center gap-2 rounded-md py-1
+        pr-8 pl-1.5 text-sm outline-hidden select-none
+        data-disabled:pointer-events-none data-disabled:opacity-50
+        [&_svg]:pointer-events-none [&_svg]:shrink-0
+        [&_svg:not([class*='size-'])]:size-4`,
         className,
       )}
     />

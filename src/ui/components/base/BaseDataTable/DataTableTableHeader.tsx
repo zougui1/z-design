@@ -5,7 +5,7 @@ import { flexRender, type Header } from "@tanstack/react-table";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 
 import { useDataTableContext, type ColumnDef } from "./context";
-import { Table } from "../Table";
+import { BaseTable as Table } from "../BaseTable";
 
 export interface DataTableTableHeaderProps extends Table.HeaderProps {}
 

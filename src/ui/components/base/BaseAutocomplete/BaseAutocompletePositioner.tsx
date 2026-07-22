@@ -10,14 +10,21 @@ export type BaseAutocompletePositionerState =
 
 export const BaseAutocompletePositioner = ({
   className,
+  side = "bottom",
+  sideOffset = 6,
+  align = "start",
+  alignOffset = 0,
   ...props
 }: BaseAutocompletePositionerProps) => {
   return (
     <PrimitiveAutocomplete.Positioner
       data-slot="autocomplete-positioner"
-      sideOffset={4}
+      side={side}
+      sideOffset={sideOffset}
+      align={align}
+      alignOffset={alignOffset}
       {...props}
-      className={cnState("outline-hidden", className)}
+      className={cnState("isolate z-50 outline-hidden", className)}
     />
   );
 };

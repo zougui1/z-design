@@ -7,7 +7,7 @@ export function TableRoot({ className, ...props }: TableRootProps) {
     <div
       data-slot="table-root"
       className={cn(
-        "bg-background w-full rounded-lg border shadow-md",
+        "bg-background border-border w-full rounded-lg border shadow-md",
         "grid grid-rows-[1fr_auto]",
         className,
       )}

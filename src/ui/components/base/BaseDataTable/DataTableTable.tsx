@@ -1,4 +1,4 @@
-import { Table } from "../Table";
+import { BaseTable as Table } from "../BaseTable";
 
 export interface DataTableTableProps extends Table.ContentProps {}
 

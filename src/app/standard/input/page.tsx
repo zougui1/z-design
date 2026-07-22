@@ -1,6 +1,4 @@
-import { Mail, Search, X } from "lucide-react";
-
-import { BaseInputGroup, Container, Input } from "~/ui/components";
+import { Container, Input } from "~/ui/components";
 
 export default function InputPage() {
   return (
@@ -22,30 +20,23 @@ export default function InputPage() {
 
       <Input
         label="Email"
-        placeholder="Enter text"
-        startAddon={<Mail />}
-        invalid
+        type="email"
+        placeholder="you@example.com"
       />
 
       <Input
         label="Search"
-        placeholder="Enter text"
-        endAddon={
-          <BaseInputGroup.Button>
-            <X />
-          </BaseInputGroup.Button>
-        }
+        type="search"
+        placeholder="Search…"
+        defaultValue="query"
       />
 
       <Input
-        label="Search"
+        label="Clearable"
         placeholder="Enter text"
-        startAddon={<Search />}
-        endAddon={
-          <BaseInputGroup.Button>
-            <X />
-          </BaseInputGroup.Button>
-        }
+        clearable
+        defaultValue="Clear me"
+        description="An X button appears while there is a value."
       />
     </Container>
   );

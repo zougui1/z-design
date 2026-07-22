@@ -16,8 +16,10 @@ export const BaseAutocompleteList = ({
       data-slot="autocomplete-list"
       {...props}
       className={cnState(
-        `max-h-[min(23rem,var(--available-height))] scroll-py-2 overflow-y-auto
-        overscroll-contain py-2 outline-0 data-empty:p-0`,
+        `no-scrollbar
+        max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))]
+        scroll-py-1 overflow-y-auto overscroll-contain p-1 outline-0
+        data-empty:p-0`,
         className,
       )}
     />

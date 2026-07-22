@@ -16,7 +16,8 @@ export const BaseAutocompleteEmpty = ({
       data-slot="autocomplete-empty"
       {...props}
       className={cnState(
-        "p-4 text-[0.925rem] leading-4 text-gray-600",
+        `text-muted-foreground flex w-full justify-center py-2 text-center
+        text-sm empty:hidden`,
         className,
       )}
     />

@@ -11,7 +11,7 @@ const rowStyles = tv({
     },
 
     borderless: {
-      false: "border-b",
+      false: "border-border border-b",
     },
   },
 });
