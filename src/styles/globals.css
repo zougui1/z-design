@@ -20,8 +20,8 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(60.574% 0.24798 28.481);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --border: oklch(0.912 0.015 302);
+  --input: oklch(0.912 0.015 302);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -85,7 +85,10 @@
   --info-light: oklch(from var(--info) 56% c h);
   --info-foreground: var(--foreground);
 
-  --border: oklch(from var(--background) 0.23 c h);
+  /* Subtle, purple-tinted border: pull lightness close to the background so
+     the line is quiet, and bump chroma off the background's near-zero value so
+     it actually reads purple (hue inherited from the background). */
+  --border: oklch(from var(--background) 0.2 0.05 h);
 
   --tooltip-background: oklch(45% 0 0);
   --tooltip-foregroud: var(--foreground);
@@ -100,8 +103,8 @@
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.25 0.06 302);
   --accent-foreground: oklch(0.985 0 0);
-  --input: oklch(39.042% 0.00004 271.152);
-  --input-accent: oklch(32.504% 0.00004 271.152);
+  --input: oklch(39.042% 0.04 302);
+  --input-accent: oklch(32.504% 0.04 302);
   --ring: oklch(0.439 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);

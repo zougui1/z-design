@@ -10,7 +10,15 @@ export const DataTableViewport = ({
 }: DataTableViewportProps) => {
   return (
     <Table.Viewport
-      className={cn("inset-shadow-sm", className)}
+      // `min-h-0` lets the viewport shrink inside the grid so it can scroll
+      // vertically when the table root has a height constraint; the sticky
+      // header and the footer live outside this scroll area.
+      // `shadow-none` drops the viewport's own drop shadow (the root card
+      // already provides elevation) so it doesn't bleed onto the footer.
+      className={cn(
+        "inset-shadow-sm min-h-0 overflow-y-auto shadow-none",
+        className,
+      )}
       style={
         {
           "--tw-inset-shadow":

@@ -359,7 +359,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Data Table",
         url: "/base/base-data-table",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Date Picker",
@@ -507,7 +506,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Table",
         url: "/base/base-table",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Tabs",

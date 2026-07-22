@@ -4,11 +4,13 @@ import { useRender } from "@base-ui/react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const footerStyles = tv({
-  base: "px-4 py-3",
+  // faintly tinted surface (matches the header) so the footer reads as
+  // distinct from the body rather than a plain extension of it
+  base: "bg-[color-mix(in_oklab,var(--accent)_35%,var(--background))] px-4 py-3",
 
   variants: {
     borderless: {
-      false: "border-t",
+      false: "border-border border-t",
     },
   },
 });

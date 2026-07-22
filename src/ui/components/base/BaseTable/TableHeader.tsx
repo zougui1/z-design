@@ -1,10 +1,13 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 const headerStyles = tv({
-  base: "",
+  // faintly tinted, opaque surface so the header reads as distinct from the
+  // body (and safely covers rows scrolling underneath when sticky). Only a
+  // little accent is mixed into the background so the tint stays subtle.
+  base: "bg-[color-mix(in_oklab,var(--accent)_35%,var(--background))]",
   variants: {
     sticky: {
-      true: "bg-background sticky top-0 z-10 shadow-md",
+      true: "sticky top-0 z-10",
     },
 
     borderless: {

@@ -43,9 +43,16 @@ export const DataTableTableHeader = ({
       }
     };
 
+    // non-sortable columns aren't interactive, so render plain text instead
+    // of a button (no pointer cursor, no click handler)
+    if (!column.getCanSort()) {
+      return <span className="inline-flex items-center gap-2">{content}</span>;
+    }
+
     return (
       <button
-        className="group inline-flex items-center gap-2"
+        type="button"
+        className="group inline-flex cursor-pointer items-center gap-2"
         onClick={() => column.toggleSorting()}
       >
         {content}
