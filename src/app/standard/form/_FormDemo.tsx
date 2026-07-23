@@ -7,10 +7,20 @@ import { useAppForm } from "~/ui/components";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required."),
-  bio: z.string().max(160, "Keep it under 160 characters."),
+  bio: z
+    .string()
+    .min(1, "Bio is required")
+    .max(160, "Keep it under 160 characters."),
   role: z.string().min(1, "Please pick a role."),
-  country: z.string(),
-  framework: z.string(),
+  country: z.string().min(1, "Country is required"),
+  framework: z.string().min(1, "Framework is required"),
+  age: z
+    .number({ invalid_type_error: "Age is required." })
+    .min(18, "Must be 18 or older."),
+  birthday: z.date({
+    invalid_type_error: "Please pick your birthday.",
+    required_error: "Please pick your birthday.",
+  }),
   agree: z.boolean().refine((value) => value, "You must accept the terms."),
 });
 
@@ -49,6 +59,8 @@ export function FormDemo() {
       role: "",
       country: "",
       framework: "",
+      age: null as number | null,
+      birthday: undefined as Date | undefined,
       agree: false,
     },
     validators: {
@@ -113,6 +125,21 @@ export function FormDemo() {
             items={frameworks}
           />
         )}
+      </form.AppField>
+
+      <form.AppField name="age">
+        {(field) => (
+          <field.NumberField
+            label="Age"
+            placeholder="18"
+            min={0}
+            description="Must be 18 or older."
+          />
+        )}
+      </form.AppField>
+
+      <form.AppField name="birthday">
+        {(field) => <field.DatePicker label="Birthday" />}
       </form.AppField>
 
       <form.AppField name="agree">

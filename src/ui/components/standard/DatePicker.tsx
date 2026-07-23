@@ -11,7 +11,6 @@ import {
   BaseDatePicker,
   BaseField,
 } from "../base";
-import { Button, type ButtonProps } from "./Button";
 
 export interface DatePickerProps
   extends Pick<BaseField.Root.Props, "dirty" | "touched" | "invalid"> {
@@ -43,7 +42,7 @@ export interface DatePickerProps
     error?: Partial<Omit<BaseField.Error.Props, "error">>;
     description?: Partial<Omit<BaseField.Description.Props, "children">>;
     control?: Partial<BaseField.Control.Props>;
-    trigger?: Partial<ButtonProps>;
+    trigger?: React.ComponentProps<"button">;
     positioner?: Partial<BaseDatePicker.Positioner.Props>;
     popup?: Partial<BaseDatePicker.Popup.Props>;
     calendar?: Partial<BaseCalendarProps>;
@@ -51,6 +50,22 @@ export interface DatePickerProps
 }
 
 const DEFAULT_FORMAT: Intl.DateTimeFormatOptions = { dateStyle: "medium" };
+
+// mirrors BaseInput: same surface, border, focus + invalid rings, height and
+// rounding. `data-popup-open` (set while the calendar is open) reuses the focus
+// treatment so an open picker reads like a focused input.
+const triggerClassName =
+  `border-border bg-background-light focus-visible:border-primary
+  focus-visible:ring-primary/50 data-[popup-open]:border-primary
+  data-[popup-open]:ring-primary/50 data-[invalid]:border-destructive
+  data-[invalid]:ring-destructive/20
+  focus-visible:data-[invalid]:ring-destructive/50
+  data-[popup-open]:data-[invalid]:ring-destructive/50
+  disabled:bg-background-light/50 flex h-9 w-full min-w-0 cursor-pointer
+  items-center gap-2 rounded-sm border px-2.5 py-1 text-left text-base
+  shadow-sm transition-colors outline-none focus-visible:ring-3
+  data-[popup-open]:ring-3 data-[invalid]:ring-3 disabled:pointer-events-none
+  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm`;
 
 export const DatePicker = ({
   value: valueProp,
@@ -117,21 +132,23 @@ export const DatePicker = ({
           render={
             <BaseDatePicker.Trigger
               render={
-                <Button
-                  variant="outline"
-                  color="neutral"
+                <button
+                  type="button"
                   disabled={disabled}
-                  aria-invalid={isInvalid || undefined}
+                  data-invalid={isInvalid || undefined}
                   {...slotProps?.trigger}
-                  className={cn(
-                    "w-full justify-start gap-2 font-normal",
-                    !value && "text-muted-foreground",
-                    slotProps?.trigger?.className,
-                  )}
+                  className={cn(triggerClassName, slotProps?.trigger?.className)}
                 >
-                  <CalendarIcon data-icon="inline-start" className="size-4" />
-                  {formatted ?? placeholder}
-                </Button>
+                  <CalendarIcon className="text-muted-foreground size-4 shrink-0" />
+                  <span
+                    className={cn(
+                      "flex-1 truncate",
+                      !value && "text-muted-foreground",
+                    )}
+                  >
+                    {formatted ?? placeholder}
+                  </span>
+                </button>
               }
             />
           }
