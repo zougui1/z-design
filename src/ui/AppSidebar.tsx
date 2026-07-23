@@ -509,7 +509,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Toast",
         url: "/base/base-toast",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Toggle",
@@ -651,6 +650,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Textarea",
         url: "/standard/textarea",
+      },
+      {
+        label: "Toast",
+        url: "/standard/toast",
       },
       {
         label: "Tooltip",

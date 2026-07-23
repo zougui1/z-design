@@ -18,4 +18,5 @@ export * from "./Skeleton";
 export * from "./Spinner";
 export * from "./Tabs";
 export * from "./Textarea";
+export * from "./Toast";
 export * from "./Tooltip";

@@ -26,7 +26,7 @@ export function ToastRoot({ className, style, ...props }: ToastRootProps) {
       }
       className={cn(
         "absolute right-0 m-[0_auto]",
-        "box-border w-full border p-4",
+        "box-border w-full border border-border p-4",
         "bg-background shadow-lg",
         "rounded-md bg-clip-padding",
         "origin-[bottom_center]",
