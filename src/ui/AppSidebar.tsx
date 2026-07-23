@@ -323,7 +323,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Calendar",
         url: "/base/base-calendar",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Card",
@@ -363,7 +362,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Date Picker",
         url: "/base/base-date-picker",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Dialog",
@@ -453,7 +451,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Progress",
         url: "/base/base-progress",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Radio",
@@ -568,6 +565,10 @@ const componentItems: GroupNavItem[] = [
         url: "/standard/button",
       },
       {
+        label: "Calendar",
+        url: "/standard/calendar",
+      },
+      {
         label: "Checkbox",
         url: "/standard/checkbox",
       },
@@ -578,6 +579,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Data Table",
         url: "/standard/data-table",
+      },
+      {
+        label: "Date Picker",
+        url: "/standard/date-picker",
       },
       {
         label: "Dialog",
@@ -625,6 +630,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Pagination",
         url: "/standard/pagination",
+      },
+      {
+        label: "Progress",
+        url: "/standard/progress",
       },
       {
         label: "Select",

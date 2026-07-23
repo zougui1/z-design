@@ -37,4 +37,11 @@ export { ToggleGroup as PrimitiveToggleGroup } from "@base-ui/react/toggle-group
 export { Toolbar as PrimitiveToolbar } from "@base-ui/react/toolbar";
 export { Tooltip as PrimitiveTooltip } from "@base-ui/react/tooltip";
 
+// react-day-picker powers the calendar primitive
+export { DayPicker as PrimitiveCalendar } from "react-day-picker";
+export type {
+  DayPickerProps as PrimitiveCalendarProps,
+  DateRange as PrimitiveCalendarDateRange,
+} from "react-day-picker";
+
 export * from "./PrimitiveCopy";
