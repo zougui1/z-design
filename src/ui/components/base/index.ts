@@ -21,6 +21,7 @@ export * from "./BasePagination";
 export * from "./BaseProgress";
 export * from "./BaseScrollArea";
 export * from "./BaseSeparator";
+export * from "./BaseTabs";
 export * from "./BaseTooltip";
 
 export * from "./BaseButton";
@@ -31,7 +32,6 @@ export * from "./BodyBackgroundImage";
 export * from "./Container";
 export * from "./BaseDataTable";
 export * from "./Sidebar";
-export * from "./Skeleton";
 export * from "./Switch";
 export * from "./BaseTable";
 export * from "./Toast";

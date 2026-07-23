@@ -480,11 +480,6 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Base Skeleton",
-        url: "/base/base-skeleton",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
         label: "Base Slider",
         url: "/base/base-slider",
         className: cn("text-muted-foreground opacity-60"),
@@ -506,7 +501,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Tabs",
         url: "/base/base-tabs",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Textarea",
@@ -645,6 +639,14 @@ const componentItems: GroupNavItem[] = [
         label: "Separator",
         url: "/standard/separator",
         className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Skeleton",
+        url: "/standard/skeleton",
+      },
+      {
+        label: "Tabs",
+        url: "/standard/tabs",
       },
       {
         label: "Textarea",

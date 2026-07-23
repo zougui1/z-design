@@ -14,6 +14,8 @@ export * from "./Pagination";
 export * from "./Progress";
 export * from "./ScrollArea";
 export * from "./Select";
+export * from "./Skeleton";
 export * from "./Spinner";
+export * from "./Tabs";
 export * from "./Textarea";
 export * from "./Tooltip";

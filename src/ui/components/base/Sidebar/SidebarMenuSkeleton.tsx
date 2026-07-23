@@ -4,7 +4,7 @@ import { useMemo } from "react";
 
 import { cn } from "~/ui/utils";
 
-import { Skeleton } from "../Skeleton";
+import { Skeleton } from "../../standard/Skeleton";
 
 export interface SidebarMenuSkeletonProps extends React.ComponentProps<"div"> {
   showIcon?: boolean;
