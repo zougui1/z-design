@@ -46,23 +46,19 @@ export default function BaseNumberFieldPage() {
 
             <BaseNumberField.Group className="flex">
               <BaseNumberField.Decrement
-                className="border-border flex size-10 items-center
-                  justify-center rounded-tl-md rounded-bl-md border
-                  bg-clip-padding select-none"
+                className="border-border rounded-l-sm border bg-clip-padding"
               >
                 <Minus />
               </BaseNumberField.Decrement>
 
               <BaseNumberField.Input
-                className="h-10 w-24 rounded-none border-t border-b text-center
+                className="w-24 rounded-none border-t border-b text-center
                   tabular-nums focus:z-1"
                 render={<BaseInput />}
               />
 
               <BaseNumberField.Increment
-                className="border-border flex size-10 items-center
-                  justify-center rounded-tr-md rounded-br-md border
-                  bg-clip-padding select-none"
+                className="border-border rounded-r-sm border bg-clip-padding"
               >
                 <Plus />
               </BaseNumberField.Increment>

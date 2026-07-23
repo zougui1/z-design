@@ -19,6 +19,7 @@ export * from "./BaseMeter";
 export * from "./BaseNumberField";
 export * from "./BasePagination";
 export * from "./BaseProgress";
+export * from "./BaseScrollArea";
 export * from "./BaseSeparator";
 export * from "./BaseTooltip";
 

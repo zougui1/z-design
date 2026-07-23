@@ -465,7 +465,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Scroll Area",
         url: "/base/base-scroll-area",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Select",
@@ -625,7 +624,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Number Field",
         url: "/standard/number-field",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Pagination",
@@ -634,6 +632,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Progress",
         url: "/standard/progress",
+      },
+      {
+        label: "Scroll Area",
+        url: "/standard/scroll-area",
       },
       {
         label: "Select",

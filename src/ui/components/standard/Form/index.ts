@@ -12,6 +12,7 @@ const Autocomplete = lazy(() => import("./fields/FormAutocomplete"));
 const Checkbox = lazy(() => import("./fields/FormCheckbox"));
 const Combobox = lazy(() => import("./fields/FormCombobox"));
 const DatePicker = lazy(() => import("./fields/FormDatePicker"));
+const NumberField = lazy(() => import("./fields/FormNumberField"));
 
 const Submit = lazy(() => import("./fields/FormSubmit"));
 const Reset = lazy(() => import("./fields/FormReset"));
@@ -25,6 +26,7 @@ export const { useAppForm, withForm } = createFormHook({
     Checkbox,
     Combobox,
     DatePicker,
+    NumberField,
   },
   formComponents: {
     Submit,

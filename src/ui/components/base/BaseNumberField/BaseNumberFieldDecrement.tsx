@@ -14,7 +14,13 @@ export const BaseNumberFieldDecrement = ({
     <PrimitiveNumberField.Decrement
       data-slot="number-field-decrement"
       {...props}
-      className={cnState("cursor-pointer", className)}
+      className={cnState(
+        `bg-background-light text-muted-foreground hover:bg-accent
+        hover:text-foreground flex size-9 shrink-0 cursor-pointer items-center
+        justify-center transition-colors select-none
+        disabled:pointer-events-none disabled:opacity-40 [&_svg]:size-4`,
+        className,
+      )}
     />
   );
 };
