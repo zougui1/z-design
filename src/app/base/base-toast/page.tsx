@@ -2,12 +2,8 @@
 
 import { X } from "lucide-react";
 
-import {
-  BaseButton,
-  Container,
-  Toast as BaseToast,
-  Typography,
-} from "~/ui/components/base";
+import { BaseButton, BaseToast } from "~/ui/components/base";
+import { Container, Typography } from "~/ui/components";
 
 const manager = BaseToast.createManager();
 

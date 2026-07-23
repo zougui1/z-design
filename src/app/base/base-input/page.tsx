@@ -1,4 +1,4 @@
-import { BaseInput, Container } from "~/ui/components/base";
+import { BaseInput, Container } from "~/ui/components";
 
 export default function BaseInputPage() {
   return (

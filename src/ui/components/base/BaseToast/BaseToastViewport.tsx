@@ -4,9 +4,9 @@ import { Toast as BaseToast } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface ToastViewportProps extends BaseToast.Viewport.Props {}
+export interface BaseToastViewportProps extends BaseToast.Viewport.Props {}
 
-export function ToastViewport({ className, ...props }: ToastViewportProps) {
+export function BaseToastViewport({ className, ...props }: BaseToastViewportProps) {
   return (
     <BaseToast.Viewport
       data-slot="toast-viewport"

@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Progress } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { Progress, Container, Typography } from "~/ui/components";
 
 const Section = ({
   title,

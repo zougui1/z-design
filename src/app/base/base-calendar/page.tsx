@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { BaseCalendar, Container, Typography } from "~/ui/components/base";
+import { BaseCalendar, Container, Typography } from "~/ui/components";
 
 const Section = ({
   title,

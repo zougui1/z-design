@@ -1,4 +1,4 @@
-import { BaseCollapsible, Container, Typography } from "~/ui/components/base";
+import { BaseCollapsible, Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Section = ({

@@ -1,4 +1,4 @@
-import { BaseButton, Container, Typography } from "~/ui/components/base";
+import { BaseButton, Container, Typography } from "~/ui/components";
 import { Tooltip } from "~/ui/components/standard";
 import { cn } from "~/ui/utils";
 

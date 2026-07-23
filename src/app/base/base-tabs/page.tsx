@@ -1,6 +1,6 @@
 "use client";
 
-import { BaseTabs, Container, Typography } from "~/ui/components/base";
+import { BaseTabs, Container, Typography } from "~/ui/components";
 
 export default function BaseTabsPage() {
   return (

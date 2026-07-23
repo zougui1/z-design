@@ -1,5 +1,4 @@
-import { Avatar } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { Avatar, Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Section = ({

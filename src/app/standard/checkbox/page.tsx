@@ -1,5 +1,4 @@
-import { Checkbox } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { Checkbox, Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Section = ({

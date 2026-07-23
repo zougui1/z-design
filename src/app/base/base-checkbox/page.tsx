@@ -1,6 +1,6 @@
 import { CheckIcon } from "lucide-react";
 
-import { BaseCheckbox, Container, Typography } from "~/ui/components/base";
+import { BaseCheckbox, Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Section = ({

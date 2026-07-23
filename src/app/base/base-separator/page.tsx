@@ -1,4 +1,4 @@
-import { BaseSeparator, Container, Typography } from "~/ui/components/base";
+import { BaseSeparator, Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Section = ({

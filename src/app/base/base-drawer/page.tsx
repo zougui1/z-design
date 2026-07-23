@@ -1,4 +1,4 @@
-import { BaseDrawer, Container } from "~/ui/components/base";
+import { BaseDrawer, Container } from "~/ui/components";
 
 export default function BaseDrawerPage() {
   return (

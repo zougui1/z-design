@@ -9,7 +9,7 @@ import {
   BaseDatePicker,
   Container,
   Typography,
-} from "~/ui/components/base";
+} from "~/ui/components";
 
 export default function BaseDatePickerPage() {
   const [open, setOpen] = useState(false);

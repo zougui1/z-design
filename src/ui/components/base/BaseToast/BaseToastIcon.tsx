@@ -30,11 +30,11 @@ const styles = tv({
 
 type ToastIconVariants = VariantProps<typeof styles>;
 
-export interface ToastIconProps extends Omit<IconProps, "type"> {
+export interface BaseToastIconProps extends Omit<IconProps, "type"> {
   type?: string;
 }
 
-export const ToastIcon = ({ type, className, ...props }: ToastIconProps) => {
+export const BaseToastIcon = ({ type, className, ...props }: BaseToastIconProps) => {
   if (!type || !(type in icons)) return;
 
   const Icon = icons[type as keyof typeof icons];

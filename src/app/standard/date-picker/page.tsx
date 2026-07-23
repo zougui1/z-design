@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-import { DatePicker } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { DatePicker, Container, Typography } from "~/ui/components";
 
 const Section = ({
   title,

@@ -2,8 +2,7 @@
 
 import { Bell, CreditCard, User } from "lucide-react";
 
-import { Tabs, type TabItem } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { Tabs, type TabItem, Container, Typography } from "~/ui/components";
 
 const items: TabItem[] = [
   {

@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-import { NumberField } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { NumberField, Container, Typography } from "~/ui/components";
 
 const Section = ({
   title,

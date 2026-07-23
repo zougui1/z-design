@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-import { Pagination } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { Pagination, Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Section = ({

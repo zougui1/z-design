@@ -4,12 +4,12 @@ import { Toast as BaseToast } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface ToastDescriptionProps extends BaseToast.Description.Props {}
+export interface BaseToastDescriptionProps extends BaseToast.Description.Props {}
 
-export function ToastDescription({
+export function BaseToastDescription({
   className,
   ...props
-}: ToastDescriptionProps) {
+}: BaseToastDescriptionProps) {
   return (
     <BaseToast.Description
       data-slot="toast-description"

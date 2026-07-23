@@ -1,6 +1,6 @@
 "use client";
 
-import { Toast as BaseToast } from "../../base";
+import { BaseToast } from "../../base";
 
 /**
  * Shared toast manager. Because it's created outside React and passed to the

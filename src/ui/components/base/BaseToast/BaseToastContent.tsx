@@ -4,9 +4,9 @@ import { Toast as BaseToast } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface ToastContentProps extends BaseToast.Content.Props {}
+export interface BaseToastContentProps extends BaseToast.Content.Props {}
 
-export function ToastContent({ className, ...props }: ToastContentProps) {
+export function BaseToastContent({ className, ...props }: BaseToastContentProps) {
   return (
     <BaseToast.Content
       data-slot="toast-content"

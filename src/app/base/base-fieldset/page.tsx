@@ -4,7 +4,7 @@ import {
   BaseInput,
   Container,
   Typography,
-} from "~/ui/components/base";
+} from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Section = ({

@@ -1,4 +1,4 @@
-import { BaseTable, Container, Typography } from "~/ui/components/base";
+import { BaseTable, Container, Typography } from "~/ui/components";
 
 interface Invoice {
   invoice: string;

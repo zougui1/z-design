@@ -4,9 +4,9 @@ import { Toast as BaseToast } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface ToastPositionerProps extends BaseToast.Positioner.Props {}
+export interface BaseToastPositionerProps extends BaseToast.Positioner.Props {}
 
-export function ToastPositioner({ className, ...props }: ToastPositionerProps) {
+export function BaseToastPositioner({ className, ...props }: BaseToastPositionerProps) {
   return (
     <BaseToast.Positioner
       data-slot="toast-positioner"

@@ -6,9 +6,9 @@ import { cn } from "~/ui/utils";
 
 import { BaseButton } from "../BaseButton";
 
-export interface ToastCloseProps extends BaseToast.Close.Props {}
+export interface BaseToastCloseProps extends BaseToast.Close.Props {}
 
-export function ToastClose({ className, ...props }: ToastCloseProps) {
+export function BaseToastClose({ className, ...props }: BaseToastCloseProps) {
   return (
     <BaseToast.Close
       data-slot="toast-close"

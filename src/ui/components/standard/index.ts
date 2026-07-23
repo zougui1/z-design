@@ -1,10 +1,12 @@
 export * from "./Autocomplete";
 export * from "./Avatar";
 export * from "./AvatarGroup";
+export * from "./BodyBackgroundImage";
 export * from "./Button";
 export * from "./Calendar";
 export * from "./Checkbox";
 export * from "./Combobox";
+export * from "./Container";
 export * from "./DataTable";
 export * from "./DatePicker";
 export * from "./Form";
@@ -20,3 +22,4 @@ export * from "./Tabs";
 export * from "./Textarea";
 export * from "./Toast";
 export * from "./Tooltip";
+export * from "./Typography";

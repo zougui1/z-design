@@ -1,4 +1,4 @@
-import { Container, Typography } from "~/ui/components/base";
+import { Container, Typography } from "~/ui/components";
 import { cn } from "~/ui/utils";
 
 const Color = ({

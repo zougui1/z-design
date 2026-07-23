@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 
-import { Toast as BaseToast } from "../../base";
+import { BaseToast } from "../../base";
 import { toast } from "./toast";
 
 export interface ToasterProps extends BaseToast.ProviderProps {}

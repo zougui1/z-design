@@ -1,4 +1,4 @@
-import { BaseSelect, Container } from "~/ui/components/base";
+import { BaseSelect, Container } from "~/ui/components";
 
 const apples = [
   { label: "Gala", value: "gala" },

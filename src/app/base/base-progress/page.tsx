@@ -1,4 +1,4 @@
-import { BaseProgress, Container, Typography } from "~/ui/components/base";
+import { BaseProgress, Container, Typography } from "~/ui/components";
 
 const Section = ({
   title,

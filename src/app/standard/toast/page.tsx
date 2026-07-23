@@ -1,7 +1,6 @@
 "use client";
 
-import { Button, Toaster, toast } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { Button, Toaster, toast, Container, Typography } from "~/ui/components";
 
 export default function ToastPage() {
   return (

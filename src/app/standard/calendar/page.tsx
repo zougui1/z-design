@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-import { Calendar } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { Calendar, Container, Typography } from "~/ui/components";
 
 export default function CalendarPage() {
   const [selected, setSelected] = useState<Date | undefined>(undefined);

@@ -1,7 +1,6 @@
 "use client";
 
-import { ScrollArea } from "~/ui/components";
-import { Container, Typography } from "~/ui/components/base";
+import { ScrollArea, Container, Typography } from "~/ui/components";
 
 const Section = ({
   title,

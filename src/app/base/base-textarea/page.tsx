@@ -1,4 +1,4 @@
-import { BaseTextarea, Container } from "~/ui/components/base";
+import { BaseTextarea, Container } from "~/ui/components";
 
 export default function BaseTextareaPage() {
   return (

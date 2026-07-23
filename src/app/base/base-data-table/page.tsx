@@ -4,7 +4,7 @@ import {
   BaseDataTable,
   Container,
   Typography,
-} from "~/ui/components/base";
+} from "~/ui/components";
 
 interface Invoice {
   invoice: string;

@@ -1,6 +1,6 @@
 "use client";
 
-import { BaseScrollArea, Container, Typography } from "~/ui/components/base";
+import { BaseScrollArea, Container, Typography } from "~/ui/components";
 
 export default function BaseScrollAreaPage() {
   return (
