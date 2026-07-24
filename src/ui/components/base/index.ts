@@ -20,6 +20,7 @@ export * from "./BaseMeter";
 export * from "./BaseNumberField";
 export * from "./BasePagination";
 export * from "./BasePopover";
+export * from "./BasePreviewCard";
 export * from "./BaseProgress";
 export * from "./BaseScrollArea";
 export * from "./BaseSeparator";

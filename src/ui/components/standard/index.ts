@@ -26,6 +26,7 @@ export * from "./Meter";
 export * from "./NumberField";
 export * from "./Pagination";
 export * from "./Popover";
+export * from "./PreviewCard";
 export * from "./Progress";
 export * from "./ScrollArea";
 export * from "./Select";

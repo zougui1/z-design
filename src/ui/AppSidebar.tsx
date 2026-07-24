@@ -448,7 +448,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Preview Card",
         url: "/base/base-preview-card",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Progress",
@@ -639,6 +638,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Popover",
         url: "/standard/popover",
+      },
+      {
+        label: "Preview Card",
+        url: "/standard/preview-card",
       },
       {
         label: "Progress",
