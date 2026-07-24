@@ -1,8 +1,8 @@
 import { Loader2Icon } from "lucide-react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type VariantProps, tv } from "tailwind-variants";
 
 export const spinnerStyles = tv({
-  base: "size-5 animate-spin",
+  base: "animate-spin",
   variants: {
     color: {
       default: "text-default",
@@ -14,6 +14,17 @@ export const spinnerStyles = tv({
       destructive: "text-destructive",
       info: "text-info",
     },
+    size: {
+      xs: "size-3",
+      sm: "size-4",
+      default: "size-5",
+      lg: "size-6",
+      xl: "size-8",
+    },
+  },
+  defaultVariants: {
+    color: "default",
+    size: "default",
   },
 });
 
@@ -27,14 +38,16 @@ export interface SpinnerProps
 export function Spinner({
   className,
   color = "default",
+  size = "default",
   ...props
 }: SpinnerProps) {
   return (
     <Loader2Icon
       role="status"
       aria-label="Loading"
-      className={spinnerStyles({ color, className })}
+      data-slot="spinner"
       {...props}
+      className={spinnerStyles({ color, size, className })}
     />
   );
 }

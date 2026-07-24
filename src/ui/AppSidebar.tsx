@@ -481,11 +481,6 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Base Spinner",
-        url: "/base/base-spinner",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
         label: "Base Switch",
         url: "/base/base-switch",
       },
