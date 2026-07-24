@@ -38,6 +38,18 @@ export { ToggleGroup as PrimitiveToggleGroup } from "@base-ui/react/toggle-group
 export { Toolbar as PrimitiveToolbar } from "@base-ui/react/toolbar";
 export { Tooltip as PrimitiveTooltip } from "@base-ui/react/tooltip";
 
+// react-resizable-panels powers the resizable primitive
+export {
+  Group as PrimitiveResizableGroup,
+  Panel as PrimitiveResizablePanel,
+  Separator as PrimitiveResizableSeparator,
+} from "react-resizable-panels";
+export type {
+  GroupProps as PrimitiveResizableGroupProps,
+  PanelProps as PrimitiveResizablePanelProps,
+  SeparatorProps as PrimitiveResizableSeparatorProps,
+} from "react-resizable-panels";
+
 // react-day-picker powers the calendar primitive
 export { DayPicker as PrimitiveCalendar } from "react-day-picker";
 export type {

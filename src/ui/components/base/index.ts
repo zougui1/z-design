@@ -26,6 +26,7 @@ export * from "./BasePopover";
 export * from "./BasePreviewCard";
 export * from "./BaseProgress";
 export * from "./BaseRadio";
+export * from "./BaseResizable";
 export * from "./BaseScrollArea";
 export * from "./BaseSeparator";
 export * from "./BaseSlider";

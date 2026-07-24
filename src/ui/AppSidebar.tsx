@@ -455,7 +455,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Resizable",
         url: "/base/base-resizable",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Scroll Area",
@@ -651,6 +650,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Radio",
         url: "/standard/radio",
+      },
+      {
+        label: "Resizable",
+        url: "/standard/resizable",
       },
       {
         label: "Scroll Area",
