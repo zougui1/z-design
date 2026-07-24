@@ -507,7 +507,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Toggle Group",
         url: "/base/base-toggle-group",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Tooltip",
@@ -690,6 +689,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Toggle",
         url: "/standard/toggle",
+      },
+      {
+        label: "Toggle Group",
+        url: "/standard/toggle-group",
       },
       {
         label: "Tooltip",
