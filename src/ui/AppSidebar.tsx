@@ -423,7 +423,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Menubar",
         url: "/base/base-menubar",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Meter",
@@ -620,6 +619,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Menu",
         url: "/standard/menu",
+      },
+      {
+        label: "Menubar",
+        url: "/standard/menubar",
       },
       {
         label: "Meter",

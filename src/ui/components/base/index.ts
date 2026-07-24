@@ -18,6 +18,7 @@ export * from "./BaseInputGroup";
 export * from "./BaseKbd";
 export * from "./BaseLink";
 export * from "./BaseMenu";
+export * from "./BaseMenubar";
 export * from "./BaseMeter";
 export * from "./BaseNumberField";
 export * from "./BasePagination";

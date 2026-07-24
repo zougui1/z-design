@@ -26,6 +26,7 @@ export * from "./Input";
 export * from "./Kbd";
 export * from "./Link";
 export * from "./Menu";
+export * from "./Menubar";
 export * from "./Meter";
 export * from "./NumberField";
 export * from "./Pagination";
