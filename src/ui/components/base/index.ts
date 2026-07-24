@@ -27,6 +27,7 @@ export * from "./BaseProgress";
 export * from "./BaseRadio";
 export * from "./BaseScrollArea";
 export * from "./BaseSeparator";
+export * from "./BaseSlider";
 export * from "./BaseTabs";
 export * from "./BaseTooltip";
 

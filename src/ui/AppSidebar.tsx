@@ -478,7 +478,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Slider",
         url: "/base/base-slider",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Switch",
@@ -665,6 +664,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Skeleton",
         url: "/standard/skeleton",
+      },
+      {
+        label: "Slider",
+        url: "/standard/slider",
       },
       {
         label: "Spinner",
