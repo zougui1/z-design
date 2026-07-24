@@ -294,7 +294,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Aspect Ratio",
         url: "/base/base-aspect-ratio",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Avatar",
@@ -377,7 +376,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Empty",
         url: "/base/base-empty",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Field",
@@ -541,6 +539,10 @@ const componentItems: GroupNavItem[] = [
         url: "/standard/alert-dialog",
       },
       {
+        label: "Aspect Ratio",
+        url: "/standard/aspect-ratio",
+      },
+      {
         label: "Autocomplete",
         url: "/standard/autocomplete",
       },
@@ -595,6 +597,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Drawer",
         url: "/standard/drawer",
+      },
+      {
+        label: "Empty",
+        url: "/standard/empty",
       },
       {
         label: "Field",

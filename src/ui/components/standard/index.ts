@@ -1,6 +1,7 @@
 export * from "./Accordion";
 export * from "./Alert";
 export * from "./AlertDialog";
+export * from "./AspectRatio";
 export * from "./Autocomplete";
 export * from "./Avatar";
 export * from "./AvatarGroup";
@@ -17,6 +18,7 @@ export * from "./DataTable";
 export * from "./DatePicker";
 export * from "./Dialog";
 export * from "./Drawer";
+export * from "./Empty";
 export * from "./Field";
 export * from "./Fieldset";
 export * from "./Form";

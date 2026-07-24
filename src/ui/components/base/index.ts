@@ -11,6 +11,7 @@ export * from "./BaseCombobox";
 export * from "./BaseDatePicker";
 export * from "./BaseDialog";
 export * from "./BaseDrawer";
+export * from "./BaseEmpty";
 export * from "./BaseField";
 export * from "./BaseFieldset";
 export * from "./BaseInputGroup";
@@ -28,6 +29,7 @@ export * from "./BaseSeparator";
 export * from "./BaseTabs";
 export * from "./BaseTooltip";
 
+export * from "./BaseAspectRatio";
 export * from "./BaseBadge";
 export * from "./BaseButton";
 export * from "./BaseInput";
