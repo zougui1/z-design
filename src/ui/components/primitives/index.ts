@@ -25,6 +25,7 @@ export { Popover as PrimitivePopover } from "@base-ui/react/popover";
 export { PreviewCard as PrimitivePreviewCard } from "@base-ui/react/preview-card";
 export { Progress as PrimitiveProgress } from "@base-ui/react/progress";
 export { Radio as PrimitiveRadio } from "@base-ui/react/radio";
+export { RadioGroup as PrimitiveRadioGroup } from "@base-ui/react/radio-group";
 export { ScrollArea as PrimitiveScrollArea } from "@base-ui/react/scroll-area";
 export { Select as PrimitiveSelect } from "@base-ui/react/select";
 export { Separator as PrimitiveSeparator } from "@base-ui/react/separator";

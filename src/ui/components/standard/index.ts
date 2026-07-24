@@ -32,6 +32,7 @@ export * from "./Pagination";
 export * from "./Popover";
 export * from "./PreviewCard";
 export * from "./Progress";
+export * from "./Radio";
 export * from "./ScrollArea";
 export * from "./Select";
 export * from "./Separator";
