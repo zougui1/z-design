@@ -410,12 +410,15 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Kbd",
         url: "/base/base-kbd",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Label",
         url: "/base/base-label",
         className: cn("text-muted-foreground opacity-60"),
+      },
+      {
+        label: "Base Link",
+        url: "/base/base-link",
       },
       {
         label: "Base Menu",
@@ -441,7 +444,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Popover",
         url: "/base/base-popover",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Preview Card",
@@ -535,9 +537,12 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
+        label: "Accordion",
+        url: "/standard/accordion",
+      },
+      {
         label: "Alert Dialog",
         url: "/standard/alert-dialog",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Autocomplete",
@@ -560,8 +565,16 @@ const componentItems: GroupNavItem[] = [
         url: "/standard/calendar",
       },
       {
+        label: "Card",
+        url: "/standard/card",
+      },
+      {
         label: "Checkbox",
         url: "/standard/checkbox",
+      },
+      {
+        label: "Collapsible",
+        url: "/standard/collapsible",
       },
       {
         label: "Combobox",
@@ -578,22 +591,18 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Dialog",
         url: "/standard/dialog",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Drawer",
         url: "/standard/drawer",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Field",
         url: "/standard/field",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Fieldset",
         url: "/standard/fieldset",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Form",
@@ -604,14 +613,20 @@ const componentItems: GroupNavItem[] = [
         url: "/standard/input",
       },
       {
+        label: "Kbd",
+        url: "/standard/kbd",
+      },
+      {
+        label: "Link",
+        url: "/standard/link",
+      },
+      {
         label: "Menu",
         url: "/standard/menu",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Meter",
         url: "/standard/meter",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Number Field",
@@ -620,6 +635,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Pagination",
         url: "/standard/pagination",
+      },
+      {
+        label: "Popover",
+        url: "/standard/popover",
       },
       {
         label: "Progress",
@@ -636,11 +655,14 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Separator",
         url: "/standard/separator",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Skeleton",
         url: "/standard/skeleton",
+      },
+      {
+        label: "Spinner",
+        url: "/standard/spinner",
       },
       {
         label: "Switch",

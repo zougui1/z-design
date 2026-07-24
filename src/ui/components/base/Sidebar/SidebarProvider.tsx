@@ -3,9 +3,10 @@
 import { useCallback, useMemo, useState } from "react";
 
 import { useIsMobile, useWindowEvent } from "~/ui/hooks";
-import { SidebarContext, type SidebarContextValue } from "./context";
-import { Tooltip } from "../Tooltip";
 import { cn } from "~/ui/utils";
+
+import { Tooltip } from "../Tooltip";
+import { SidebarContext, type SidebarContextValue } from "./context";
 
 const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
@@ -26,7 +27,7 @@ export function SidebarProvider({
   children,
   ...props
 }: SidebarProviderProps) {
-  const isMobile = useIsMobile();
+  const isMobile = Boolean(useIsMobile());
   const [openMobile, setOpenMobile] = useState(false);
 
   // This is the internal state of the sidebar.
