@@ -492,7 +492,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Switch",
         url: "/base/base-switch",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Table",
@@ -642,6 +641,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Skeleton",
         url: "/standard/skeleton",
+      },
+      {
+        label: "Switch",
+        url: "/standard/switch",
       },
       {
         label: "Tabs",
