@@ -38,6 +38,7 @@ export * from "./BaseSelect";
 export * from "./BaseTextarea";
 export * from "./BaseDataTable";
 export * from "./BaseSwitch";
+export * from "./BaseToggle";
 export * from "./Sidebar";
 export * from "./BaseTable";
 export * from "./BaseToast";
