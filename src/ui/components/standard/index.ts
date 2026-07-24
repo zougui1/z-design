@@ -3,6 +3,7 @@ export * from "./AlertDialog";
 export * from "./Autocomplete";
 export * from "./Avatar";
 export * from "./AvatarGroup";
+export * from "./Badge";
 export * from "./BodyBackgroundImage";
 export * from "./Button";
 export * from "./Calendar";

@@ -304,7 +304,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Badge",
         url: "/base/base-badge",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Breadcrumb",
@@ -554,6 +553,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Avatar Group",
         url: "/standard/avatar-group",
+      },
+      {
+        label: "Badge",
+        url: "/standard/badge",
       },
       {
         label: "Button",

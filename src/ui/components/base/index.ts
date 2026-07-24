@@ -27,6 +27,7 @@ export * from "./BaseSeparator";
 export * from "./BaseTabs";
 export * from "./BaseTooltip";
 
+export * from "./BaseBadge";
 export * from "./BaseButton";
 export * from "./BaseInput";
 export * from "./BaseSelect";
