@@ -282,7 +282,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Alert",
         url: "/base/base-alert",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Alert Dialog",
@@ -530,13 +529,12 @@ const componentItems: GroupNavItem[] = [
     label: "Standard",
     items: [
       {
-        label: "Alert",
-        url: "/standard/alert",
-        className: cn("text-muted-foreground opacity-60"),
-      },
-      {
         label: "Accordion",
         url: "/standard/accordion",
+      },
+      {
+        label: "Alert",
+        url: "/standard/alert",
       },
       {
         label: "Alert Dialog",

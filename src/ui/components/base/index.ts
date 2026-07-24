@@ -1,4 +1,5 @@
 export * from "./BaseAccordion";
+export * from "./BaseAlert";
 export * from "./BaseAlertDialog";
 export * from "./BaseAutocomplete";
 export * from "./BaseAvatar";
