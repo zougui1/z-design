@@ -315,7 +315,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Button Group",
         url: "/base/base-button-group",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Calendar",
@@ -549,6 +548,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Button",
         url: "/standard/button",
+      },
+      {
+        label: "Button Group",
+        url: "/standard/button-group",
       },
       {
         label: "Calendar",

@@ -37,6 +37,7 @@ export * from "./BaseTooltip";
 export * from "./BaseAspectRatio";
 export * from "./BaseBadge";
 export * from "./BaseButton";
+export * from "./BaseButtonGroup";
 export * from "./BaseInput";
 export * from "./BaseSelect";
 export * from "./BaseTextarea";
