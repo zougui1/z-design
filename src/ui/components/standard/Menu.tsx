@@ -9,8 +9,18 @@ export interface MenuActionItem {
   disabled?: boolean;
 }
 
+export interface MenuLinkItem {
+  label: React.ReactNode;
+  /** Renders the entry as a navigable link. */
+  href: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  rel?: string;
+  shortcut?: React.ReactNode;
+}
+
 export type MenuItem =
   | MenuActionItem
+  | MenuLinkItem
   | { separator: true }
   | { groupLabel: React.ReactNode };
 
@@ -43,9 +53,25 @@ export const Menu = ({ trigger, items, slotProps, ...props }: MenuProps) => {
 
               if ("groupLabel" in item) {
                 return (
-                  <BaseMenu.GroupLabel key={index}>
-                    {item.groupLabel}
-                  </BaseMenu.GroupLabel>
+                  <BaseMenu.Group key={index}>
+                    <BaseMenu.GroupLabel>{item.groupLabel}</BaseMenu.GroupLabel>
+                  </BaseMenu.Group>
+                );
+              }
+
+              if ("href" in item) {
+                return (
+                  <BaseMenu.LinkItem
+                    key={index}
+                    href={item.href}
+                    target={item.target}
+                    rel={item.rel}
+                  >
+                    {item.label}
+                    {item.shortcut != null && (
+                      <BaseMenu.Shortcut>{item.shortcut}</BaseMenu.Shortcut>
+                    )}
+                  </BaseMenu.LinkItem>
                 );
               }
 

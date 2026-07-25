@@ -44,9 +44,27 @@ export const Menubar = ({ menus, slotProps, ...props }: MenubarProps) => {
 
                   if ("groupLabel" in item) {
                     return (
-                      <BaseMenu.GroupLabel key={index}>
-                        {item.groupLabel}
-                      </BaseMenu.GroupLabel>
+                      <BaseMenu.Group key={index}>
+                        <BaseMenu.GroupLabel>
+                          {item.groupLabel}
+                        </BaseMenu.GroupLabel>
+                      </BaseMenu.Group>
+                    );
+                  }
+
+                  if ("href" in item) {
+                    return (
+                      <BaseMenu.LinkItem
+                        key={index}
+                        href={item.href}
+                        target={item.target}
+                        rel={item.rel}
+                      >
+                        {item.label}
+                        {item.shortcut != null && (
+                          <BaseMenu.Shortcut>{item.shortcut}</BaseMenu.Shortcut>
+                        )}
+                      </BaseMenu.LinkItem>
                     );
                   }
 

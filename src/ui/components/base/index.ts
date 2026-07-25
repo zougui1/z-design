@@ -8,6 +8,7 @@ export * from "./BaseCard";
 export * from "./BaseCheckbox";
 export * from "./BaseCollapsible";
 export * from "./BaseCombobox";
+export * from "./BaseContextMenu";
 export * from "./BaseDatePicker";
 export * from "./BaseDialog";
 export * from "./BaseDrawer";

@@ -14,6 +14,7 @@ export * from "./Checkbox";
 export * from "./Collapsible";
 export * from "./Combobox";
 export * from "./Container";
+export * from "./ContextMenu";
 export * from "./DataTable";
 export * from "./DatePicker";
 export * from "./Dialog";

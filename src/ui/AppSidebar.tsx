@@ -350,7 +350,6 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Base Context Menu",
         url: "/base/base-context-menu",
-        className: cn("text-muted-foreground opacity-60"),
       },
       {
         label: "Base Data Table",
@@ -570,6 +569,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Combobox",
         url: "/standard/combobox",
+      },
+      {
+        label: "Context Menu",
+        url: "/standard/context-menu",
       },
       {
         label: "Data Table",
