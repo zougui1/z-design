@@ -9,6 +9,7 @@ export * from "./BaseButton";
 export * from "./BaseButtonGroup";
 export * from "./BaseCalendar";
 export * from "./BaseCard";
+export * from "./BaseChart";
 export * from "./BaseCheckbox";
 export * from "./BaseCollapsible";
 export * from "./BaseCombobox";

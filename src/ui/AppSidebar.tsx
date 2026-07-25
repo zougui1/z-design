@@ -330,6 +330,10 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
+        label: "Base Chart",
+        url: "/base/base-chart",
+      },
+      {
         label: "Base Checkbox",
         url: "/base/base-checkbox",
       },
@@ -559,6 +563,10 @@ const componentItems: GroupNavItem[] = [
       {
         label: "Card",
         url: "/standard/card",
+      },
+      {
+        label: "Chart",
+        url: "/standard/chart",
       },
       {
         label: "Checkbox",
