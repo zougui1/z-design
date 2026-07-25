@@ -5,6 +5,7 @@ import {
   Container,
   Typography,
 } from "~/ui/components";
+import { formatCurrency } from "~/ui/utils";
 
 interface Invoice {
   invoice: string;
@@ -20,11 +21,6 @@ const invoices: Invoice[] = [
   { invoice: "INV-004", status: "Paid", method: "Credit Card", amount: 450 },
   { invoice: "INV-005", status: "Paid", method: "PayPal", amount: 550 },
 ];
-
-const currency = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
 
 const columns: BaseDataTable.ColumnDef<Invoice>[] = [
   {
@@ -55,7 +51,7 @@ const columns: BaseDataTable.ColumnDef<Invoice>[] = [
     },
     cell: ({ getValue }) => (
       <div className="text-right font-medium">
-        {currency.format(getValue<number>())}
+        {formatCurrency(getValue<number>())}
       </div>
     ),
   },

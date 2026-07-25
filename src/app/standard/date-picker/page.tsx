@@ -40,6 +40,20 @@ export default function DatePickerPage() {
             errors={[{ message: "A date is required." }]}
           />
         </Section>
+
+        <Section title="With time">
+          <DatePicker
+            label="Appointment"
+            withTime
+            description="Pick a day and a time."
+          />
+
+          <DatePicker
+            label="With seconds"
+            withTime
+            timeStep="seconds"
+          />
+        </Section>
       </div>
     </Container>
   );

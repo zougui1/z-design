@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, ClockIcon } from "lucide-react";
 import { useState } from "react";
 
 import { cn } from "~/ui/utils";
@@ -10,6 +10,7 @@ import {
   type BaseCalendarProps,
   BaseDatePicker,
   BaseField,
+  BaseInput,
 } from "../../base";
 
 export interface DatePickerProps
@@ -24,6 +25,14 @@ export interface DatePickerProps
   errors?: { message?: string }[];
   description?: React.ReactNode;
   placeholder?: React.ReactNode;
+
+  /**
+   * Renders a time input inside the popup so the selected value carries a time
+   * of day. The formatted trigger label switches to include the time as well.
+   */
+  withTime?: boolean;
+  /** Granularity of the time input when {@link withTime} is enabled. */
+  timeStep?: "minutes" | "seconds";
 
   /** `Intl.DateTimeFormat` options used to format the selected date. */
   format?: Intl.DateTimeFormatOptions;
@@ -46,10 +55,44 @@ export interface DatePickerProps
     positioner?: Partial<BaseDatePicker.Positioner.Props>;
     popup?: Partial<BaseDatePicker.Popup.Props>;
     calendar?: Partial<BaseCalendarProps>;
+    timeInput?: React.ComponentProps<typeof BaseInput>;
   };
 }
 
 const DEFAULT_FORMAT: Intl.DateTimeFormatOptions = { dateStyle: "medium" };
+const DEFAULT_FORMAT_WITH_TIME: Intl.DateTimeFormatOptions = {
+  dateStyle: "medium",
+  timeStyle: "short",
+};
+
+const pad = (value: number) => String(value).padStart(2, "0");
+
+/** `Date` → `HH:mm` (or `HH:mm:ss`) for a native time input. */
+const dateToTimeValue = (date: Date, withSeconds: boolean) => {
+  const base = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  return withSeconds ? `${base}:${pad(date.getSeconds())}` : base;
+};
+
+/** Merge a `HH:mm(:ss)` string into `date`, returning a new `Date`. */
+const applyTimeValue = (date: Date, time: string) => {
+  const [hours, minutes, seconds] = time.split(":").map(Number);
+  const next = new Date(date);
+  next.setHours(hours ?? 0, minutes ?? 0, seconds ?? 0, 0);
+  return next;
+};
+
+/** Copy the time of day from `from` onto the calendar day of `to`. */
+const withTimeOf = (to: Date, from: Date | undefined) => {
+  if (!from) return to;
+  const next = new Date(to);
+  next.setHours(
+    from.getHours(),
+    from.getMinutes(),
+    from.getSeconds(),
+    from.getMilliseconds(),
+  );
+  return next;
+};
 
 // mirrors BaseInput: same surface, border, focus + invalid rings, height and
 // rounding. `data-popup-open` (set while the calendar is open) reuses the focus
@@ -77,7 +120,9 @@ export const DatePicker = ({
   errors,
   description,
   placeholder = "Pick a date",
-  format = DEFAULT_FORMAT,
+  withTime = false,
+  timeStep = "minutes",
+  format,
   locale,
   disabledDates,
   open: openProp,
@@ -104,14 +149,31 @@ export const DatePicker = ({
     onOpenChange?.(next);
   };
 
-  const handleSelect = (date: Date | undefined) => {
+  const commit = (date: Date | undefined) => {
     if (!isControlled) setInternalValue(date);
     onValueChange?.(date);
-    setOpen(false);
   };
 
+  const handleSelect = (date: Date | undefined) => {
+    // keep the previously chosen time of day when only the calendar day changes
+    commit(withTime && date ? withTimeOf(date, value) : date);
+    // leave the popup open when a time still needs to be picked
+    if (!withTime) setOpen(false);
+  };
+
+  const handleTimeChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    const time = event.currentTarget.value;
+    if (!time) return;
+    commit(applyTimeValue(value ?? new Date(), time));
+  };
+
+  const resolvedFormat =
+    format ?? (withTime ? DEFAULT_FORMAT_WITH_TIME : DEFAULT_FORMAT);
+
   const formatted = value
-    ? new Intl.DateTimeFormat(locale, format).format(value)
+    ? new Intl.DateTimeFormat(locale, resolvedFormat).format(value)
     : null;
 
   return (
@@ -165,6 +227,20 @@ export const DatePicker = ({
                 onSelect={handleSelect}
                 disabled={disabledDates}
               />
+
+              {withTime && (
+                <div className="border-border flex items-center gap-2 border-t p-3">
+                  <ClockIcon className="text-muted-foreground size-4 shrink-0" />
+                  <BaseInput
+                    type="time"
+                    step={timeStep === "seconds" ? 1 : 60}
+                    disabled={disabled}
+                    value={value ? dateToTimeValue(value, timeStep === "seconds") : ""}
+                    onChange={handleTimeChange}
+                    {...slotProps?.timeInput}
+                  />
+                </div>
+              )}
             </BaseDatePicker.Popup>
           </BaseDatePicker.Positioner>
         </BaseDatePicker.Portal>

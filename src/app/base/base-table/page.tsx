@@ -1,4 +1,5 @@
 import { BaseTable, Container, Typography } from "~/ui/components";
+import { formatCurrency } from "~/ui/utils";
 
 interface Invoice {
   invoice: string;
@@ -14,11 +15,6 @@ const invoices: Invoice[] = [
   { invoice: "INV-004", status: "Paid", method: "Credit Card", amount: 450 },
   { invoice: "INV-005", status: "Paid", method: "PayPal", amount: 550 },
 ];
-
-const currency = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
 
 const total = invoices.reduce((sum, invoice) => sum + invoice.amount, 0);
 
@@ -80,7 +76,7 @@ export default function BaseTablePage() {
                       <BaseTable.Cell>{invoice.status}</BaseTable.Cell>
                       <BaseTable.Cell>{invoice.method}</BaseTable.Cell>
                       <BaseTable.Cell className="text-right">
-                        {currency.format(invoice.amount)}
+                        {formatCurrency(invoice.amount)}
                       </BaseTable.Cell>
                     </BaseTable.Row>
                   ))}
@@ -90,7 +86,7 @@ export default function BaseTablePage() {
                   <BaseTable.Row>
                     <BaseTable.Cell colSpan={3}>Total</BaseTable.Cell>
                     <BaseTable.Cell className="text-right">
-                      {currency.format(total)}
+                      {formatCurrency(total)}
                     </BaseTable.Cell>
                   </BaseTable.Row>
                 </BaseTable.Footer>

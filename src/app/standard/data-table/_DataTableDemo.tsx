@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { type ColumnDef, DataTable, Typography } from "~/ui/components";
+import { formatCurrency } from "~/ui/utils";
 
 interface Invoice {
   invoice: string;
@@ -34,11 +35,6 @@ const manyInvoices: Invoice[] = Array.from({ length: 40 }, (_, index) => ({
   method: methods[index % methods.length]!,
   amount: 100 + index * 25,
 }));
-
-const currency = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
 
 const columns: ColumnDef<Invoice>[] = [
   {
@@ -72,7 +68,7 @@ const columns: ColumnDef<Invoice>[] = [
     },
     cell: ({ getValue }) => (
       <div className="text-right font-medium">
-        {currency.format(getValue<number>())}
+        {formatCurrency(getValue<number>())}
       </div>
     ),
   },
