@@ -1,6 +1,22 @@
-import { type GroupNavItem, type NavItem, SidebarNav } from "./SidebarNav";
-import { Sidebar } from "./components/base";
+import {
+  Sidebar,
+  type SidebarNavGroup,
+  type SidebarNavLink,
+} from "./components/standard";
 import { cn } from "./utils";
+
+interface NavItem {
+  label: string;
+  url: SidebarNavLink["href"];
+  className?: string;
+}
+
+interface GroupNavItem {
+  label: string;
+  items: NavItem[];
+  collapsible?: boolean;
+  className?: string;
+}
 
 const themeItems: NavItem[] = [
   {
@@ -758,16 +774,24 @@ const prototypeItems: GroupNavItem[] = [
   },
 ];
 
-export const AppSidebar = () => {
-  return (
-    <Sidebar.Root>
-      <Sidebar.Header>Z Design</Sidebar.Header>
+const toLink = (item: NavItem): SidebarNavLink => ({
+  label: item.label,
+  href: item.url,
+  className: item.className,
+});
 
-      <Sidebar.Content>
-        <SidebarNav label="Theme" items={themeItems} />
-        <SidebarNav label="Components" items={componentItems} />
-        <SidebarNav label="Prototypes" items={prototypeItems} />
-      </Sidebar.Content>
-    </Sidebar.Root>
-  );
+const toGroupLink = (item: GroupNavItem): SidebarNavLink => ({
+  label: item.label,
+  className: item.className,
+  items: item.items.map(toLink),
+});
+
+const groups: SidebarNavGroup[] = [
+  { label: "Theme", items: themeItems.map(toLink) },
+  { label: "Components", items: componentItems.map(toGroupLink) },
+  { label: "Prototypes", items: prototypeItems.map(toGroupLink) },
+];
+
+export const AppSidebar = () => {
+  return <Sidebar title="Z Design" groups={groups} />;
 };

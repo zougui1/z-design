@@ -51,7 +51,7 @@ export default function SidebarPage() {
           // The sidebar container is `fixed` by default (viewport-level layout).
           // Contain it within this demo box instead.
           className="absolute h-full"
-          header={<span className="px-2 text-sm font-semibold">Acme Inc</span>}
+          title="Acme Inc"
           footer={
             <span className="text-muted-foreground px-2 text-xs">
               v1.0.0

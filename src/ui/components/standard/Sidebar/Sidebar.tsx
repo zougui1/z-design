@@ -24,7 +24,9 @@ export interface SidebarNavGroup {
   className?: string;
 }
 
-export interface SidebarProps extends SidebarBase.RootProps {
+export interface SidebarProps extends Omit<SidebarBase.RootProps, "title"> {
+  /** Convenience title rendered inside the header. Ignored when `header` is set. */
+  title?: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
   groups: SidebarNavGroup[];
@@ -38,6 +40,7 @@ export interface SidebarProps extends SidebarBase.RootProps {
 }
 
 export const Sidebar = ({
+  title,
   header,
   footer,
   groups,
@@ -45,6 +48,12 @@ export const Sidebar = ({
   slotProps,
   ...props
 }: SidebarProps) => {
+  const headerContent =
+    header ??
+    (title != null ? (
+      <span className="px-2 text-sm font-semibold">{title}</span>
+    ) : null);
+
   const pathname = usePathname();
 
   const active = (href?: string) => {
@@ -134,8 +143,10 @@ export const Sidebar = ({
 
   return (
     <SidebarBase.Root {...props}>
-      {header != null && (
-        <SidebarBase.Header {...slotProps?.header}>{header}</SidebarBase.Header>
+      {headerContent != null && (
+        <SidebarBase.Header {...slotProps?.header}>
+          {headerContent}
+        </SidebarBase.Header>
       )}
 
       <SidebarBase.Content {...slotProps?.content}>
