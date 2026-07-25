@@ -701,6 +701,10 @@ const componentItems: GroupNavItem[] = [
         url: "/standard/textarea",
       },
       {
+        label: "Time Input",
+        url: "/standard/time-input",
+      },
+      {
         label: "Toast",
         url: "/standard/toast",
       },

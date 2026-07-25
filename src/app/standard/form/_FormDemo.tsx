@@ -21,6 +21,10 @@ const schema = z.object({
     invalid_type_error: "Please pick your birthday.",
     required_error: "Please pick your birthday.",
   }),
+  startTime: z.date({
+    invalid_type_error: "Please pick a start time.",
+    required_error: "Please pick a start time.",
+  }),
   agree: z.boolean().refine((value) => value, "You must accept the terms."),
 });
 
@@ -61,6 +65,7 @@ export function FormDemo() {
       framework: "",
       age: null as number | null,
       birthday: undefined as Date | undefined,
+      startTime: undefined as Date | undefined,
       agree: false,
     },
     validators: {
@@ -140,6 +145,12 @@ export function FormDemo() {
 
       <form.AppField name="birthday">
         {(field) => <field.DatePicker label="Birthday" />}
+      </form.AppField>
+
+      <form.AppField name="startTime">
+        {(field) => (
+          <field.TimeInput label="Start time" description="When to begin." />
+        )}
       </form.AppField>
 
       <form.AppField name="agree">

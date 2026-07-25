@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarIcon, ClockIcon } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import { useState } from "react";
 
 import { cn } from "~/ui/utils";
@@ -10,8 +10,8 @@ import {
   type BaseCalendarProps,
   BaseDatePicker,
   BaseField,
-  BaseInput,
 } from "../../base";
+import { TimeInput, type TimeInputProps } from "../TimeInput";
 
 export interface DatePickerProps
   extends Pick<BaseField.Root.Props, "dirty" | "touched" | "invalid"> {
@@ -55,7 +55,7 @@ export interface DatePickerProps
     positioner?: Partial<BaseDatePicker.Positioner.Props>;
     popup?: Partial<BaseDatePicker.Popup.Props>;
     calendar?: Partial<BaseCalendarProps>;
-    timeInput?: React.ComponentProps<typeof BaseInput>;
+    timeInput?: Partial<TimeInputProps>;
   };
 }
 
@@ -63,22 +63,6 @@ const DEFAULT_FORMAT: Intl.DateTimeFormatOptions = { dateStyle: "medium" };
 const DEFAULT_FORMAT_WITH_TIME: Intl.DateTimeFormatOptions = {
   dateStyle: "medium",
   timeStyle: "short",
-};
-
-const pad = (value: number) => String(value).padStart(2, "0");
-
-/** `Date` → `HH:mm` (or `HH:mm:ss`) for a native time input. */
-const dateToTimeValue = (date: Date, withSeconds: boolean) => {
-  const base = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-  return withSeconds ? `${base}:${pad(date.getSeconds())}` : base;
-};
-
-/** Merge a `HH:mm(:ss)` string into `date`, returning a new `Date`. */
-const applyTimeValue = (date: Date, time: string) => {
-  const [hours, minutes, seconds] = time.split(":").map(Number);
-  const next = new Date(date);
-  next.setHours(hours ?? 0, minutes ?? 0, seconds ?? 0, 0);
-  return next;
 };
 
 /** Copy the time of day from `from` onto the calendar day of `to`. */
@@ -161,14 +145,6 @@ export const DatePicker = ({
     if (!withTime) setOpen(false);
   };
 
-  const handleTimeChange: React.ChangeEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
-    const time = event.currentTarget.value;
-    if (!time) return;
-    commit(applyTimeValue(value ?? new Date(), time));
-  };
-
   const resolvedFormat =
     format ?? (withTime ? DEFAULT_FORMAT_WITH_TIME : DEFAULT_FORMAT);
 
@@ -229,14 +205,12 @@ export const DatePicker = ({
               />
 
               {withTime && (
-                <div className="border-border flex items-center gap-2 border-t p-3">
-                  <ClockIcon className="text-muted-foreground size-4 shrink-0" />
-                  <BaseInput
-                    type="time"
-                    step={timeStep === "seconds" ? 1 : 60}
+                <div className="border-border border-t p-3">
+                  <TimeInput
+                    withSeconds={timeStep === "seconds"}
                     disabled={disabled}
-                    value={value ? dateToTimeValue(value, timeStep === "seconds") : ""}
-                    onChange={handleTimeChange}
+                    value={value}
+                    onValueChange={commit}
                     {...slotProps?.timeInput}
                   />
                 </div>
