@@ -3,15 +3,15 @@
 import { Button, type ButtonProps } from "../../Button";
 import { useFormContext } from "../context";
 
-export interface FormResetProps extends Omit<ButtonProps, "type"> {}
+export interface FormResetButtonProps extends Omit<ButtonProps, "type"> {}
 
-export default function FormReset({
+export default function FormResetButton({
   children = "Reset",
   variant = "outline",
   disabled,
   onClick,
   ...props
-}: FormResetProps) {
+}: FormResetButtonProps) {
   const form = useFormContext();
 
   return (

@@ -14,8 +14,8 @@ const Combobox = lazy(() => import("./fields/FormCombobox"));
 const DatePicker = lazy(() => import("./fields/FormDatePicker"));
 const NumberField = lazy(() => import("./fields/FormNumberField"));
 
-const Submit = lazy(() => import("./fields/FormSubmit"));
-const Reset = lazy(() => import("./fields/FormReset"));
+const SubmitButton = lazy(() => import("./components/FormSubmitButton"));
+const ResetButton = lazy(() => import("./components/FormResetButton"));
 
 export const { useAppForm, withForm } = createFormHook({
   fieldComponents: {
@@ -29,8 +29,8 @@ export const { useAppForm, withForm } = createFormHook({
     NumberField,
   },
   formComponents: {
-    Submit,
-    Reset,
+    SubmitButton,
+    ResetButton,
   },
   fieldContext,
   formContext,

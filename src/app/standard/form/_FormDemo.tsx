@@ -150,8 +150,8 @@ export function FormDemo() {
 
       <form.AppForm>
         <div className="flex gap-2">
-          <form.Submit>Submit</form.Submit>
-          <form.Reset onClick={() => setSubmitted(null)}>Reset</form.Reset>
+          <form.SubmitButton>Submit</form.SubmitButton>
+          <form.ResetButton onClick={() => setSubmitted(null)}>Reset</form.ResetButton>
         </div>
       </form.AppForm>
 

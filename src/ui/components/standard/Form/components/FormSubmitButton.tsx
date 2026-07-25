@@ -3,14 +3,14 @@
 import { Button, type ButtonProps } from "../../Button";
 import { useFormContext } from "../context";
 
-export interface FormSubmitProps extends Omit<ButtonProps, "type"> {}
+export interface FormSubmitButtonProps extends Omit<ButtonProps, "type"> {}
 
-export default function FormSubmit({
+export default function FormSubmitButton({
   children = "Submit",
   disabled,
   loading,
   ...props
-}: FormSubmitProps) {
+}: FormSubmitButtonProps) {
   const form = useFormContext();
 
   return (
