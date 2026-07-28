@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "~/ui/utils";
 
-import { BaseButton, BaseCollapsible, Sidebar as SidebarBase } from "../../base";
+import { BaseButton, BaseCollapsible, BaseSidebar as SidebarBase } from "../../base";
 
 export interface SidebarNavLink {
   label: React.ReactNode;

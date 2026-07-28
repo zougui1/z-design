@@ -47,5 +47,5 @@ export * from "./BaseToast";
 export * from "./BaseToggle";
 export * from "./BaseToggleGroup";
 export * from "./BaseTooltip";
-export * from "./Sidebar";
+export * from "./BaseSidebar";
 export * from "./Tooltip";

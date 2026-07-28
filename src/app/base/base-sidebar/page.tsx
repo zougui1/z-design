@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-import { Sidebar } from "~/ui/components/base";
+import { BaseSidebar } from "~/ui/components/base";
 import { BaseCollapsible, Typography } from "~/ui/components";
 
 export default function BaseSidebarPage() {
@@ -17,115 +17,115 @@ export default function BaseSidebarPage() {
     <div className="flex flex-col gap-4 p-6">
       <Typography.H2>BaseSidebar</Typography.H2>
 
-      <Sidebar.Provider className="relative h-120 min-h-0 overflow-hidden rounded-lg border">
+      <BaseSidebar.Provider className="relative h-120 min-h-0 overflow-hidden rounded-lg border">
         {/* The sidebar container is `fixed` by default (viewport-level layout).
             Contain it within this demo box instead. */}
-        <Sidebar.Root className="absolute h-full">
-          <Sidebar.Header>
+        <BaseSidebar.Root className="absolute h-full">
+          <BaseSidebar.Header>
             <span className="px-2 text-sm font-semibold">Acme Inc</span>
-          </Sidebar.Header>
+          </BaseSidebar.Header>
 
-          <Sidebar.Content>
-            <Sidebar.Group>
-              <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>
-              <Sidebar.Menu>
-                <Sidebar.MenuItem>
-                  <Sidebar.MenuButton
+          <BaseSidebar.Content>
+            <BaseSidebar.Group>
+              <BaseSidebar.GroupLabel>Platform</BaseSidebar.GroupLabel>
+              <BaseSidebar.Menu>
+                <BaseSidebar.MenuItem>
+                  <BaseSidebar.MenuButton
                     isActive
                     render={<Link href="/base/base-sidebar" />}
                     nativeButton={false}
                   >
                     <HomeIcon />
                     <span>Home</span>
-                  </Sidebar.MenuButton>
-                </Sidebar.MenuItem>
+                  </BaseSidebar.MenuButton>
+                </BaseSidebar.MenuItem>
 
-                <Sidebar.MenuItem>
-                  <Sidebar.MenuButton
+                <BaseSidebar.MenuItem>
+                  <BaseSidebar.MenuButton
                     render={<Link href="/inbox" />}
                     nativeButton={false}
                   >
                     <InboxIcon />
                     <span>Inbox</span>
-                  </Sidebar.MenuButton>
-                  <Sidebar.MenuBadge>9</Sidebar.MenuBadge>
-                </Sidebar.MenuItem>
+                  </BaseSidebar.MenuButton>
+                  <BaseSidebar.MenuBadge>9</BaseSidebar.MenuBadge>
+                </BaseSidebar.MenuItem>
 
                 <BaseCollapsible.Root
-                  render={<Sidebar.MenuItem />}
+                  render={<BaseSidebar.MenuItem />}
                   className="group/collapsible"
                   defaultOpen
                 >
-                  <Sidebar.MenuButton
+                  <BaseSidebar.MenuButton
                     render={<BaseCollapsible.Trigger />}
                     className="w-full"
                   >
                     <FolderIcon />
                     <span>Projects</span>
                     <BaseCollapsible.TriggerIcon className="ml-auto" />
-                  </Sidebar.MenuButton>
+                  </BaseSidebar.MenuButton>
 
                   <BaseCollapsible.Panel>
-                    <Sidebar.MenuSub>
-                      <Sidebar.MenuSubItem>
-                        <Sidebar.MenuSubButton
+                    <BaseSidebar.MenuSub>
+                      <BaseSidebar.MenuSubItem>
+                        <BaseSidebar.MenuSubButton
                           render={<Link href="/projects/design-system" />}
                         >
                           Design System
-                        </Sidebar.MenuSubButton>
-                      </Sidebar.MenuSubItem>
-                      <Sidebar.MenuSubItem>
-                        <Sidebar.MenuSubButton
+                        </BaseSidebar.MenuSubButton>
+                      </BaseSidebar.MenuSubItem>
+                      <BaseSidebar.MenuSubItem>
+                        <BaseSidebar.MenuSubButton
                           render={<Link href="/projects/marketing" />}
                         >
                           Marketing Site
-                        </Sidebar.MenuSubButton>
-                      </Sidebar.MenuSubItem>
-                    </Sidebar.MenuSub>
+                        </BaseSidebar.MenuSubButton>
+                      </BaseSidebar.MenuSubItem>
+                    </BaseSidebar.MenuSub>
                   </BaseCollapsible.Panel>
                 </BaseCollapsible.Root>
-              </Sidebar.Menu>
-            </Sidebar.Group>
+              </BaseSidebar.Menu>
+            </BaseSidebar.Group>
 
-            <Sidebar.Separator />
+            <BaseSidebar.Separator />
 
-            <Sidebar.Group>
-              <Sidebar.GroupLabel>Account</Sidebar.GroupLabel>
-              <Sidebar.Menu>
-                <Sidebar.MenuItem>
-                  <Sidebar.MenuButton
+            <BaseSidebar.Group>
+              <BaseSidebar.GroupLabel>Account</BaseSidebar.GroupLabel>
+              <BaseSidebar.Menu>
+                <BaseSidebar.MenuItem>
+                  <BaseSidebar.MenuButton
                     render={<Link href="/settings" />}
                     nativeButton={false}
                   >
                     <SettingsIcon />
                     <span>Settings</span>
-                  </Sidebar.MenuButton>
-                </Sidebar.MenuItem>
-                <Sidebar.MenuItem>
-                  <Sidebar.MenuButton
+                  </BaseSidebar.MenuButton>
+                </BaseSidebar.MenuItem>
+                <BaseSidebar.MenuItem>
+                  <BaseSidebar.MenuButton
                     render={<Link href="/verified" />}
                     nativeButton={false}
                   >
                     <BadgeCheckIcon />
                     <span>Verified</span>
-                  </Sidebar.MenuButton>
-                </Sidebar.MenuItem>
-              </Sidebar.Menu>
-            </Sidebar.Group>
-          </Sidebar.Content>
+                  </BaseSidebar.MenuButton>
+                </BaseSidebar.MenuItem>
+              </BaseSidebar.Menu>
+            </BaseSidebar.Group>
+          </BaseSidebar.Content>
 
-          <Sidebar.Footer>
+          <BaseSidebar.Footer>
             <span className="text-muted-foreground px-2 text-xs">v1.0.0</span>
-          </Sidebar.Footer>
-        </Sidebar.Root>
+          </BaseSidebar.Footer>
+        </BaseSidebar.Root>
 
-        <Sidebar.Inset className="flex items-center justify-center gap-2 p-6">
-          <Sidebar.Trigger variant="outline" />
+        <BaseSidebar.Inset className="flex items-center justify-center gap-2 p-6">
+          <BaseSidebar.Trigger variant="outline" />
           <p className="text-muted-foreground text-sm">
             Main content — toggle the sidebar with the trigger.
           </p>
-        </Sidebar.Inset>
-      </Sidebar.Provider>
+        </BaseSidebar.Inset>
+      </BaseSidebar.Provider>
     </div>
   );
 }
