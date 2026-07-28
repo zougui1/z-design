@@ -47,6 +47,15 @@ jobs:
           NAME=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          # Prerelease versions (e.g. 1.0.0-alpha.1) must publish under their own
+          # dist-tag so they don't become "latest"; stable versions get "latest".
+          if [[ "$VERSION" == *-* ]]; then
+            PRERELEASE=${VERSION#*-}
+            TAG=${PRERELEASE%%.*}
+          else
+            TAG=latest
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           if pnpm view "$NAME@$VERSION" version >/dev/null 2>&1; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
             echo "::notice::$NAME@$VERSION is already published — skipping publish."
@@ -59,4 +68,4 @@ jobs:
         if: steps.check.outputs.exists == 'false'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm publish --no-git-checks
+        run: pnpm publish --no-git-checks --tag "${{ steps.check.outputs.tag }}"
