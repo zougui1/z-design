@@ -14,6 +14,7 @@ import {
   ComboboxList,
   type ComboboxListProps,
 } from "../parts";
+import type { ComboboxOnOpenChange } from "../types";
 import { normalizedddGetters } from "../utils";
 
 export interface MobileComboboxProps<
@@ -23,12 +24,7 @@ export interface MobileComboboxProps<
   Omit<BaseCombobox.Root.Props<Value, Multiple>, "onOpenChange">,
   "itemToStringValue" | "items"
 > {
-  onOpenChange?: (
-    open: boolean,
-    eventDetails:
-      | BaseCombobox.Root.ChangeEventDetails
-      | BaseDrawer.Root.ChangeEventDetails,
-  ) => void;
+  onOpenChange?: ComboboxOnOpenChange;
   items: Value[] | readonly Value[];
   getValue?: (value: Value) => string;
   getLabel?: (value: Value) => React.ReactNode;

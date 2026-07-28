@@ -1,10 +1,10 @@
 "use client";
 
-import { tv, type VariantProps } from "tailwind-variants";
-
-import { useSidebar } from "./context";
-import { Tooltip } from "../Tooltip";
 import { Button } from "@base-ui/react";
+import { type VariantProps, tv } from "tailwind-variants";
+
+import { BaseTooltip } from "../BaseTooltip";
+import { useSidebar } from "./context";
 
 const sidebarMenuButtonVariants = tv({
   base: `peer/menu-button
@@ -52,9 +52,9 @@ const sidebarMenuButtonVariants = tv({
 export type BaseSidebarMenuButtonProps = Omit<Button.Props, "className"> &
   VariantProps<typeof sidebarMenuButtonVariants> & {
     className?: string;
-    render?: Tooltip.TriggerProps["render"];
+    render?: BaseTooltip.Trigger.Props["render"];
     isActive?: boolean;
-    tooltip?: string | Tooltip.ViewportProps;
+    tooltip?: string | BaseTooltip.Viewport.Props;
   };
 
 export function BaseSidebarMenuButton({
@@ -89,22 +89,22 @@ export function BaseSidebarMenuButton({
   }
 
   return (
-    <Tooltip.Root>
-      <Tooltip.Trigger render={button} />
+    <BaseTooltip.Root>
+      <BaseTooltip.Trigger render={button} />
 
-      <Tooltip.Portal>
-        <Tooltip.Positioner
+      <BaseTooltip.Portal>
+        <BaseTooltip.Positioner
           side="right"
           align="center"
           hidden={state !== "collapsed" || isMobile}
         >
-          <Tooltip.Popup>
-            <Tooltip.Arrow />
+          <BaseTooltip.Popup>
+            <BaseTooltip.Arrow />
 
-            <Tooltip.Viewport {...tooltip} />
-          </Tooltip.Popup>
-        </Tooltip.Positioner>
-      </Tooltip.Portal>
-    </Tooltip.Root>
+            <BaseTooltip.Viewport {...tooltip} />
+          </BaseTooltip.Popup>
+        </BaseTooltip.Positioner>
+      </BaseTooltip.Portal>
+    </BaseTooltip.Root>
   );
 }

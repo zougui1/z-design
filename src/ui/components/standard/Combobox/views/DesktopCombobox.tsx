@@ -9,6 +9,7 @@ import {
   ComboboxList,
   type ComboboxListProps,
 } from "../parts";
+import type { ComboboxOnOpenChange } from "../types";
 import { normalizedddGetters } from "../utils";
 
 export interface DesktopComboboxProps<
@@ -16,8 +17,9 @@ export interface DesktopComboboxProps<
   Multiple extends boolean | undefined = false,
 > extends Omit<
   BaseCombobox.Root.Props<Value, Multiple>,
-  "itemToStringValue" | "items"
+  "itemToStringValue" | "items" | "onOpenChange"
 > {
+  onOpenChange?: ComboboxOnOpenChange;
   items: Value[] | readonly Value[];
   getValue?: (value: Value) => string;
   getLabel?: (value: Value) => React.ReactNode;

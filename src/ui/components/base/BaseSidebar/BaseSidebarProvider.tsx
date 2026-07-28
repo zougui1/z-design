@@ -5,7 +5,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useIsMobile, useWindowEvent } from "~/ui/hooks";
 import { cn } from "~/ui/utils";
 
-import { Tooltip } from "../Tooltip";
+import { BaseTooltip } from "../BaseTooltip";
 import { BaseSidebarContext, type BaseSidebarContextValue } from "./context";
 
 const SIDEBAR_WIDTH = "16rem";
@@ -83,7 +83,7 @@ export function BaseSidebarProvider({
 
   return (
     <BaseSidebarContext.Provider value={contextValue}>
-      <Tooltip.Provider>
+      <BaseTooltip.Provider>
         <div
           data-slot="sidebar-wrapper"
           style={
@@ -102,7 +102,7 @@ export function BaseSidebarProvider({
         >
           {children}
         </div>
-      </Tooltip.Provider>
+      </BaseTooltip.Provider>
     </BaseSidebarContext.Provider>
   );
 }

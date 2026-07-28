@@ -2,7 +2,7 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { AppSidebar } from "~/components/AppSidebar";
-import "~/ui/styles/globals.css";
+import "~/ui/styles/theme.css";
 import { cn } from "~/ui/utils";
 
 export const metadata: Metadata = {

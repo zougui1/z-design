@@ -17,7 +17,7 @@ export const PrimitiveCopyIndicator = ({
   ...props
 }: PrimitiveCopyIndicatorProps) => {
   const { status, reset, state } = useCopyContext();
-  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const element = useRender({
     defaultTagName: "div",

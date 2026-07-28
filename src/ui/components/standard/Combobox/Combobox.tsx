@@ -21,7 +21,7 @@ export function Combobox<Value, Multiple extends boolean | undefined = false>(
 ) {
   const isMobile = useIsMobile();
 
-  return isMobile || true ? (
+  return isMobile ? (
     <MobileCombobox {...props} />
   ) : (
     <DesktopCombobox {...props} />

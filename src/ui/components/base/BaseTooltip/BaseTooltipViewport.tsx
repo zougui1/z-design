@@ -1,16 +1,18 @@
 "use client";
 
-import { Tooltip } from "@base-ui/react";
 import { cn } from "~/ui/utils";
 
-export interface TooltipViewportProps extends Tooltip.Viewport.Props {}
+import { PrimitiveTooltip } from "../../primitives";
 
-export const TooltipViewport = ({
+export interface BaseTooltipViewportProps
+  extends PrimitiveTooltip.Viewport.Props {}
+
+export const BaseTooltipViewport = ({
   className,
   ...props
-}: TooltipViewportProps) => {
+}: BaseTooltipViewportProps) => {
   return (
-    <Tooltip.Viewport
+    <PrimitiveTooltip.Viewport
       data-slot="tooltip-viewport"
       className={cn(
         "relative size-full overflow-clip",
@@ -33,3 +35,8 @@ export const TooltipViewport = ({
     />
   );
 };
+
+export namespace BaseTooltipViewport {
+  export type Props = BaseTooltipViewportProps;
+  export type State = PrimitiveTooltip.Trigger.State;
+}

@@ -1,10 +1,29 @@
 {
-  "name": "z-design",
+  "name": "@zougui1/ui",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zougui1/z-design.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "src/ui",
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./src/ui/index.css"
+  },
   "scripts": {
     "build": "next build",
+    "build:ui": "tsc -p tsconfig.lib.json; tsc-alias -p tsconfig.lib.json",
     "check": "next lint && tsc --noEmit",
     "dev": "next dev --turbo",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
@@ -56,7 +75,8 @@
     "prettier-plugin-merge": "^0.8.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.15",
-    "typescript": "^5.8.2",
+    "tsc-alias": "^1.9.1",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.27.0"
   },
   "ct3aMetadata": {

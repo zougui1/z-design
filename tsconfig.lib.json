@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "noEmitOnError": false,
+    "emitDeclarationOnly": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src/ui",
+    "incremental": false,
+    "plugins": [],
+    "paths": {
+      "~/ui/*": ["./src/ui/*"],
+      "~/*": ["./src/*"]
+    }
+  },
+  "include": ["src/ui/**/*.ts", "src/ui/**/*.tsx"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx"]
+}

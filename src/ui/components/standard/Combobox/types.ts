@@ -1,6 +1,13 @@
 import type { Check } from "lucide-react";
 
-import type { BaseCombobox } from "../../base";
+import type { BaseCombobox, BaseDrawer } from "../../base";
+
+export type ComboboxOnOpenChange = (
+  open: boolean,
+  eventDetails:
+    | BaseCombobox.Root.ChangeEventDetails
+    | BaseDrawer.Root.ChangeEventDetails,
+) => void;
 
 export type ComboboxItemMetaProps = {
   slotProps?: {
