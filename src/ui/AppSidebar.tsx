@@ -522,6 +522,18 @@ const groups: SidebarNavGroup[] = [
   { label: "Prototypes", items: prototypeItems.map(toGroupLink) },
 ];
 
-export const AppSidebar = () => {
-  return <Sidebar title="Z Design" groups={groups} />;
+export interface AppSidebarProps {
+  children?: React.ReactNode;
+}
+
+export const AppSidebar = ({ children }: AppSidebarProps) => {
+  return (
+    <Sidebar
+      title="Z Design"
+      groups={groups}
+      slotProps={{ provider: { className: "isolate" } }}
+    >
+      {children}
+    </Sidebar>
+  );
 };

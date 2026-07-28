@@ -3,7 +3,6 @@ import { Geist } from "next/font/google";
 
 import "~/styles/globals.css";
 import { AppSidebar } from "~/ui/AppSidebar";
-import { Sidebar } from "~/ui/components/base";
 import { cn } from "~/ui/utils";
 
 export const metadata: Metadata = {
@@ -23,10 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", geist.variable)}>
       <body className="relative min-h-svh">
-        <Sidebar.Provider className="isolate">
-          <AppSidebar />
-          <Sidebar.Inset>{children}</Sidebar.Inset>
-        </Sidebar.Provider>
+        <AppSidebar>{children}</AppSidebar>
       </body>
     </html>
   );

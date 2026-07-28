@@ -28,4 +28,6 @@
 - [ ] Table
 - [ ] Data Table
 
-TODO: for date picker and calendar need the menus to pick years and months
+TODO:
+on mobile the toggle doesn't work
+on mobile the sidebar should be closed by default

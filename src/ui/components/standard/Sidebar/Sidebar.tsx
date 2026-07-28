@@ -24,18 +24,34 @@ export interface SidebarNavGroup {
   className?: string;
 }
 
-export interface SidebarProps extends Omit<SidebarBase.RootProps, "title"> {
+export interface SidebarProps {
   /** Convenience title rendered inside the header. Ignored when `header` is set. */
   title?: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
   groups: SidebarNavGroup[];
+  /** Main content rendered beside the sidebar, inside the inset. */
+  children?: React.ReactNode;
+  /** Extra content rendered in the sticky top bar, right of the toggle. */
+  toolbar?: React.ReactNode;
   /** Override active-link detection. Defaults to matching the current path. */
   isActive?: (href: string) => boolean;
+  /**
+   * Uncontrolled initial open state on desktop. On mobile the sidebar always
+   * starts collapsed. Defaults to open.
+   */
+  defaultOpen?: boolean;
+  /** Controlled open state — pass with `onOpenChange` to drive it externally. */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   slotProps?: {
+    provider?: Partial<SidebarBase.ProviderProps>;
+    root?: Partial<SidebarBase.RootProps>;
     header?: Partial<SidebarBase.HeaderProps>;
     content?: Partial<SidebarBase.ContentProps>;
     footer?: Partial<SidebarBase.FooterProps>;
+    inset?: Partial<SidebarBase.InsetProps>;
+    trigger?: Partial<SidebarBase.TriggerProps>;
   };
 }
 
@@ -44,9 +60,13 @@ export const Sidebar = ({
   header,
   footer,
   groups,
+  children,
+  toolbar,
   isActive,
+  defaultOpen,
+  open,
+  onOpenChange,
   slotProps,
-  ...props
 }: SidebarProps) => {
   const headerContent =
     header ??
@@ -142,28 +162,49 @@ export const Sidebar = ({
   };
 
   return (
-    <SidebarBase.Root {...props}>
-      {headerContent != null && (
-        <SidebarBase.Header {...slotProps?.header}>
-          {headerContent}
-        </SidebarBase.Header>
-      )}
+    <SidebarBase.Provider
+      defaultOpen={defaultOpen}
+      open={open}
+      onOpenChange={onOpenChange}
+      {...slotProps?.provider}
+    >
+      <SidebarBase.Root {...slotProps?.root}>
+        {headerContent != null && (
+          <SidebarBase.Header {...slotProps?.header}>
+            {headerContent}
+          </SidebarBase.Header>
+        )}
 
-      <SidebarBase.Content {...slotProps?.content}>
-        {groups.map((group, index) => (
-          <SidebarBase.Group key={index} className={group.className}>
-            {group.label != null && (
-              <SidebarBase.GroupLabel>{group.label}</SidebarBase.GroupLabel>
-            )}
-            <SidebarBase.Menu>{group.items.map(renderItem)}</SidebarBase.Menu>
-          </SidebarBase.Group>
-        ))}
-      </SidebarBase.Content>
+        <SidebarBase.Content {...slotProps?.content}>
+          {groups.map((group, index) => (
+            <SidebarBase.Group key={index} className={group.className}>
+              {group.label != null && (
+                <SidebarBase.GroupLabel>{group.label}</SidebarBase.GroupLabel>
+              )}
+              <SidebarBase.Menu>{group.items.map(renderItem)}</SidebarBase.Menu>
+            </SidebarBase.Group>
+          ))}
+        </SidebarBase.Content>
 
-      {footer != null && (
-        <SidebarBase.Footer {...slotProps?.footer}>{footer}</SidebarBase.Footer>
-      )}
-    </SidebarBase.Root>
+        {footer != null && (
+          <SidebarBase.Footer {...slotProps?.footer}>
+            {footer}
+          </SidebarBase.Footer>
+        )}
+      </SidebarBase.Root>
+
+      <SidebarBase.Inset {...slotProps?.inset}>
+        <header
+          className="bg-background border-border sticky top-0 z-10 flex h-12
+            shrink-0 items-center gap-2 border-b px-4"
+        >
+          <SidebarBase.Trigger {...slotProps?.trigger} />
+          {toolbar}
+        </header>
+
+        {children}
+      </SidebarBase.Inset>
+    </SidebarBase.Provider>
   );
 };
 

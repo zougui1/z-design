@@ -5,8 +5,6 @@ import { cn } from "~/ui/utils";
 import { BaseDrawer } from "../BaseDrawer";
 import { useSidebar } from "./context";
 
-const SIDEBAR_WIDTH_MOBILE = "18rem";
-
 export interface SidebarRootProps extends React.ComponentProps<"div"> {
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
@@ -42,29 +40,34 @@ export function SidebarRoot({
       <BaseDrawer.Root
         open={openMobile}
         onOpenChange={setOpenMobile}
-        {...props}
+        swipeDirection="left"
       >
-        <BaseDrawer.Content
-          data-sidebar="sidebar"
-          data-slot="sidebar"
-          data-mobile="true"
-          className="bg-background text-sidebar-foreground w-(--sidebar-width)
-            p-0 [&>button]:hidden"
-          style={
-            {
-              "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-            } as React.CSSProperties
-          }
-        >
-          <BaseDrawer.Header className="sr-only">
-            <BaseDrawer.Title>Sidebar</BaseDrawer.Title>
-            <BaseDrawer.Description>
-              Displays the mobile sidebar.
-            </BaseDrawer.Description>
-          </BaseDrawer.Header>
+        <BaseDrawer.Portal>
+          <BaseDrawer.Backdrop />
 
-          <div className="flex h-full w-full flex-col">{children}</div>
-        </BaseDrawer.Content>
+          <BaseDrawer.Viewport side="left">
+            <BaseDrawer.Popup
+              data-sidebar="sidebar"
+              data-slot="sidebar"
+              data-mobile="true"
+              // `--bleed` drives the enter/exit translate distance. The base
+              // value (3rem) only nudges a left-anchored panel, so swiping it
+              // off animates back on-screen before unmounting. Bleeding past
+              // the panel's own width keeps it fully offscreen.
+              className="text-sidebar-foreground [--bleed:120%]"
+              {...props}
+            >
+              <BaseDrawer.Header className="sr-only">
+                <BaseDrawer.Title>Sidebar</BaseDrawer.Title>
+                <BaseDrawer.Description>
+                  Displays the mobile sidebar.
+                </BaseDrawer.Description>
+              </BaseDrawer.Header>
+
+              <div className="flex h-full w-full flex-col">{children}</div>
+            </BaseDrawer.Popup>
+          </BaseDrawer.Viewport>
+        </BaseDrawer.Portal>
       </BaseDrawer.Root>
     );
   }

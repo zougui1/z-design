@@ -8,7 +8,6 @@ import {
   SettingsIcon,
 } from "lucide-react";
 
-import { Sidebar as SidebarBase } from "~/ui/components/base";
 import {
   Sidebar,
   type SidebarNavGroup,
@@ -46,27 +45,28 @@ export default function SidebarPage() {
     <div className="flex flex-col gap-4 p-6">
       <Typography.H2>Sidebar</Typography.H2>
 
-      <SidebarBase.Provider className="relative h-120 min-h-0 overflow-hidden rounded-lg border">
-        <Sidebar
+      <Sidebar
+        title="Acme Inc"
+        footer={
+          <span className="text-muted-foreground px-2 text-xs">v1.0.0</span>
+        }
+        groups={groups}
+        slotProps={{
           // The sidebar container is `fixed` by default (viewport-level layout).
           // Contain it within this demo box instead.
-          className="absolute h-full"
-          title="Acme Inc"
-          footer={
-            <span className="text-muted-foreground px-2 text-xs">
-              v1.0.0
-            </span>
-          }
-          groups={groups}
-        />
-
-        <SidebarBase.Inset className="flex items-center justify-center gap-2 p-6">
-          <SidebarBase.Trigger variant="outline" />
+          provider: {
+            className:
+              "relative h-120 min-h-0 overflow-hidden rounded-lg border",
+          },
+          root: { className: "absolute h-full" },
+        }}
+      >
+        <div className="flex flex-1 items-center justify-center p-6">
           <p className="text-muted-foreground text-sm">
             Main content — toggle the sidebar with the trigger.
           </p>
-        </SidebarBase.Inset>
-      </SidebarBase.Provider>
+        </div>
+      </Sidebar>
     </div>
   );
 }
