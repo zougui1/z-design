@@ -11,7 +11,7 @@ export default tseslint.config(
   },
   ...compat.extends("next/core-web-vitals"),
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["**/*.ts", "**/*.tsx", "**/*.js"],
     extends: [
       ...tseslint.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
@@ -36,6 +36,9 @@ export default tseslint.config(
       "import/no-anonymous-default-export": "off",
       "@typescript-eslint/no-empty-object-type": "off",
       "react/no-children-prop": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/no-namespace": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
   {
