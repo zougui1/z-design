@@ -2,12 +2,12 @@ import { Button } from "@base-ui/react";
 
 import { cnState } from "~/ui/utils";
 
-export type SidebarGroupActionProps = Button.Props;
+export type BaseSidebarGroupActionProps = Button.Props;
 
-export function SidebarGroupAction({
+export function BaseSidebarGroupAction({
   className,
   ...props
-}: SidebarGroupActionProps) {
+}: BaseSidebarGroupActionProps) {
   return (
     <Button
       data-slot="sidebar-group-action"

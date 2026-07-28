@@ -40,33 +40,62 @@ const groups: SidebarNavGroup[] = [
   },
 ];
 
+// The sidebar container is `fixed` by default (viewport-level layout).
+// Contain it within a demo box instead.
+const demoSlotProps = {
+  provider: {
+    className: "relative h-120 min-h-0 overflow-hidden rounded-lg border",
+  },
+  root: { className: "absolute h-full" },
+} as const;
+
 export default function SidebarPage() {
   return (
-    <div className="flex flex-col gap-4 p-6">
-      <Typography.H2>Sidebar</Typography.H2>
+    <div className="flex flex-col gap-8 p-6">
+      <div className="flex flex-col gap-4">
+        <Typography.H2>Sidebar</Typography.H2>
 
-      <Sidebar
-        title="Acme Inc"
-        footer={
-          <span className="text-muted-foreground px-2 text-xs">v1.0.0</span>
-        }
-        groups={groups}
-        slotProps={{
-          // The sidebar container is `fixed` by default (viewport-level layout).
-          // Contain it within this demo box instead.
-          provider: {
-            className:
-              "relative h-120 min-h-0 overflow-hidden rounded-lg border",
-          },
-          root: { className: "absolute h-full" },
-        }}
-      >
-        <div className="flex flex-1 items-center justify-center p-6">
-          <p className="text-muted-foreground text-sm">
-            Main content — toggle the sidebar with the trigger.
-          </p>
-        </div>
-      </Sidebar>
+        <Sidebar
+          title="Acme Inc"
+          footer={
+            <span className="text-muted-foreground px-2 text-xs">v1.0.0</span>
+          }
+          groups={groups}
+          slotProps={demoSlotProps}
+        >
+          <div className="flex flex-1 items-center justify-center p-6">
+            <p className="text-muted-foreground text-sm">
+              Fixed on desktop; a drawer you can toggle on mobile.
+            </p>
+          </div>
+        </Sidebar>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <Typography.H3>Collapsible</Typography.H3>
+
+        <Sidebar
+          collapsible
+          title="Acme Inc"
+          footer={
+            <span
+              className="text-muted-foreground px-2 text-xs
+                group-data-[state=collapsed]:hidden"
+            >
+              v1.0.0
+            </span>
+          }
+          groups={groups}
+          slotProps={demoSlotProps}
+        >
+          <div className="flex flex-1 items-center justify-center p-6">
+            <p className="text-muted-foreground text-sm">
+              Use the chevron in the sidebar header to collapse it to an icon
+              rail.
+            </p>
+          </div>
+        </Sidebar>
+      </div>
     </div>
   );
 }

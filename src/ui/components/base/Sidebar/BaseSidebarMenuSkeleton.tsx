@@ -6,15 +6,15 @@ import { cn } from "~/ui/utils";
 
 import { Skeleton } from "../../standard/Skeleton";
 
-export interface SidebarMenuSkeletonProps extends React.ComponentProps<"div"> {
+export interface BaseSidebarMenuSkeletonProps extends React.ComponentProps<"div"> {
   showIcon?: boolean;
 }
 
-export function SidebarMenuSkeleton({
+export function BaseSidebarMenuSkeleton({
   className,
   showIcon = false,
   ...props
-}: SidebarMenuSkeletonProps) {
+}: BaseSidebarMenuSkeletonProps) {
   // Random width between 50 to 90%.
   const width = useMemo(() => {
     return `${Math.floor(Math.random() * 40) + 50}%`;

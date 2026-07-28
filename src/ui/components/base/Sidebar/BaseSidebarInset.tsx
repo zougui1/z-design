@@ -1,14 +1,16 @@
+"use client";
+
 import { useRender } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface SidebarInsetProps extends useRender.ComponentProps<"main"> {}
+export interface BaseSidebarInsetProps extends useRender.ComponentProps<"main"> {}
 
-export function SidebarInset({
+export function BaseSidebarInset({
   className,
   render,
   ...props
-}: SidebarInsetProps) {
+}: BaseSidebarInsetProps) {
   return useRender({
     defaultTagName: "main",
     render,

@@ -2,15 +2,15 @@ import { Button } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export type SidebarMenuActionProps = Button.Props & {
+export type BaseSidebarMenuActionProps = Button.Props & {
   showOnHover?: boolean;
 };
 
-export function SidebarMenuAction({
+export function BaseSidebarMenuAction({
   className,
   showOnHover = false,
   ...props
-}: SidebarMenuActionProps) {
+}: BaseSidebarMenuActionProps) {
   return (
     <Button
       data-slot="sidebar-menu-action"

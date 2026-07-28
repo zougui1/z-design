@@ -29,5 +29,3 @@
 - [ ] Data Table
 
 TODO:
-on mobile the toggle doesn't work
-on mobile the sidebar should be closed by default

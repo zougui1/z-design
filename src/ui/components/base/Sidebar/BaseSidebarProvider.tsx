@@ -6,19 +6,19 @@ import { useIsMobile, useWindowEvent } from "~/ui/hooks";
 import { cn } from "~/ui/utils";
 
 import { Tooltip } from "../Tooltip";
-import { SidebarContext, type SidebarContextValue } from "./context";
+import { BaseSidebarContext, type BaseSidebarContextValue } from "./context";
 
 const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
-export interface SidebarProviderProps extends React.ComponentProps<"div"> {
+export interface BaseSidebarProviderProps extends React.ComponentProps<"div"> {
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 }
 
-export function SidebarProvider({
+export function BaseSidebarProvider({
   defaultOpen = true,
   open: openProp,
   onOpenChange: setOpenProp,
@@ -26,7 +26,7 @@ export function SidebarProvider({
   style,
   children,
   ...props
-}: SidebarProviderProps) {
+}: BaseSidebarProviderProps) {
   const isMobile = Boolean(useIsMobile());
   const [openMobile, setOpenMobile] = useState(false);
 
@@ -68,7 +68,7 @@ export function SidebarProvider({
   // This makes it easier to style the sidebar with Tailwind classes.
   const state = open ? "expanded" : "collapsed";
 
-  const contextValue = useMemo<SidebarContextValue>(
+  const contextValue = useMemo<BaseSidebarContextValue>(
     () => ({
       state,
       open,
@@ -82,7 +82,7 @@ export function SidebarProvider({
   );
 
   return (
-    <SidebarContext.Provider value={contextValue}>
+    <BaseSidebarContext.Provider value={contextValue}>
       <Tooltip.Provider>
         <div
           data-slot="sidebar-wrapper"
@@ -103,6 +103,6 @@ export function SidebarProvider({
           {children}
         </div>
       </Tooltip.Provider>
-    </SidebarContext.Provider>
+    </BaseSidebarContext.Provider>
   );
 }

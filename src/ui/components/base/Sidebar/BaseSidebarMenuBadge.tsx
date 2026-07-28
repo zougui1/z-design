@@ -1,14 +1,16 @@
+"use client";
+
 import { useRender } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface SidebarMenuBadgeProps extends useRender.ComponentProps<"div"> {}
+export interface BaseSidebarMenuBadgeProps extends useRender.ComponentProps<"div"> {}
 
-export function SidebarMenuBadge({
+export function BaseSidebarMenuBadge({
   className,
   render,
   ...props
-}: SidebarMenuBadgeProps) {
+}: BaseSidebarMenuBadgeProps) {
   return useRender({
     defaultTagName: "div",
     render,

@@ -1,14 +1,16 @@
+"use client";
+
 import { useRender } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface SidebarHeaderProps extends useRender.ComponentProps<"div"> {}
+export interface BaseSidebarHeaderProps extends useRender.ComponentProps<"div"> {}
 
-export function SidebarHeader({
+export function BaseSidebarHeader({
   className,
   render,
   ...props
-}: SidebarHeaderProps) {
+}: BaseSidebarHeaderProps) {
   return useRender({
     defaultTagName: "div",
     render,

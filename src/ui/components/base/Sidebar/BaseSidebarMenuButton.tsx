@@ -49,7 +49,7 @@ const sidebarMenuButtonVariants = tv({
   },
 });
 
-export type SidebarMenuButtonProps = Omit<Button.Props, "className"> &
+export type BaseSidebarMenuButtonProps = Omit<Button.Props, "className"> &
   VariantProps<typeof sidebarMenuButtonVariants> & {
     className?: string;
     render?: Tooltip.TriggerProps["render"];
@@ -57,14 +57,14 @@ export type SidebarMenuButtonProps = Omit<Button.Props, "className"> &
     tooltip?: string | Tooltip.ViewportProps;
   };
 
-export function SidebarMenuButton({
+export function BaseSidebarMenuButton({
   isActive = false,
   variant = "default",
   size = "default",
   tooltip,
   className,
   ...props
-}: SidebarMenuButtonProps) {
+}: BaseSidebarMenuButtonProps) {
   const { isMobile, state } = useSidebar();
 
   const button = (

@@ -1,6 +1,8 @@
+"use client";
+
 import { createContext, useContext } from "react";
 
-export interface SidebarContextValue {
+export interface BaseSidebarContextValue {
   state: "expanded" | "collapsed";
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -10,13 +12,13 @@ export interface SidebarContextValue {
   toggleSidebar: () => void;
 }
 
-export const SidebarContext = createContext<SidebarContextValue | null>(null);
+export const BaseSidebarContext = createContext<BaseSidebarContextValue | null>(null);
 
 export const useSidebar = () => {
-  const context = useContext(SidebarContext);
+  const context = useContext(BaseSidebarContext);
 
   if (!context) {
-    throw new Error("useSidebar must be used within a SidebarProvider.");
+    throw new Error("useSidebar must be used within a BaseSidebarProvider.");
   }
 
   return context;

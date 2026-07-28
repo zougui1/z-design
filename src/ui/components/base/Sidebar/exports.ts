@@ -1,92 +1,93 @@
+export { useSidebar } from "./context";
 export {
-  SidebarContent as Content,
-  type SidebarContentProps as ContentProps,
-} from "./SidebarContent";
+  BaseSidebarContent as Content,
+  type BaseSidebarContentProps as ContentProps,
+} from "./BaseSidebarContent";
 export {
-  SidebarFooter as Footer,
-  type SidebarFooterProps as FooterProps,
-} from "./SidebarFooter";
+  BaseSidebarFooter as Footer,
+  type BaseSidebarFooterProps as FooterProps,
+} from "./BaseSidebarFooter";
 export {
-  SidebarGroup as Group,
-  type SidebarGroupProps as GroupProps,
-} from "./SidebarGroup";
+  BaseSidebarGroup as Group,
+  type BaseSidebarGroupProps as GroupProps,
+} from "./BaseSidebarGroup";
 export {
-  SidebarGroupAction as GroupAction,
-  type SidebarGroupActionProps as GroupActionProps,
-} from "./SidebarGroupAction";
+  BaseSidebarGroupAction as GroupAction,
+  type BaseSidebarGroupActionProps as GroupActionProps,
+} from "./BaseSidebarGroupAction";
 export {
-  SidebarGroupContent as GroupContent,
-  type SidebarGroupContentProps as GroupContentProps,
-} from "./SidebarGroupContent";
+  BaseSidebarGroupContent as GroupContent,
+  type BaseSidebarGroupContentProps as GroupContentProps,
+} from "./BaseSidebarGroupContent";
 export {
-  SidebarGroupLabel as GroupLabel,
-  type SidebarGroupLabelProps as GroupLabelProps,
-} from "./SidebarGroupLabel";
+  BaseSidebarGroupLabel as GroupLabel,
+  type BaseSidebarGroupLabelProps as GroupLabelProps,
+} from "./BaseSidebarGroupLabel";
 export {
-  SidebarHeader as Header,
-  type SidebarHeaderProps as HeaderProps,
-} from "./SidebarHeader";
+  BaseSidebarHeader as Header,
+  type BaseSidebarHeaderProps as HeaderProps,
+} from "./BaseSidebarHeader";
 export {
-  SidebarInput as Input,
-  type SidebarInputProps as InputProps,
-} from "./SidebarInput";
+  BaseSidebarInput as Input,
+  type BaseSidebarInputProps as InputProps,
+} from "./BaseSidebarInput";
 export {
-  SidebarInset as Inset,
-  type SidebarInsetProps as InsetProps,
-} from "./SidebarInset";
+  BaseSidebarInset as Inset,
+  type BaseSidebarInsetProps as InsetProps,
+} from "./BaseSidebarInset";
 export {
-  SidebarMenu as Menu,
-  type SidebarMenuProps as MenuProps,
-} from "./SidebarMenu";
+  BaseSidebarMenu as Menu,
+  type BaseSidebarMenuProps as MenuProps,
+} from "./BaseSidebarMenu";
 export {
-  SidebarMenuAction as MenuAction,
-  type SidebarMenuActionProps as MenuActionProps,
-} from "./SidebarMenuAction";
+  BaseSidebarMenuAction as MenuAction,
+  type BaseSidebarMenuActionProps as MenuActionProps,
+} from "./BaseSidebarMenuAction";
 export {
-  SidebarMenuBadge as MenuBadge,
-  type SidebarMenuBadgeProps as MenuBadgeProps,
-} from "./SidebarMenuBadge";
+  BaseSidebarMenuBadge as MenuBadge,
+  type BaseSidebarMenuBadgeProps as MenuBadgeProps,
+} from "./BaseSidebarMenuBadge";
 export {
-  SidebarMenuButton as MenuButton,
-  type SidebarMenuButtonProps as MenuButtonProps,
-} from "./SidebarMenuButton";
+  BaseSidebarMenuButton as MenuButton,
+  type BaseSidebarMenuButtonProps as MenuButtonProps,
+} from "./BaseSidebarMenuButton";
 export {
-  SidebarMenuItem as MenuItem,
-  type SidebarMenuItemProps as MenuItemProps,
-} from "./SidebarMenuItem";
+  BaseSidebarMenuItem as MenuItem,
+  type BaseSidebarMenuItemProps as MenuItemProps,
+} from "./BaseSidebarMenuItem";
 export {
-  SidebarMenuSkeleton as MenuSkeleton,
-  type SidebarMenuSkeletonProps as MenuSkeletonProps,
-} from "./SidebarMenuSkeleton";
+  BaseSidebarMenuSkeleton as MenuSkeleton,
+  type BaseSidebarMenuSkeletonProps as MenuSkeletonProps,
+} from "./BaseSidebarMenuSkeleton";
 export {
-  SidebarMenuSub as MenuSub,
-  type SidebarMenuSubProps as MenuSubProps,
-} from "./SidebarMenuSub";
+  BaseSidebarMenuSub as MenuSub,
+  type BaseSidebarMenuSubProps as MenuSubProps,
+} from "./BaseSidebarMenuSub";
 export {
-  SidebarMenuSubButton as MenuSubButton,
-  type SidebarMenuSubButtonProps as MenuSubButtonProps,
-} from "./SidebarMenuSubButton";
+  BaseSidebarMenuSubButton as MenuSubButton,
+  type BaseSidebarMenuSubButtonProps as MenuSubButtonProps,
+} from "./BaseSidebarMenuSubButton";
 export {
-  SidebarMenuSubItem as MenuSubItem,
-  type SidebarMenuSubItemProps as MenuSubItemProps,
-} from "./SidebarMenuSubItem";
+  BaseSidebarMenuSubItem as MenuSubItem,
+  type BaseSidebarMenuSubItemProps as MenuSubItemProps,
+} from "./BaseSidebarMenuSubItem";
 export {
-  SidebarProvider as Provider,
-  type SidebarProviderProps as ProviderProps,
-} from "./SidebarProvider";
+  BaseSidebarProvider as Provider,
+  type BaseSidebarProviderProps as ProviderProps,
+} from "./BaseSidebarProvider";
 export {
-  SidebarRail as Rail,
-  type SidebarRailProps as RailProps,
-} from "./SidebarRail";
+  BaseSidebarRail as Rail,
+  type BaseSidebarRailProps as RailProps,
+} from "./BaseSidebarRail";
 export {
-  SidebarRoot as Root,
-  type SidebarRootProps as RootProps,
-} from "./SidebarRoot";
+  BaseSidebarRoot as Root,
+  type BaseSidebarRootProps as RootProps,
+} from "./BaseSidebarRoot";
 export {
-  SidebarSeparator as Separator,
-  type SidebarSeparatorProps as SeparatorProps,
-} from "./SidebarSeparator";
+  BaseSidebarSeparator as Separator,
+  type BaseSidebarSeparatorProps as SeparatorProps,
+} from "./BaseSidebarSeparator";
 export {
-  SidebarTrigger as Trigger,
-  type SidebarTriggerProps as TriggerProps,
-} from "./SidebarTrigger";
+  BaseSidebarTrigger as Trigger,
+  type BaseSidebarTriggerProps as TriggerProps,
+} from "./BaseSidebarTrigger";

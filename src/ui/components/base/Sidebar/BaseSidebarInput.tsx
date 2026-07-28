@@ -2,9 +2,9 @@ import { cn } from "~/ui/utils";
 
 import { BaseInput, type BaseInputProps } from "../BaseInput";
 
-export interface SidebarInputProps extends BaseInputProps {}
+export interface BaseSidebarInputProps extends BaseInputProps {}
 
-export function SidebarInput({ className, ...props }: SidebarInputProps) {
+export function BaseSidebarInput({ className, ...props }: BaseSidebarInputProps) {
   return (
     <BaseInput
       data-slot="sidebar-input"

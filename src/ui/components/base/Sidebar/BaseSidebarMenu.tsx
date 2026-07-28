@@ -1,10 +1,12 @@
+"use client";
+
 import { useRender } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface SidebarMenuProps extends useRender.ComponentProps<"ul"> {}
+export interface BaseSidebarMenuProps extends useRender.ComponentProps<"ul"> {}
 
-export function SidebarMenu({ className, render, ...props }: SidebarMenuProps) {
+export function BaseSidebarMenu({ className, render, ...props }: BaseSidebarMenuProps) {
   return useRender({
     defaultTagName: "ul",
     render,

@@ -1,11 +1,11 @@
 import { cn } from "~/ui/utils";
 
-export interface SidebarMenuSubItemProps extends React.ComponentProps<"li"> {}
+export interface BaseSidebarMenuSubItemProps extends React.ComponentProps<"li"> {}
 
-export function SidebarMenuSubItem({
+export function BaseSidebarMenuSubItem({
   className,
   ...props
-}: SidebarMenuSubItemProps) {
+}: BaseSidebarMenuSubItemProps) {
   return (
     <li
       data-slot="sidebar-menu-sub-item"

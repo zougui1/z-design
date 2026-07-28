@@ -6,19 +6,19 @@ import { cn } from "~/ui/utils";
 
 import { useSidebar } from "./context";
 
-export type SidebarRailProps = Button.Props;
+export type BaseSidebarRailProps = Button.Props;
 
-export function SidebarRail({ className, ...props }: SidebarRailProps) {
+export function BaseSidebarRail({ className, ...props }: BaseSidebarRailProps) {
   const { toggleSidebar } = useSidebar();
 
   return (
     <Button
       data-sidebar="rail"
       data-slot="sidebar-rail"
-      aria-label="Toggle Sidebar"
+      aria-label="Toggle BaseSidebar"
       tabIndex={-1}
       onClick={toggleSidebar}
-      title="Toggle Sidebar"
+      title="Toggle BaseSidebar"
       className={cn(
         `hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4
         -translate-x-1/2 transition-all ease-linear

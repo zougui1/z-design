@@ -1,14 +1,16 @@
+"use client";
+
 import { useRender } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface SidebarGroupLabelProps extends useRender.ComponentProps<"div"> {}
+export interface BaseSidebarGroupLabelProps extends useRender.ComponentProps<"div"> {}
 
-export function SidebarGroupLabel({
+export function BaseSidebarGroupLabel({
   className,
   render,
   ...props
-}: SidebarGroupLabelProps) {
+}: BaseSidebarGroupLabelProps) {
   return useRender({
     defaultTagName: "div",
     render,

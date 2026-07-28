@@ -7,13 +7,13 @@ import { cn } from "~/ui/utils";
 import { BaseButton, type BaseButtonProps } from "../BaseButton";
 import { useSidebar } from "./context";
 
-export type SidebarTriggerProps = BaseButtonProps;
+export type BaseSidebarTriggerProps = BaseButtonProps;
 
-export function SidebarTrigger({
+export function BaseSidebarTrigger({
   className,
   onClick,
   ...props
-}: SidebarTriggerProps) {
+}: BaseSidebarTriggerProps) {
   const { toggleSidebar } = useSidebar();
 
   return (
@@ -30,7 +30,7 @@ export function SidebarTrigger({
       {...props}
     >
       <PanelLeftIcon />
-      <span className="sr-only">Toggle Sidebar</span>
+      <span className="sr-only">Toggle BaseSidebar</span>
     </BaseButton>
   );
 }

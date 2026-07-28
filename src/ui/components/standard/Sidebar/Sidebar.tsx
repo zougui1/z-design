@@ -1,11 +1,12 @@
 "use client";
 
+import { ChevronsLeftIcon, PanelLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "~/ui/utils";
 
-import { BaseCollapsible, Sidebar as SidebarBase } from "../../base";
+import { BaseButton, BaseCollapsible, Sidebar as SidebarBase } from "../../base";
 
 export interface SidebarNavLink {
   label: React.ReactNode;
@@ -30,6 +31,12 @@ export interface SidebarProps {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   groups: SidebarNavGroup[];
+  /**
+   * When true, the sidebar can be collapsed to an icon rail on desktop: a
+   * chevron in the header collapses it, and an icon at the top expands it.
+   * Defaults to false (always expanded on desktop).
+   */
+  collapsible?: boolean;
   /** Main content rendered beside the sidebar, inside the inset. */
   children?: React.ReactNode;
   /** Extra content rendered in the sticky top bar, right of the toggle. */
@@ -55,11 +62,68 @@ export interface SidebarProps {
   };
 }
 
+/**
+ * Header inner content + the collapse/expand controls. Lives inside the Provider
+ * subtree so it can read the sidebar state via `useSidebar`. The desktop
+ * controls are driven by the sidebar's `group` data-state (absent on the mobile
+ * drawer); the double-chevron also shows on mobile to close the drawer.
+ */
+const SidebarHeaderContent = ({
+  content,
+  collapsible,
+}: {
+  content: React.ReactNode;
+  collapsible: boolean;
+}) => {
+  const { toggleSidebar, isMobile } = SidebarBase.useSidebar();
+
+  return (
+    <>
+      {collapsible && (
+        <BaseButton
+          variant="ghost"
+          size="icon"
+          aria-label="Expand sidebar"
+          onClick={toggleSidebar}
+          className="hidden size-7 md:group-data-[state=collapsed]:flex"
+        >
+          <PanelLeftIcon />
+        </BaseButton>
+      )}
+
+      {content != null && (
+        <div
+          className="flex min-w-0 flex-1 items-center
+            group-data-[state=collapsed]:hidden"
+        >
+          {content}
+        </div>
+      )}
+
+      {/* Double chevron: closes the drawer on mobile; collapses on desktop
+          (desktop only when collapsible). */}
+      <BaseButton
+        variant="ghost"
+        size="icon"
+        aria-label={isMobile ? "Close sidebar" : "Collapse sidebar"}
+        onClick={toggleSidebar}
+        className={cn(
+          "ml-auto flex size-7 md:hidden",
+          collapsible && "md:group-data-[state=expanded]:flex",
+        )}
+      >
+        <ChevronsLeftIcon />
+      </BaseButton>
+    </>
+  );
+};
+
 export const Sidebar = ({
   title,
   header,
   footer,
   groups,
+  collapsible = false,
   children,
   toolbar,
   isActive,
@@ -168,10 +232,23 @@ export const Sidebar = ({
       onOpenChange={onOpenChange}
       {...slotProps?.provider}
     >
-      <SidebarBase.Root {...slotProps?.root}>
-        {headerContent != null && (
-          <SidebarBase.Header {...slotProps?.header}>
-            {headerContent}
+      <SidebarBase.Root
+        collapsible={collapsible ? "icon" : "offcanvas"}
+        {...slotProps?.root}
+      >
+        {(headerContent != null || collapsible) && (
+          <SidebarBase.Header
+            {...slotProps?.header}
+            className={cn(
+              "flex-row items-center gap-2",
+              "group-data-[state=collapsed]:justify-center",
+              slotProps?.header?.className,
+            )}
+          >
+            <SidebarHeaderContent
+              content={headerContent}
+              collapsible={collapsible}
+            />
           </SidebarBase.Header>
         )}
 
@@ -195,10 +272,18 @@ export const Sidebar = ({
 
       <SidebarBase.Inset {...slotProps?.inset}>
         <header
-          className="bg-background border-border sticky top-0 z-10 flex h-12
-            shrink-0 items-center gap-2 border-b px-4"
+          className={cn(
+            `bg-background border-border sticky top-0 z-10 flex h-12 shrink-0
+            items-center gap-2 border-b px-4`,
+            // The trigger is the bar's only content on mobile; with no toolbar
+            // there's nothing to show on desktop, so drop the empty bar.
+            !toolbar && "md:hidden",
+          )}
         >
-          <SidebarBase.Trigger {...slotProps?.trigger} />
+          <SidebarBase.Trigger
+            {...slotProps?.trigger}
+            className={cn("md:hidden", slotProps?.trigger?.className)}
+          />
           {toolbar}
         </header>
 

@@ -2,12 +2,12 @@ import { cn } from "~/ui/utils";
 
 import { BaseSeparator } from "../BaseSeparator";
 
-export interface SidebarSeparatorProps extends BaseSeparator.Root.Props {}
+export interface BaseSidebarSeparatorProps extends BaseSeparator.Root.Props {}
 
-export function SidebarSeparator({
+export function BaseSidebarSeparator({
   className,
   ...props
-}: SidebarSeparatorProps) {
+}: BaseSidebarSeparatorProps) {
   return (
     <BaseSeparator.Root
       data-slot="sidebar-separator"

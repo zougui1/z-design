@@ -1,19 +1,21 @@
+"use client";
+
 import { useRender } from "@base-ui/react";
 
 import { cn } from "~/ui/utils";
 
-export interface SidebarMenuSubButtonProps extends useRender.ComponentProps<"a"> {
+export interface BaseSidebarMenuSubButtonProps extends useRender.ComponentProps<"a"> {
   size?: "sm" | "md";
   isActive?: boolean;
 }
 
-export function SidebarMenuSubButton({
+export function BaseSidebarMenuSubButton({
   render,
   size = "md",
   isActive = false,
   className,
   ...props
-}: SidebarMenuSubButtonProps) {
+}: BaseSidebarMenuSubButtonProps) {
   return useRender({
     defaultTagName: "a",
     render,

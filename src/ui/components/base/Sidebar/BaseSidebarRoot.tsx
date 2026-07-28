@@ -5,18 +5,18 @@ import { cn } from "~/ui/utils";
 import { BaseDrawer } from "../BaseDrawer";
 import { useSidebar } from "./context";
 
-export interface SidebarRootProps extends React.ComponentProps<"div"> {
+export interface BaseSidebarRootProps extends React.ComponentProps<"div"> {
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
 }
 
-export function SidebarRoot({
+export function BaseSidebarRoot({
   variant = "sidebar",
   collapsible = "offcanvas",
   className,
   children,
   ...props
-}: SidebarRootProps) {
+}: BaseSidebarRootProps) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
   if (collapsible === "none") {
