@@ -1,9 +1,4 @@
-import {
-  Sidebar,
-  type SidebarNavGroup,
-  type SidebarNavLink,
-} from "./components/standard";
-import { cn } from "./utils";
+import { Sidebar, type SidebarNavGroup, type SidebarNavLink, cn } from "../ui";
 
 interface NavItem {
   label: string;
