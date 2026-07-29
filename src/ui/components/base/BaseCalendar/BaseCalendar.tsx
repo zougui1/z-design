@@ -8,9 +8,14 @@ import {
 } from "lucide-react";
 
 import { cn } from "../../../utils";
-import { PrimitiveCalendar, type PrimitiveCalendarProps } from "../../primitives";
+import {
+  PrimitiveCalendar,
+  type PrimitiveCalendarDateRange,
+  type PrimitiveCalendarProps,
+} from "../../primitives";
 
 export type BaseCalendarProps = PrimitiveCalendarProps;
+export type BaseCalendarDateRange = PrimitiveCalendarDateRange;
 
 interface ChevronProps {
   className?: string;

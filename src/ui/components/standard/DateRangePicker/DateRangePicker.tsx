@@ -7,20 +7,22 @@ import { cn } from "~/ui/utils";
 
 import {
   BaseCalendar,
+  type BaseCalendarDateRange,
   type BaseCalendarProps,
   BaseDatePicker,
   BaseField,
 } from "../../base";
 import { Button } from "../Button";
-import { TimeInput, type TimeInputProps } from "../TimeInput";
 
-export interface DatePickerProps extends Pick<
+export type DateRange = BaseCalendarDateRange;
+
+export interface DateRangePickerProps extends Pick<
   BaseField.Root.Props,
   "dirty" | "touched" | "invalid"
 > {
-  value?: Date;
-  defaultValue?: Date;
-  onValueChange?: (date: Date | undefined) => void;
+  value?: DateRange;
+  defaultValue?: DateRange;
+  onValueChange?: (range: DateRange | undefined) => void;
   disabled?: boolean;
   name?: string;
 
@@ -30,24 +32,21 @@ export interface DatePickerProps extends Pick<
   placeholder?: React.ReactNode;
 
   /**
-   * Renders a time input inside the popup so the selected value carries a time
-   * of day. The formatted trigger label switches to include the time as well.
-   */
-  withTime?: boolean;
-  /** Granularity of the time input when {@link withTime} is enabled. */
-  timeStep?: "minutes" | "seconds";
-
-  /**
    * Renders a "Clear" button inside the popup that resets the value to
-   * `undefined`. The button only appears while a date is selected.
+   * `undefined`. The button only appears while a range is selected.
    */
   clearable?: boolean;
 
-  /** `Intl.DateTimeFormat` options used to format the selected date. */
+  /** Number of months rendered side by side in the popup. Defaults to `1`. */
+  numberOfMonths?: number;
+
+  /** `Intl.DateTimeFormat` options used to format each endpoint. */
   format?: Intl.DateTimeFormatOptions;
   locale?: Intl.LocalesArgument;
+  /** Separator rendered between the two formatted endpoints. */
+  separator?: React.ReactNode;
   /** Days to disable, forwarded to the underlying calendar. */
-  disabledDates?: Extract<BaseCalendarProps, { mode?: "single" }>["disabled"];
+  disabledDates?: Extract<BaseCalendarProps, { mode?: "range" }>["disabled"];
 
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -64,33 +63,13 @@ export interface DatePickerProps extends Pick<
     positioner?: Partial<BaseDatePicker.Positioner.Props>;
     popup?: Partial<BaseDatePicker.Popup.Props>;
     calendar?: Partial<BaseCalendarProps>;
-    timeInput?: Partial<TimeInputProps>;
     clearButton?: Partial<React.ComponentProps<typeof Button>>;
   };
 }
 
 const DEFAULT_FORMAT: Intl.DateTimeFormatOptions = { dateStyle: "medium" };
-const DEFAULT_FORMAT_WITH_TIME: Intl.DateTimeFormatOptions = {
-  dateStyle: "medium",
-  timeStyle: "short",
-};
 
-/** Copy the time of day from `from` onto the calendar day of `to`. */
-const withTimeOf = (to: Date, from: Date | undefined) => {
-  if (!from) return to;
-  const next = new Date(to);
-  next.setHours(
-    from.getHours(),
-    from.getMinutes(),
-    from.getSeconds(),
-    from.getMilliseconds(),
-  );
-  return next;
-};
-
-// mirrors BaseInput: same surface, border, focus + invalid rings, height and
-// rounding. `data-popup-open` (set while the calendar is open) reuses the focus
-// treatment so an open picker reads like a focused input.
+// mirrors DatePicker's trigger so both controls read as the same input surface.
 const triggerClassName = `border-border bg-background-light focus-visible:border-primary
   focus-visible:ring-primary/50 data-[popup-open]:border-primary
   data-[popup-open]:ring-primary/50 data-[invalid]:border-destructive
@@ -103,7 +82,7 @@ const triggerClassName = `border-border bg-background-light focus-visible:border
   data-[popup-open]:ring-3 data-[invalid]:ring-3 disabled:pointer-events-none
   disabled:cursor-not-allowed disabled:opacity-50 md:text-sm`;
 
-export const DatePicker = ({
+export const DateRangePicker = ({
   value: valueProp,
   defaultValue,
   onValueChange,
@@ -112,12 +91,12 @@ export const DatePicker = ({
   label,
   errors,
   description,
-  placeholder = "Pick a date",
-  withTime = false,
-  timeStep = "minutes",
+  placeholder = "Pick a date range",
   clearable = false,
+  numberOfMonths = 1,
   format,
   locale,
+  separator = "–",
   disabledDates,
   open: openProp,
   onOpenChange,
@@ -125,7 +104,7 @@ export const DatePicker = ({
   touched,
   invalid,
   slotProps,
-}: DatePickerProps) => {
+}: DateRangePickerProps) => {
   const isInvalid = invalid || !!errors?.length;
 
   // controlled when a change handler is provided (works for both TanStack form
@@ -143,16 +122,14 @@ export const DatePicker = ({
     onOpenChange?.(next);
   };
 
-  const commit = (date: Date | undefined) => {
-    if (!isControlled) setInternalValue(date);
-    onValueChange?.(date);
+  const commit = (range: DateRange | undefined) => {
+    if (!isControlled) setInternalValue(range);
+    onValueChange?.(range);
   };
 
-  const handleSelect = (date: Date | undefined) => {
-    // keep the previously chosen time of day when only the calendar day changes
-    commit(withTime && date ? withTimeOf(date, value) : date);
-    // leave the popup open when a time still needs to be picked
-    if (!withTime) setOpen(false);
+  const handleSelect = (range: DateRange | undefined) => {
+    // keep the popup open while picking; it closes on outside click / Escape
+    commit(range);
   };
 
   const handleClear = () => {
@@ -160,14 +137,22 @@ export const DatePicker = ({
     setOpen(false);
   };
 
-  const showClear = clearable && value !== undefined;
+  const showClear = clearable && value?.from !== undefined;
 
-  const resolvedFormat =
-    format ?? (withTime ? DEFAULT_FORMAT_WITH_TIME : DEFAULT_FORMAT);
+  const resolvedFormat = format ?? DEFAULT_FORMAT;
+  const formatter = new Intl.DateTimeFormat(locale, resolvedFormat);
 
-  const formatted = value
-    ? new Intl.DateTimeFormat(locale, resolvedFormat).format(value)
-    : null;
+  const formatted = value?.from ? (
+    <>
+      {formatter.format(value.from)}
+      {value.to && (
+        <>
+          <span className="text-muted-foreground px-1">{separator}</span>
+          {formatter.format(value.to)}
+        </>
+      )}
+    </>
+  ) : null;
 
   return (
     <BaseField.Root
@@ -203,7 +188,7 @@ export const DatePicker = ({
                   <span
                     className={cn(
                       "flex-1 truncate",
-                      !value && "text-muted-foreground",
+                      !value?.from && "text-muted-foreground",
                     )}
                   >
                     {formatted ?? placeholder}
@@ -218,24 +203,13 @@ export const DatePicker = ({
           <BaseDatePicker.Positioner {...slotProps?.positioner}>
             <BaseDatePicker.Popup {...slotProps?.popup}>
               <BaseCalendar
+                numberOfMonths={numberOfMonths}
                 {...slotProps?.calendar}
-                mode="single"
+                mode="range"
                 selected={value}
                 onSelect={handleSelect}
                 disabled={disabledDates}
               />
-
-              {withTime && (
-                <div className="border-border border-t p-3">
-                  <TimeInput
-                    withSeconds={timeStep === "seconds"}
-                    disabled={disabled}
-                    value={value}
-                    onValueChange={commit}
-                    {...slotProps?.timeInput}
-                  />
-                </div>
-              )}
 
               {showClear && (
                 <div className="border-border flex justify-end border-t p-2">
@@ -257,11 +231,18 @@ export const DatePicker = ({
       </BaseDatePicker.Root>
 
       {name && (
-        <input
-          type="hidden"
-          name={name}
-          value={value ? value.toISOString() : ""}
-        />
+        <>
+          <input
+            type="hidden"
+            name={`${name}.from`}
+            value={value?.from ? value.from.toISOString() : ""}
+          />
+          <input
+            type="hidden"
+            name={`${name}.to`}
+            value={value?.to ? value.to.toISOString() : ""}
+          />
+        </>
       )}
 
       <BaseField.Error errors={errors} {...slotProps?.error} />

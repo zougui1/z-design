@@ -19,6 +19,7 @@ export * from "./Container";
 export * from "./ContextMenu";
 export * from "./DataTable";
 export * from "./DatePicker";
+export * from "./DateRangePicker";
 export * from "./Dialog";
 export * from "./Drawer";
 export * from "./Empty";
