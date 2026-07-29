@@ -37,7 +37,7 @@
 .dark {
   --background: oklch(0.11 0.022 302);
   --background-dark: oklch(from var(--background) 0.07 c h);
-  --background-light: oklch(from var(--background) 0.3 c h);
+  --background-light: oklch(from var(--background) 0.24 c h);
 
   --foreground: oklch(95% 0.00011 271.152);
   --foreground-dark: oklch(1.489% 0.00011 271.152);

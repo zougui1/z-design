@@ -160,7 +160,7 @@ export function FormDemo() {
           {(field) => <field.DatePicker label="Birthday" clearable />}
         </form.AppField>
 
-        <div className="sm:col-span-2">
+        <div>
           <form.AppField name="stay">
             {(field) => (
               <field.DateRangePicker
