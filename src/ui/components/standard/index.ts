@@ -38,6 +38,7 @@ export * from "./Popover";
 export * from "./PreviewCard";
 export * from "./Progress";
 export * from "./Radio";
+export * from "./RelativeTime";
 export * from "./Resizable";
 export * from "./ScrollArea";
 export * from "./Select";
