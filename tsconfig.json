@@ -40,5 +40,5 @@
     ".next/dev/types/**/*.ts",
     "src/ui/components/base/BaseCombobox/BaseComboboxTriggerIcontsx"
   ],
-  "exclude": ["node_modules", "generated", "dist", ".next"]
+  "exclude": ["node_modules", "generated", "dist"]
 }

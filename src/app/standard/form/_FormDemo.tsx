@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { z } from "zod";
 
-import { useAppForm } from "~/ui/components";
+import { type DateRange, useAppForm } from "~/ui/components";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -21,6 +21,12 @@ const schema = z.object({
     invalid_type_error: "Please pick your birthday.",
     required_error: "Please pick your birthday.",
   }),
+  stay: z
+    .custom<DateRange>()
+    .refine(
+      (value) => Boolean(value?.from && value?.to),
+      "Please pick a start and end date.",
+    ),
   startTime: z.date({
     invalid_type_error: "Please pick a start time.",
     required_error: "Please pick a start time.",
@@ -65,6 +71,7 @@ export function FormDemo() {
       framework: "",
       age: null as number | null,
       birthday: undefined as Date | undefined,
+      stay: undefined as DateRange | undefined,
       startTime: undefined as Date | undefined,
       agree: false,
     },
@@ -78,91 +85,114 @@ export function FormDemo() {
 
   return (
     <form
-      className="flex max-w-md flex-col gap-5"
+      className="flex max-w-2xl flex-col gap-5"
       onSubmit={(event) => {
         event.preventDefault();
         event.stopPropagation();
         void form.handleSubmit();
       }}
     >
-      <form.AppField name="name">
-        {(field) => (
-          <field.Input
-            label="Name"
-            placeholder="Jane Doe"
-            description="Your full name."
-            clearable
-          />
-        )}
-      </form.AppField>
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <form.AppField name="name">
+          {(field) => (
+            <field.Input
+              label="Name"
+              placeholder="Jane Doe"
+              description="Your full name."
+              clearable
+            />
+          )}
+        </form.AppField>
 
-      <form.AppField name="bio">
-        {(field) => (
-          <field.Textarea label="Bio" placeholder="Tell us about yourself" />
-        )}
-      </form.AppField>
+        <form.AppField name="age">
+          {(field) => (
+            <field.NumberField
+              label="Age"
+              placeholder="18"
+              min={0}
+              description="Must be 18 or older."
+            />
+          )}
+        </form.AppField>
 
-      <form.AppField name="role">
-        {(field) => (
-          <field.Select
-            label="Role"
-            placeholder="Select a role"
-            items={roles}
-          />
-        )}
-      </form.AppField>
+        <div className="sm:col-span-2">
+          <form.AppField name="bio">
+            {(field) => (
+              <field.Textarea
+                label="Bio"
+                placeholder="Tell us about yourself"
+              />
+            )}
+          </form.AppField>
+        </div>
 
-      <form.AppField name="country">
-        {(field) => (
-          <field.Combobox
-            label="Country"
-            placeholder="Select a country"
-            items={countries}
-          />
-        )}
-      </form.AppField>
+        <form.AppField name="role">
+          {(field) => (
+            <field.Select
+              label="Role"
+              placeholder="Select a role"
+              items={roles}
+            />
+          )}
+        </form.AppField>
 
-      <form.AppField name="framework">
-        {(field) => (
-          <field.Autocomplete
-            label="Favorite framework"
-            placeholder="Search frameworks"
-            items={frameworks}
-          />
-        )}
-      </form.AppField>
+        <form.AppField name="country">
+          {(field) => (
+            <field.Combobox
+              label="Country"
+              placeholder="Select a country"
+              items={countries}
+            />
+          )}
+        </form.AppField>
 
-      <form.AppField name="age">
-        {(field) => (
-          <field.NumberField
-            label="Age"
-            placeholder="18"
-            min={0}
-            description="Must be 18 or older."
-          />
-        )}
-      </form.AppField>
+        <form.AppField name="framework">
+          {(field) => (
+            <field.Autocomplete
+              label="Favorite framework"
+              placeholder="Search frameworks"
+              items={frameworks}
+            />
+          )}
+        </form.AppField>
 
-      <form.AppField name="birthday">
-        {(field) => <field.DatePicker label="Birthday" />}
-      </form.AppField>
+        <form.AppField name="birthday">
+          {(field) => <field.DatePicker label="Birthday" clearable />}
+        </form.AppField>
 
-      <form.AppField name="startTime">
-        {(field) => (
-          <field.TimeInput label="Start time" description="When to begin." />
-        )}
-      </form.AppField>
+        <div>
+          <form.AppField name="stay">
+            {(field) => (
+              <field.DateRangePicker
+                label="Stay"
+                clearable
+                description="Select a check-in and check-out date."
+              />
+            )}
+          </form.AppField>
+        </div>
 
-      <form.AppField name="agree">
-        {(field) => (
-          <field.Checkbox label="I accept the terms and conditions" />
-        )}
-      </form.AppField>
+        <form.AppField name="startTime">
+          {(field) => (
+            <field.TimeInput label="Start time" description="When to begin." />
+          )}
+        </form.AppField>
+
+        <div className="sm:col-span-2">
+          <form.AppField name="agree">
+            {(field) => (
+              <field.Checkbox label="I accept the terms and conditions" />
+            )}
+          </form.AppField>
+        </div>
+      </div>
 
       <form.AppForm>
         <div className="flex gap-2">
           <form.SubmitButton>Submit</form.SubmitButton>
-          <form.ResetButton onClick={() => setSubmitted(null)}>Reset</form.ResetButton>
+          <form.ResetButton onClick={() => setSubmitted(null)}>
+            Reset
+          </form.ResetButton>
         </div>
       </form.AppForm>
 

@@ -418,6 +418,10 @@ const componentItems: GroupNavItem[] = [
         url: "/standard/radio",
       },
       {
+        label: "Relative Time",
+        url: "/standard/relative-time",
+      },
+      {
         label: "Resizable",
         url: "/standard/resizable",
       },
