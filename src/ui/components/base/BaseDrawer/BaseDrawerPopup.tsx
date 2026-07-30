@@ -16,8 +16,8 @@ export const BaseDrawerPopup = ({
       data-slot="drawer-popup"
       {...props}
       className={cnState(
-        `bg-background outline-border group/drawer-popup relative -mr-12
-        touch-auto overflow-y-auto overscroll-contain outline-1
+        `bg-background outline-border group/drawer-popup @container/drawer-popup
+        relative -mr-12 touch-auto overflow-y-auto overscroll-contain outline-1
         transition-transform duration-450 ease-[cubic-bezier(0.32,0.72,0,1)]
         [--bleed:3rem]
         data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)]
@@ -29,7 +29,7 @@ export const BaseDrawerPopup = ({
         supports-[-webkit-touch-callout:none]:[--bleed:0px]`,
 
         `group-data-[side=right]/drawer-viewport:h-full
-        group-data-[side=right]/drawer-viewport:w-92
+        group-data-[side=right]/drawer-viewport:w-lg
         group-data-[side=right]/drawer-viewport:max-w-[calc(100vw-3rem+3rem)]
         group-data-[side=right]/drawer-viewport:transform-[translateX(var(--drawer-swipe-movement-x))]
         group-data-[side=right]/drawer-viewport:pr-14
@@ -44,7 +44,7 @@ export const BaseDrawerPopup = ({
         group-data-[side=bottom]/drawer-viewport:data-starting-style:transform-[translateY(calc(100%-var(--bleed)+var(--viewport-padding)+2px))]`,
 
         `group-data-[side=left]/drawer-viewport:h-full
-        group-data-[side=left]/drawer-viewport:w-92
+        group-data-[side=left]/drawer-viewport:w-lg
         group-data-[side=left]/drawer-viewport:max-w-[calc(100vw-3rem+3rem)]
         group-data-[side=left]/drawer-viewport:transform-[translateX(var(--drawer-swipe-movement-x))]
         group-data-[side=left]/drawer-viewport:data-ending-style:transform-[translateX(calc(var(--viewport-padding)-var(--bleed)-2px))]

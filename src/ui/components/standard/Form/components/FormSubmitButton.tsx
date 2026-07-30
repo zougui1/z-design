@@ -24,10 +24,10 @@ export default function FormSubmitButton({
         <Button
           {...props}
           type="submit"
-          disabled={disabled ?? !canSubmit}
+          disabled={disabled || !canSubmit || isSubmitting}
           loading={loading ?? isSubmitting}
         >
-          {children}
+          {isSubmitting ? "Submitting..." : children}
         </Button>
       )}
     </form.Subscribe>

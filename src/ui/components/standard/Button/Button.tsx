@@ -2,7 +2,7 @@
 
 import { Check, X } from "lucide-react";
 
-import { cn } from "~/ui/utils";
+import { cn, cnState } from "~/ui/utils";
 
 import { BaseButton } from "../../base";
 import { PrimitiveCopy } from "../../primitives/PrimitiveCopy";
@@ -85,13 +85,17 @@ export const Button = ({
   return (
     <div
       {...slotProps?.loadingContainer}
-      className={cn("relative", slotProps?.loadingContainer?.className)}
+      className={cn(
+        "relative inline-flex",
+        slotProps?.loadingContainer?.className,
+      )}
     >
       <BaseButton
         focusableWhenDisabled
         {...props}
         disabled={isDisabled}
         children={children}
+        className={cnState("flex-1", props.className)}
       />
 
       <Spinner

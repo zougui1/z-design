@@ -17,7 +17,7 @@ export const BaseDrawerBody = ({
     props: mergeProps<"div">(
       {
         ...{ "data-slot": "drawer-body" },
-        className: cn("mt-auto flex flex-col gap-2 p-4", className),
+        className: cn("mt-auto flex flex-col gap-2 p-4 flex-1", className),
       },
       props,
     ),
