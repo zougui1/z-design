@@ -8,6 +8,7 @@ const schema = z.object({
   name: z.string().min(1, "Name is required."),
   role: z.string().min(1, "Please pick a role."),
   role2: z.string().min(1, "Please pick a role."),
+  skills: z.array(z.string()),
   agree: z.boolean().refine((value) => value, "You must accept the terms."),
 });
 
@@ -27,6 +28,7 @@ export function useProfileForm(onSubmit: (value: ProfileValues) => void) {
       name: "",
       role: "",
       role2: "",
+      skills: ["engineer", "designer"],
       agree: false,
     },
     validators: {
@@ -67,6 +69,18 @@ export function ProfileFields({
           <field.Combobox
             label="Role"
             placeholder="Select a role"
+            items={roles}
+          />
+        )}
+      </form.AppField>
+
+      <form.AppField name="skills">
+        {(field) => (
+          <field.Select
+            multiple
+            disabled
+            label="Skills"
+            placeholder="Select skills"
             items={roles}
           />
         )}
