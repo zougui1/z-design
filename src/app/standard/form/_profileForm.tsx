@@ -7,6 +7,7 @@ import { useAppForm } from "~/ui/components";
 const schema = z.object({
   name: z.string().min(1, "Name is required."),
   role: z.string().min(1, "Please pick a role."),
+  role2: z.string().min(1, "Please pick a role."),
   agree: z.boolean().refine((value) => value, "You must accept the terms."),
 });
 
@@ -25,6 +26,7 @@ export function useProfileForm(onSubmit: (value: ProfileValues) => void) {
     defaultValues: {
       name: "",
       role: "",
+      role2: "",
       agree: false,
     },
     validators: {
@@ -53,6 +55,16 @@ export function ProfileFields({
       <form.AppField name="role">
         {(field) => (
           <field.Select
+            label="Role"
+            placeholder="Select a role"
+            items={roles}
+          />
+        )}
+      </form.AppField>
+
+      <form.AppField name="role2">
+        {(field) => (
+          <field.Combobox
             label="Role"
             placeholder="Select a role"
             items={roles}
