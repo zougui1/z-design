@@ -3,14 +3,21 @@
 import { cnState } from "../../../utils";
 import { PrimitiveMenu } from "../../primitives";
 
-export interface BaseMenuItemProps extends PrimitiveMenu.Item.Props {}
+export interface BaseMenuItemProps extends PrimitiveMenu.Item.Props {
+  variant?: "default" | "destructive";
+}
 
 export type BaseMenuItemState = PrimitiveMenu.Item.State;
 
-export const BaseMenuItem = ({ className, ...props }: BaseMenuItemProps) => {
+export const BaseMenuItem = ({
+  className,
+  variant,
+  ...props
+}: BaseMenuItemProps) => {
   return (
     <PrimitiveMenu.Item
       data-slot="menu-item"
+      data-variant={variant}
       {...props}
       className={cnState(
         `group/dropdown-menu-item focus:bg-accent focus:text-accent-foreground
