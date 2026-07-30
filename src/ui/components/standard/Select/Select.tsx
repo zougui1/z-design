@@ -16,7 +16,8 @@ export interface SelectItem<Value> {
 export interface SelectProps<
   Value,
   Multiple extends boolean | undefined = false,
-> extends
+>
+  extends
     Omit<BaseSelect.RootProps<Value, Multiple>, "items">,
     Pick<BaseField.Root.Props, "dirty" | "touched" | "invalid"> {
   items: SelectItem<Value>[];
@@ -24,6 +25,14 @@ export interface SelectProps<
   errors?: { message?: string }[];
   description?: React.ReactNode;
   placeholder?: React.ReactNode;
+  /**
+   * Renders the selected value(s) in the trigger. Shorthand for
+   * `slotProps.value.children`. Receives the current value — a single value,
+   * or an array when `multiple`.
+   */
+  renderValues?: (
+    value: (Multiple extends true ? Value[] : Value) | null,
+  ) => React.ReactNode;
   slotProps?: {
     root?: Partial<
       Omit<BaseField.Root.Props, "children" | "dirty" | "touched" | "invalid">
@@ -51,6 +60,7 @@ export function Select<Value, Multiple extends boolean | undefined = false>({
   errors,
   description,
   placeholder,
+  renderValues,
   disabled,
   dirty,
   touched,
@@ -80,7 +90,11 @@ export function Select<Value, Multiple extends boolean | undefined = false>({
               aria-invalid={isInvalid || undefined}
               {...slotProps?.trigger}
             >
-              <BaseSelect.Value placeholder={placeholder} {...slotProps?.value} />
+              <BaseSelect.Value
+                placeholder={placeholder}
+                children={renderValues}
+                {...slotProps?.value}
+              />
               <BaseSelect.Icon {...slotProps?.icon} />
             </BaseSelect.Trigger>
           }
@@ -103,7 +117,9 @@ export function Select<Value, Multiple extends boolean | undefined = false>({
                       {item.label}
                     </BaseSelect.ItemText>
 
-                    <BaseSelect.ItemIndicator {...item.slotProps?.itemIndicator} />
+                    <BaseSelect.ItemIndicator
+                      {...item.slotProps?.itemIndicator}
+                    />
                   </BaseSelect.Item>
                 ))}
               </BaseSelect.List>
