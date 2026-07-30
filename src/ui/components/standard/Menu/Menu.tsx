@@ -1,6 +1,6 @@
 "use client";
 
-import { BaseButton, BaseMenu } from "../../base";
+import { BaseMenu } from "../../base";
 
 export interface MenuActionItem extends Omit<
   BaseMenu.Item.Props,
@@ -47,10 +47,9 @@ export type MenuItem =
   | MenuGroupLabelItem;
 
 export interface MenuProps extends BaseMenu.Root.Props {
-  trigger: React.ReactNode;
+  trigger: React.ReactElement;
   items: MenuItem[];
   slotProps?: {
-    trigger?: Partial<BaseButton.Props>;
     portal?: Partial<BaseMenu.Portal.Props>;
     positioner?: Partial<BaseMenu.Positioner.Props>;
     popup?: Partial<BaseMenu.Popup.Props>;
@@ -72,9 +71,7 @@ export interface MenuProps extends BaseMenu.Root.Props {
 export const Menu = ({ trigger, items, slotProps, ...props }: MenuProps) => {
   return (
     <BaseMenu.Root {...props}>
-      <BaseMenu.Trigger render={<BaseButton {...slotProps?.trigger} />}>
-        {trigger}
-      </BaseMenu.Trigger>
+      <BaseMenu.Trigger render={trigger} />
 
       <BaseMenu.Portal {...slotProps?.portal}>
         <BaseMenu.Positioner {...slotProps?.positioner}>
