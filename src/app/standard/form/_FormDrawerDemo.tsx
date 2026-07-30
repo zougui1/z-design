@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { Button } from "~/ui";
+
 import {
   ProfileFields,
   type ProfileValues,
@@ -26,7 +28,7 @@ export function FormDrawerDemo() {
         </p>
 
         <form.Drawer
-          trigger="Edit profile"
+          trigger={<Button>Edit profile</Button>}
           title="Edit profile"
           description="Fill in your details and save."
           side="right"
