@@ -24,11 +24,13 @@ export interface DataTableRootProps<
   getRowId?: (row: TData, index: number, parent?: Row<TData>) => string;
 
   sorting?: SortingState;
+  defaultSorting?: SortingState;
   onSortingChange?: OnChangeFn<SortingState>;
   enableSorting?: boolean;
   enableSortingRemoval?: boolean;
 
   rowSelection?: RowSelectionState;
+  defaultRowSelection?: RowSelectionState;
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;
   enableRowSelection?: boolean | ((row: Row<TData>) => boolean);
 
@@ -44,18 +46,21 @@ export function DataTableRoot<
   columns,
   getRowId,
   sorting: sortingProp,
+  defaultSorting = [],
   onSortingChange,
   enableSorting,
   enableSortingRemoval = true,
   rowSelection: rowSelectionProp,
+  defaultRowSelection = {},
   onRowSelectionChange,
   enableRowSelection,
   tableOptions,
   ...props
 }: DataTableRootProps<TData, TValue>) {
-  const [internalSorting, setInternalSorting] = useState<SortingState>([]);
+  const [internalSorting, setInternalSorting] =
+    useState<SortingState>(defaultSorting);
   const [internalSelection, setInternalSelection] =
-    useState<RowSelectionState>({});
+    useState<RowSelectionState>(defaultRowSelection);
 
   const sorting = sortingProp ?? internalSorting;
   const rowSelection = rowSelectionProp ?? internalSelection;
