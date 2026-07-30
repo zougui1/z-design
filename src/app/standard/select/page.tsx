@@ -70,6 +70,26 @@ export default function SelectPage() {
             errors={[{ message: "Please choose an apple." }]}
           />
         </Section>
+
+        <Section title="Multiple" className="flex-col">
+          <Select
+            multiple
+            label="Apple"
+            items={apples}
+            placeholder="Select apples"
+          />
+        </Section>
+
+        <Section title="Multiple (disabled)" className="flex-col">
+          <Select
+            multiple
+            disabled
+            label="Apple"
+            items={apples}
+            placeholder="Select apples"
+            defaultValue={["gala", "fuji"]}
+          />
+        </Section>
       </div>
     </Container>
   );
