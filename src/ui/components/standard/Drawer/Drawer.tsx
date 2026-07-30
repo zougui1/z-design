@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 import { mergeRefs } from "~/ui/utils";
 
-import { BaseButton, BaseDrawer } from "../../base";
+import { BaseDrawer } from "../../base";
 import { Button, type ButtonProps } from "../Button";
 
 type DrawerSide = BaseDrawer.Viewport.Props["side"];
@@ -32,7 +32,7 @@ export interface DrawerProps extends Omit<
   BaseDrawer.Root.Props,
   "swipeDirection" | "children"
 > {
-  trigger?: React.ReactNode;
+  trigger?: React.ReactElement;
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -43,7 +43,6 @@ export interface DrawerProps extends Omit<
   side?: DrawerSide;
   hideHandle?: boolean;
   slotProps?: {
-    trigger?: Partial<BaseButton.Props>;
     portal?: Partial<BaseDrawer.Portal.Props>;
     backdrop?: Partial<BaseDrawer.Backdrop.Props>;
     viewport?: Partial<Omit<BaseDrawer.Viewport.Props, "side">>;
@@ -79,11 +78,7 @@ export const Drawer = ({
 
   return (
     <BaseDrawer.Root swipeDirection={swipeBySide[side ?? "right"]} {...props}>
-      {trigger != null && (
-        <BaseDrawer.Trigger render={<BaseButton {...slotProps?.trigger} />}>
-          {trigger}
-        </BaseDrawer.Trigger>
-      )}
+      {trigger && <BaseDrawer.Trigger render={trigger} />}
 
       <BaseDrawer.Portal {...slotProps?.portal}>
         <BaseDrawer.Backdrop {...slotProps?.backdrop} />

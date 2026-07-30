@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 import { mergeRefs } from "~/ui/utils";
 
-import { BaseButton, BaseDialog } from "../../base";
+import { BaseDialog } from "../../base";
 import { Button, type ButtonProps } from "../Button";
 
 export interface DialogAction extends Omit<ButtonProps, "onClick"> {
@@ -21,7 +21,7 @@ export interface DialogAction extends Omit<ButtonProps, "onClick"> {
 
 export interface DialogProps extends Omit<BaseDialog.Root.Props, "children"> {
   /** Rendered inside a default Button trigger. Omit for fully controlled use. */
-  trigger?: React.ReactNode;
+  trigger?: React.ReactElement;
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -29,7 +29,6 @@ export interface DialogProps extends Omit<BaseDialog.Root.Props, "children"> {
   /** Buttons rendered in the footer. Ignored when `footer` is provided. */
   actions?: DialogAction[];
   slotProps?: {
-    trigger?: Partial<BaseButton.Props>;
     portal?: Partial<BaseDialog.Portal.Props>;
     backdrop?: Partial<BaseDialog.Backdrop.Props>;
     popup?: Partial<BaseDialog.Popup.Props>;
@@ -59,11 +58,7 @@ export const Dialog = ({
 
   return (
     <BaseDialog.Root {...props}>
-      {trigger != null && (
-        <BaseDialog.Trigger render={<BaseButton {...slotProps?.trigger} />}>
-          {trigger}
-        </BaseDialog.Trigger>
-      )}
+      {trigger && <BaseDialog.Trigger render={trigger} />}
 
       <BaseDialog.Portal {...slotProps?.portal}>
         <BaseDialog.Backdrop {...slotProps?.backdrop} />
@@ -77,7 +72,9 @@ export const Dialog = ({
           {(title || description) && (
             <BaseDialog.Header {...slotProps?.header}>
               {title && (
-                <BaseDialog.Title {...slotProps?.title}>{title}</BaseDialog.Title>
+                <BaseDialog.Title {...slotProps?.title}>
+                  {title}
+                </BaseDialog.Title>
               )}
               {description && (
                 <BaseDialog.Description {...slotProps?.description}>
@@ -90,7 +87,9 @@ export const Dialog = ({
           {children}
 
           {footer ? (
-            <BaseDialog.Footer {...slotProps?.footer}>{footer}</BaseDialog.Footer>
+            <BaseDialog.Footer {...slotProps?.footer}>
+              {footer}
+            </BaseDialog.Footer>
           ) : actions && actions.length > 0 ? (
             <BaseDialog.Footer {...slotProps?.footer}>
               {actions.map(
