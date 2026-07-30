@@ -16,7 +16,7 @@ export const BaseDrawerContent = ({
       data-slot="drawer-content"
       {...props}
       className={cnState(
-        "mx-auto w-full max-w-lg",
+        "mx-auto flex h-full w-full max-w-xl flex-col",
 
         "group-has-data-[slot=drawer-handle]/drawer-popup:group-data-[side=right]/drawer-viewport:pl-4",
 

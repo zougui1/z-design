@@ -28,8 +28,10 @@ const swipeBySide = {
   bottom: "down",
 } as const;
 
-export interface DrawerProps
-  extends Omit<BaseDrawer.Root.Props, "swipeDirection" | "children"> {
+export interface DrawerProps extends Omit<
+  BaseDrawer.Root.Props,
+  "swipeDirection" | "children"
+> {
   trigger?: React.ReactNode;
   children?: React.ReactNode;
   title?: React.ReactNode;
@@ -53,6 +55,8 @@ export interface DrawerProps
     description?: Partial<BaseDrawer.Description.Props>;
     body?: Partial<BaseDrawer.Body.Props>;
     footer?: Partial<BaseDrawer.Footer.Props>;
+    /** Applied to every button rendered from `actions`. */
+    action?: Partial<ButtonProps>;
     /** The hidden close button used to dismiss the drawer programmatically. */
     close?: Partial<BaseDrawer.Close.Props>;
   };
@@ -74,10 +78,7 @@ export const Drawer = ({
   const close = () => closeButtonRef.current?.click();
 
   return (
-    <BaseDrawer.Root
-      swipeDirection={swipeBySide[side ?? "right"]}
-      {...props}
-    >
+    <BaseDrawer.Root swipeDirection={swipeBySide[side ?? "right"]} {...props}>
       {trigger != null && (
         <BaseDrawer.Trigger render={<BaseButton {...slotProps?.trigger} />}>
           {trigger}
@@ -124,6 +125,7 @@ export const Drawer = ({
                       ({ key, closeOnClick, onClick, ...action }, index) => (
                         <Button
                           key={key ?? index}
+                          {...slotProps?.action}
                           {...action}
                           onClick={(event) => {
                             onClick?.(event, close);

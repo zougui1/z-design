@@ -37,6 +37,8 @@ export interface DialogProps extends Omit<BaseDialog.Root.Props, "children"> {
     title?: Partial<BaseDialog.Title.Props>;
     description?: Partial<BaseDialog.Description.Props>;
     footer?: Partial<BaseDialog.Footer.Props>;
+    /** Applied to every button rendered from `actions`. */
+    action?: Partial<ButtonProps>;
     /** The hidden close button used to dismiss the dialog programmatically. */
     close?: Partial<BaseDialog.Close.Props>;
   };
@@ -95,6 +97,7 @@ export const Dialog = ({
                 ({ key, closeOnClick, onClick, ...action }, index) => (
                   <Button
                     key={key ?? index}
+                    {...slotProps?.action}
                     {...action}
                     onClick={(event) => {
                       onClick?.(event, close);

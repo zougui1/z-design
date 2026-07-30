@@ -17,7 +17,10 @@ export const BaseDrawerFooter = ({
     props: mergeProps<"div">(
       {
         ...{ "data-slot": "drawer-footer" },
-        className: cn("mt-auto flex flex-col gap-2 p-4", className),
+        className: cn(
+          "mt-auto flex flex-col @md/drawer-popup:flex-row @md/drawer-popup:*:flex-1 gap-2 py-4",
+          className,
+        ),
       },
       props,
     ),
