@@ -6,7 +6,11 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "~/ui/utils";
 
-import { BaseButton, BaseCollapsible, BaseSidebar as SidebarBase } from "../../base";
+import {
+  BaseButton,
+  BaseCollapsible,
+  BaseSidebar as SidebarBase,
+} from "../../base";
 
 export interface SidebarNavLink {
   label: React.ReactNode;
@@ -163,7 +167,7 @@ export const Sidebar = ({
           <SidebarBase.MenuButton
             tooltip={toTooltip(item.label)}
             isActive={active(item.href)}
-            render={<Link href={item.href} />}
+            render={<Link href={item.href as any} />}
             nativeButton={false}
           >
             {content}
@@ -202,11 +206,14 @@ export const Sidebar = ({
         <BaseCollapsible.Panel>
           <SidebarBase.MenuSub>
             {item.items.map((sub) => (
-              <SidebarBase.MenuSubItem key={keyOf(sub)} className={sub.className}>
+              <SidebarBase.MenuSubItem
+                key={keyOf(sub)}
+                className={sub.className}
+              >
                 {sub.href ? (
                   <SidebarBase.MenuSubButton
                     isActive={active(sub.href)}
-                    render={<Link href={sub.href} />}
+                    render={<Link href={sub.href as any} />}
                   >
                     {sub.icon}
                     <span>{sub.label}</span>
