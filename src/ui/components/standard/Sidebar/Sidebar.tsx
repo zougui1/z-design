@@ -21,6 +21,7 @@ export interface SidebarNavLink {
   /** Nested links render as a collapsible submenu. */
   items?: SidebarNavLink[];
   defaultOpen?: boolean;
+  isActive?: boolean;
 }
 
 export interface SidebarNavGroup {
@@ -144,10 +145,46 @@ export const Sidebar = ({
 
   const pathname = usePathname();
 
-  const active = (href?: string) => {
-    if (!href) return false;
-    if (isActive) return isActive(href);
-    return pathname === href || pathname.startsWith(`${href}/`);
+  // Internal path-based detection matches a link when the current path equals
+  // its href or sits below it. Multiple links can match at once (e.g. `/settings`
+  // and `/settings/profile` on `/settings/profile`), so we keep only the most
+  // specific one — the longest matching href — to leave a single internally
+  // active link. Explicit `isActive` overrides bypass this and may mark any
+  // number of links active.
+  const matchesPath = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
+
+  const mostSpecificHref = (() => {
+    // When the `isActive` prop override is supplied it fully replaces internal
+    // detection, so there is no single-match to compute.
+    if (isActive) return undefined;
+
+    let best: string | undefined;
+
+    const visit = (items: SidebarNavLink[]) => {
+      for (const item of items) {
+        if (item.href && matchesPath(item.href)) {
+          if (best === undefined || item.href.length > best.length) {
+            best = item.href;
+          }
+        }
+
+        if (item.items?.length) visit(item.items);
+      }
+    };
+
+    for (const group of groups) visit(group.items);
+
+    return best;
+  })();
+
+  const active = (item: SidebarNavLink) => {
+    // Explicit per-item override wins and is not subject to the single-active
+    // limit — callers may mark as many links active as they want.
+    if (item.isActive) return true;
+    if (!item.href) return false;
+    if (isActive) return isActive(item.href);
+    return item.href === mostSpecificHref;
   };
 
   const renderLeaf = (item: SidebarNavLink) => {
@@ -166,7 +203,7 @@ export const Sidebar = ({
         {item.href ? (
           <SidebarBase.MenuButton
             tooltip={toTooltip(item.label)}
-            isActive={active(item.href)}
+            isActive={active(item)}
             render={<Link href={item.href as any} />}
             nativeButton={false}
           >
@@ -184,7 +221,7 @@ export const Sidebar = ({
   const renderItem = (item: SidebarNavLink) => {
     if (!item.items?.length) return renderLeaf(item);
 
-    const groupActive = item.items.some((sub) => active(sub.href));
+    const groupActive = item.items.some((sub) => active(sub));
 
     return (
       <BaseCollapsible.Root
@@ -212,7 +249,7 @@ export const Sidebar = ({
               >
                 {sub.href ? (
                   <SidebarBase.MenuSubButton
-                    isActive={active(sub.href)}
+                    isActive={active(sub)}
                     render={<Link href={sub.href as any} />}
                   >
                     {sub.icon}
