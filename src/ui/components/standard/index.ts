@@ -27,6 +27,7 @@ export * from "./Empty";
 export * from "./Field";
 export * from "./Fieldset";
 export * from "./Form";
+export * from "./Header";
 export * from "./Input";
 export * from "./Kbd";
 export * from "./Link";

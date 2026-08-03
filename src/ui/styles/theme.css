@@ -32,3 +32,64 @@
     @apply bg-background-dark text-foreground;
   }
 }
+
+@layer components {
+  /*
+   * Direction-aware sticky header (see the `Header` component). The root scroller
+   * is turned into a `scroll-state` container so descendants can react to its
+   * scroll direction with pure CSS — no JS listener. `container-type: scroll-state`
+   * has no layout/paint side effects, so this is safe to set on the document root.
+   */
+  html {
+    container-type: scroll-state;
+    --header-height: 3.5rem;
+  }
+
+  .header-hide-on-scroll {
+    translate: 0 0;
+    transition: translate 0.3s ease;
+  }
+
+  /*
+   * `scrolled: bottom` matches while the root's last scroll direction was
+   * downward. Being shown by default means the header is visible at the top of
+   * the page and whenever scrolling up. The `:not(:focus-within)` guard keeps it
+   * in place while a control inside it (menu, search…) has focus. Unsupported
+   * browsers ignore this rule and keep a plain sticky header.
+   */
+  @container scroll-state(scrolled: bottom) {
+    .header-hide-on-scroll:not(:focus-within) {
+      translate: 0 -100%;
+    }
+  }
+}
+
+/*
+ * Offsets the fixed desktop sidebar down so it sits below the full-width header.
+ * Deliberately UNLAYERED: these override the base sidebar's `inset-y-0`/`h-svh`
+ * utilities, and Tailwind's `utilities` layer beats any `@layer components` rule
+ * by layer order regardless of specificity — so an unlayered rule is the only
+ * thing that reliably wins. Guarded to md+ so the mobile drawer (which receives
+ * the same class via `slotProps.root`) is left alone.
+ */
+@media (width >= 48rem) {
+  .sidebar-below-header {
+    top: var(--header-height);
+    height: calc(100svh - var(--header-height));
+    /* Keep the base collapse animation (left/width) while adding top/height. */
+    transition:
+      top 0.3s ease,
+      height 0.3s ease,
+      left 0.2s linear,
+      width 0.2s linear;
+  }
+
+  /* When the header hides on scroll-down, the sidebar reclaims the vacated
+     strip so no gap is left above it. */
+  @container scroll-state(scrolled: bottom) {
+    .sidebar-below-header {
+      top: 0;
+      height: 100svh;
+    }
+  }
+}

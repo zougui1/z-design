@@ -528,9 +528,11 @@ export interface AppSidebarProps {
 export const AppSidebar = ({ children }: AppSidebarProps) => {
   return (
     <Sidebar
-      title="Z Design"
       groups={groups}
-      slotProps={{ provider: { className: "isolate" } }}
+      slotProps={{
+        provider: { className: "isolate" },
+        root: { className: "sidebar-below-header" },
+      }}
     >
       {children}
     </Sidebar>

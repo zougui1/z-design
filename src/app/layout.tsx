@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { AppSidebar } from "~/components/AppSidebar";
+import { Header, Link, Typography } from "~/ui/components";
 import "~/ui/styles/theme.css";
 import { cn } from "~/ui/utils";
 
@@ -22,6 +23,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", geist.variable)}>
       <body className="relative min-h-svh">
+        <Header
+          className="border-border bg-background/85 flex h-(--header-height)
+            items-center gap-4 border-b px-6 backdrop-blur-xs"
+        >
+          <Link href="/">
+            <Typography.H4 className="font-semibold">Z Design</Typography.H4>
+          </Link>
+        </Header>
+
         <AppSidebar>{children}</AppSidebar>
       </body>
     </html>
