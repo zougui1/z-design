@@ -168,10 +168,6 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Base Link",
-        url: "/base/base-link",
-      },
-      {
         label: "Base Menu",
         url: "/base/base-menu",
       },

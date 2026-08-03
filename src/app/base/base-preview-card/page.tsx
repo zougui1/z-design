@@ -1,7 +1,7 @@
 import {
-  BaseLink,
   BasePreviewCard,
   Container,
+  Link,
   Typography,
 } from "~/ui/components";
 import { cn } from "~/ui/utils";
@@ -50,9 +50,9 @@ export default function BasePreviewCardPage() {
             <BasePreviewCard.Root key={side}>
               <BasePreviewCard.Trigger
                 render={
-                  <BaseLink href="#" className="capitalize">
+                  <Link href="#" className="capitalize">
                     {side}
-                  </BaseLink>
+                  </Link>
                 }
               />
 
@@ -72,7 +72,7 @@ export default function BasePreviewCardPage() {
           <p className="max-w-prose">
             Built with{" "}
             <BasePreviewCard.Root>
-              <BasePreviewCard.Trigger render={<BaseLink href="#">Base UI</BaseLink>} />
+              <BasePreviewCard.Trigger render={<Link href="#">Base UI</Link>} />
 
               <BasePreviewCard.Portal>
                 <BasePreviewCard.Positioner>
