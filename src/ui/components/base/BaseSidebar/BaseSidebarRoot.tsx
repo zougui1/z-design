@@ -43,9 +43,11 @@ export function BaseSidebarRoot({
         swipeDirection="left"
       >
         <BaseDrawer.Portal>
-          <BaseDrawer.Backdrop />
+          {/* Sit above app chrome (e.g. a sticky header) so the drawer and its
+              backdrop cover it rather than sliding underneath. */}
+          <BaseDrawer.Backdrop className="z-50" />
 
-          <BaseDrawer.Viewport side="left">
+          <BaseDrawer.Viewport side="left" className="z-50">
             <BaseDrawer.Popup
               data-sidebar="sidebar"
               data-slot="sidebar"
