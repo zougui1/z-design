@@ -486,6 +486,23 @@ const componentItems: GroupNavItem[] = [
   },
 ];
 
+const featureItems: GroupNavItem[] = [
+  {
+    label: "Apps",
+    collapsible: true,
+    items: [
+      {
+        label: "App Menu",
+        url: "/features/app-menu",
+      },
+      {
+        label: "Deployment Badge",
+        url: "/features/deployment-badge",
+      },
+    ],
+  },
+];
+
 const prototypeItems: GroupNavItem[] = [
   {
     label: "Firestone",
@@ -514,6 +531,7 @@ const toGroupLink = (item: GroupNavItem): SidebarNavLink => ({
 const groups: SidebarNavGroup[] = [
   { label: "Theme", items: themeItems.map(toLink) },
   { label: "Components", items: componentItems.map(toGroupLink) },
+  { label: "Features", items: featureItems.map(toGroupLink) },
   { label: "Prototypes", items: prototypeItems.map(toGroupLink) },
 ];
 
