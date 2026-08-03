@@ -493,11 +493,11 @@ const featureItems: GroupNavItem[] = [
     items: [
       {
         label: "App Menu",
-        url: "/features/app-menu",
+        url: "/features/apps/app-menu",
       },
       {
         label: "Deployment Badge",
-        url: "/features/deployment-badge",
+        url: "/features/apps/deployment-badge",
       },
     ],
   },
