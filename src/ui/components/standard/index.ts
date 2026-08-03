@@ -1,6 +1,7 @@
 export * from "./Accordion";
 export * from "./Alert";
 export * from "./AlertDialog";
+export * from "./AppMenu";
 export * from "./AspectRatio";
 export * from "./Autocomplete";
 export * from "./Avatar";
