@@ -536,13 +536,15 @@ const groups: SidebarNavGroup[] = [
 ];
 
 export interface AppSidebarProps {
+  banner?: React.ReactNode;
   children?: React.ReactNode;
 }
 
-export const AppSidebar = ({ children }: AppSidebarProps) => {
+export const AppSidebar = ({ banner, children }: AppSidebarProps) => {
   return (
     <Sidebar
       groups={groups}
+      banner={banner}
       slotProps={{
         provider: { className: "isolate" },
         root: { className: "sidebar-below-header" },

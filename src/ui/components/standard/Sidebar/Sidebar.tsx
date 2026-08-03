@@ -3,6 +3,7 @@
 import { ChevronsLeftIcon, PanelLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 
 import { cn } from "~/ui/utils";
 
@@ -34,6 +35,13 @@ export interface SidebarProps {
   /** Convenience title rendered inside the header. Ignored when `header` is set. */
   title?: React.ReactNode;
   header?: React.ReactNode;
+  /**
+   * Full-width bar rendered inside the provider, above the sidebar + content
+   * row. Because it lives within the provider it can host a sidebar toggle (see
+   * {@link SidebarBase.Trigger}). When set, the built-in mobile toggle bar in the
+   * inset is dropped — place the toggle in the banner instead.
+   */
+  banner?: React.ReactNode;
   footer?: React.ReactNode;
   groups: SidebarNavGroup[];
   /**
@@ -68,22 +76,39 @@ export interface SidebarProps {
 }
 
 /**
- * Header inner content + the collapse/expand controls. Lives inside the Provider
- * subtree so it can read the sidebar state via `useSidebar`. The desktop
- * controls are driven by the sidebar's `group` data-state (absent on the mobile
- * drawer); the double-chevron also shows on mobile to close the drawer.
+ * The sidebar header: holds the optional header content, the desktop
+ * collapse/expand controls, and — on the mobile drawer — a close button. Lives
+ * inside the Provider subtree so it can read the sidebar state via `useSidebar`.
+ * The desktop controls are driven by the sidebar's `group` data-state (absent on
+ * the mobile drawer); the double-chevron also shows on mobile to close the
+ * drawer.
+ *
+ * Renders nothing on desktop when there's no header content and no collapse
+ * control, so bare sidebars stay flush — but always renders on the mobile drawer
+ * so the close button is reachable.
  */
-const SidebarHeaderContent = ({
+const SidebarHeaderSlot = ({
   content,
   collapsible,
+  headerProps,
 }: {
   content: React.ReactNode;
   collapsible: boolean;
+  headerProps?: Partial<SidebarBase.HeaderProps>;
 }) => {
   const { toggleSidebar, isMobile } = SidebarBase.useSidebar();
 
+  if (content == null && !collapsible && !isMobile) return null;
+
   return (
-    <>
+    <SidebarBase.Header
+      {...headerProps}
+      className={cn(
+        "flex-row items-center gap-2",
+        "group-data-[state=collapsed]:justify-center",
+        headerProps?.className,
+      )}
+    >
       {collapsible && (
         <BaseButton
           variant="ghost"
@@ -119,13 +144,14 @@ const SidebarHeaderContent = ({
       >
         <ChevronsLeftIcon />
       </BaseButton>
-    </>
+    </SidebarBase.Header>
   );
 };
 
 export const Sidebar = ({
   title,
   header,
+  banner,
   footer,
   groups,
   collapsible = false,
@@ -269,32 +295,41 @@ export const Sidebar = ({
     );
   };
 
-  return (
-    <SidebarBase.Provider
-      defaultOpen={defaultOpen}
-      open={open}
-      onOpenChange={onOpenChange}
-      {...slotProps?.provider}
-    >
+  // The mobile toggle bar in the inset only exists to reach the sidebar when
+  // there's no other trigger. With a banner the toggle lives there instead, so
+  // the inset bar is kept only when a toolbar needs a home.
+  const insetHeader =
+    banner == null || toolbar != null ? (
+      <header
+        className={cn(
+          `bg-background border-border sticky top-0 z-10 flex h-12 shrink-0
+          items-center gap-2 border-b px-4`,
+          // The trigger is the bar's only content on mobile; with no toolbar
+          // there's nothing to show on desktop, so drop the empty bar.
+          !toolbar && "md:hidden",
+        )}
+      >
+        {banner == null && (
+          <SidebarBase.Trigger
+            {...slotProps?.trigger}
+            className={cn("md:hidden", slotProps?.trigger?.className)}
+          />
+        )}
+        {toolbar}
+      </header>
+    ) : null;
+
+  const body = (
+    <>
       <SidebarBase.Root
         collapsible={collapsible ? "icon" : "offcanvas"}
         {...slotProps?.root}
       >
-        {(headerContent != null || collapsible) && (
-          <SidebarBase.Header
-            {...slotProps?.header}
-            className={cn(
-              "flex-row items-center gap-2",
-              "group-data-[state=collapsed]:justify-center",
-              slotProps?.header?.className,
-            )}
-          >
-            <SidebarHeaderContent
-              content={headerContent}
-              collapsible={collapsible}
-            />
-          </SidebarBase.Header>
-        )}
+        <SidebarHeaderSlot
+          content={headerContent}
+          collapsible={collapsible}
+          headerProps={slotProps?.header}
+        />
 
         <SidebarBase.Content {...slotProps?.content}>
           {groups.map((group, index) => (
@@ -315,24 +350,35 @@ export const Sidebar = ({
       </SidebarBase.Root>
 
       <SidebarBase.Inset {...slotProps?.inset}>
-        <header
-          className={cn(
-            `bg-background border-border sticky top-0 z-10 flex h-12 shrink-0
-            items-center gap-2 border-b px-4`,
-            // The trigger is the bar's only content on mobile; with no toolbar
-            // there's nothing to show on desktop, so drop the empty bar.
-            !toolbar && "md:hidden",
-          )}
-        >
-          <SidebarBase.Trigger
-            {...slotProps?.trigger}
-            className={cn("md:hidden", slotProps?.trigger?.className)}
-          />
-          {toolbar}
-        </header>
-
+        {insetHeader}
         {children}
       </SidebarBase.Inset>
+    </>
+  );
+
+  return (
+    <SidebarBase.Provider
+      defaultOpen={defaultOpen}
+      open={open}
+      onOpenChange={onOpenChange}
+      {...slotProps?.provider}
+      // With a banner the provider stacks vertically: the full-width banner on
+      // top, the sidebar + content row beneath it.
+      className={cn(banner != null && "flex-col", slotProps?.provider?.className)}
+    >
+      {banner != null ? (
+        <>
+          {/* `banner` crosses the RSC boundary (it's typically created in a
+              server layout), so it arrives without React's key-validation flag.
+              Keying both siblings avoids a spurious list-key warning. */}
+          <Fragment key="banner">{banner}</Fragment>
+          <div key="row" className="flex w-full flex-1">
+            {body}
+          </div>
+        </>
+      ) : (
+        body
+      )}
     </SidebarBase.Provider>
   );
 };
