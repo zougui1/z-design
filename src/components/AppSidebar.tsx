@@ -168,10 +168,6 @@ const componentItems: GroupNavItem[] = [
         className: cn("text-muted-foreground opacity-60"),
       },
       {
-        label: "Base Link",
-        url: "/base/base-link",
-      },
-      {
         label: "Base Menu",
         url: "/base/base-menu",
       },
@@ -490,6 +486,23 @@ const componentItems: GroupNavItem[] = [
   },
 ];
 
+const featureItems: GroupNavItem[] = [
+  {
+    label: "Apps",
+    collapsible: true,
+    items: [
+      {
+        label: "App Menu",
+        url: "/features/apps/app-menu",
+      },
+      {
+        label: "Deployment Badge",
+        url: "/features/apps/deployment-badge",
+      },
+    ],
+  },
+];
+
 const prototypeItems: GroupNavItem[] = [
   {
     label: "Firestone",
@@ -518,6 +531,7 @@ const toGroupLink = (item: GroupNavItem): SidebarNavLink => ({
 const groups: SidebarNavGroup[] = [
   { label: "Theme", items: themeItems.map(toLink) },
   { label: "Components", items: componentItems.map(toGroupLink) },
+  { label: "Features", items: featureItems.map(toGroupLink) },
   { label: "Prototypes", items: prototypeItems.map(toGroupLink) },
 ];
 
@@ -528,9 +542,11 @@ export interface AppSidebarProps {
 export const AppSidebar = ({ children }: AppSidebarProps) => {
   return (
     <Sidebar
-      title="Z Design"
       groups={groups}
-      slotProps={{ provider: { className: "isolate" } }}
+      slotProps={{
+        provider: { className: "isolate" },
+        root: { className: "sidebar-below-header" },
+      }}
     >
       {children}
     </Sidebar>

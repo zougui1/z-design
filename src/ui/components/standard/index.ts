@@ -1,6 +1,7 @@
 export * from "./Accordion";
 export * from "./Alert";
 export * from "./AlertDialog";
+export * from "./AppMenu";
 export * from "./AspectRatio";
 export * from "./Autocomplete";
 export * from "./Avatar";
@@ -26,6 +27,7 @@ export * from "./Empty";
 export * from "./Field";
 export * from "./Fieldset";
 export * from "./Form";
+export * from "./Header";
 export * from "./Input";
 export * from "./Kbd";
 export * from "./Link";

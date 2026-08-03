@@ -14,7 +14,7 @@ export function BaseSelectItem({ className, ...props }: BaseSelectItemProps) {
       className={cnState(
         `focus:bg-accent focus:text-accent-foreground
         not-data-[variant=destructive]:focus:**:text-accent-foreground relative
-        flex w-full cursor-default items-center gap-1.5 rounded-sm px-1.5 py-1
+        flex w-full cursor-pointer items-center gap-1.5 rounded-sm px-1.5 py-1
         text-sm outline-hidden select-none data-disabled:pointer-events-none
         data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0
         [&_svg:not([class*='size-'])]:size-4`,
