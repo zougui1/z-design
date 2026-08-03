@@ -12,10 +12,11 @@ export default function AppMenuPage() {
           <Typography.Muted>
             App switcher pre-wired with the suite&apos;s apps. Domain-specific,
             so it is imported explicitly from
-            &quot;@zougui1/ui/features/apps&quot; rather than the main barrel.
+            &quot;@zougui1/ui/features/apps&quot; rather than the main barrel. The
+            default trigger is a grid icon button, sized for the header.
           </Typography.Muted>
           <div>
-            <AppMenu trigger={<Button variant="outline">Apps</Button>} />
+            <AppMenu />
           </div>
         </div>
 
