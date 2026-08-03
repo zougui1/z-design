@@ -1,6 +1,5 @@
 "use client";
 
-import type { IconProps } from "../../icons";
 import { Menu, type MenuLinkItem, type MenuProps } from "../Menu";
 
 export interface AppMenuItem {
@@ -9,12 +8,11 @@ export interface AppMenuItem {
   /** Absolute URL the entry links to. */
   url: string;
   /**
-   * Icon rendered before the name. A React component (inline SVG), NOT an asset
-   * path — this package is compiled with `tsc`, so there is no bundler to turn
-   * `.svg` files into components. Pass a `lucide-react` icon or one of the
-   * components from `~/ui/components/icons`.
+   * Icon rendered before the name — any node: an inline-SVG icon element, an
+   * `<img>` (e.g. the app's favicon), etc. Size it yourself; the switcher does
+   * not impose one.
    */
-  icon: React.ComponentType<IconProps>;
+  icon?: React.ReactNode;
   slotProps?: MenuLinkItem["slotProps"] & {
     root?: Partial<Omit<MenuLinkItem, "slotProps">>;
   };
@@ -32,18 +30,15 @@ export const AppMenu = ({ apps, ...props }: AppMenuProps) => {
   return (
     <Menu
       {...props}
-      items={apps.map((app) => {
-        const Icon = app.icon;
-        return {
-          href: app.url,
-          label: (
-            <span className="flex items-center gap-2">
-              <Icon className="size-4 shrink-0" />
-              {app.name}
-            </span>
-          ),
-        };
-      })}
+      items={apps.map((app) => ({
+        href: app.url,
+        label: (
+          <span className="flex items-center gap-2">
+            {app.icon}
+            {app.name}
+          </span>
+        ),
+      }))}
     />
   );
 };

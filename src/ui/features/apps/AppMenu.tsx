@@ -43,7 +43,21 @@ export const AppMenu = ({
   ...props
 }: AppMenuProps) => {
   const hiddenSet = new Set(((hidden ?? current) ? [current] : []) as string[]);
-  const items = Object.values(apps).filter((app) => !hiddenSet.has(app.name));
+  const items = Object.values(apps)
+    .filter((app) => !hiddenSet.has(app.name))
+    .map((app) => ({
+      ...app,
+      // Apps only expose a favicon, so use it as the icon rather than a bundled
+      // SVG. Plain <img> (not next/image) to avoid per-domain remote config.
+      icon: (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`${app.url}/favicon.ico`}
+          alt=""
+          className="size-4 shrink-0 rounded-xs"
+        />
+      ),
+    }));
 
   return <AppMenuBase apps={items} trigger={trigger} {...props} />;
 };

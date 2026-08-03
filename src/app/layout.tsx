@@ -4,7 +4,7 @@ import { Geist } from "next/font/google";
 import { AppSidebar } from "~/components/AppSidebar";
 import { env } from "~/env";
 import { Header, Link, Typography } from "~/ui/components";
-import { DeploymentBadge } from "~/ui/features/apps";
+import { AppMenu, DeploymentBadge } from "~/ui/features/apps";
 import "~/ui/styles/theme.css";
 import { cn } from "~/ui/utils";
 
@@ -37,6 +37,8 @@ export default function RootLayout({
             target={env.NEXT_PUBLIC_DEPLOY_TARGET}
             className="ml-auto"
           />
+
+          <AppMenu current="ZUI" />
         </Header>
 
         <AppSidebar>{children}</AppSidebar>
