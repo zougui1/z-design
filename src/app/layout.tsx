@@ -1,10 +1,8 @@
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
+import { AppHeader } from "~/components";
 import { AppSidebar } from "~/components/AppSidebar";
-import { env } from "~/env";
-import { BaseSidebar, Header, Link, Typography } from "~/ui/components";
-import { AppMenu, DeploymentBadge } from "~/ui/features/apps";
 import "~/ui/styles/theme.css";
 import { cn } from "~/ui/utils";
 
@@ -25,28 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", geist.variable)}>
       <body className="relative min-h-svh">
-        <AppSidebar
-          banner={
-            <Header>
-              <BaseSidebar.Trigger className="-ml-2 md:hidden" />
-
-              <Link href="/">
-                <Typography.H4 className="font-semibold">
-                  Z Design
-                </Typography.H4>
-              </Link>
-
-              <DeploymentBadge
-                target={env.NEXT_PUBLIC_DEPLOY_TARGET}
-                className="ml-auto"
-              />
-
-              <AppMenu current="ZUI" />
-            </Header>
-          }
-        >
-          {children}
-        </AppSidebar>
+        <AppSidebar banner={<AppHeader />}>{children}</AppSidebar>
       </body>
     </html>
   );

@@ -97,7 +97,10 @@
   --popover-foreground: oklch(0.985 0 0);
   --default: oklch(98.511% 0.00011 271.152);
   --default-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.269 0 0);
+  /* Faint purple-tinted recessed surface. Chroma is kept below `--accent`'s so
+     muted stays the quieter of the two, and the hue is inherited from the
+     background so it tracks any palette hue change. */
+  --muted: oklch(from var(--background) 0.269 0.03 h);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.25 0.06 302);
   --accent-foreground: oklch(0.985 0 0);
