@@ -14,7 +14,7 @@ export default function DialogPage() {
         <Dialog
           open={open}
           onOpenChange={setOpen}
-          trigger="Discard draft"
+          trigger={<Button>Discard draft</Button>}
           title="Discard draft?"
           description="You can’t undo this action."
           footer={

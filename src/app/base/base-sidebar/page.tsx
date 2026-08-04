@@ -9,15 +9,17 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import { BaseCollapsible, Typography, Link as ZLink } from "~/ui/components";
 import { BaseSidebar } from "~/ui/components/base";
-import { BaseCollapsible, Typography } from "~/ui/components";
 
 export default function BaseSidebarPage() {
   return (
     <div className="flex flex-col gap-4 p-6">
       <Typography.H2>BaseSidebar</Typography.H2>
 
-      <BaseSidebar.Provider className="relative h-120 min-h-0 overflow-hidden rounded-lg border">
+      <BaseSidebar.Provider
+        className="relative h-120 min-h-0 overflow-hidden rounded-lg border"
+      >
         {/* The sidebar container is `fixed` by default (viewport-level layout).
             Contain it within this demo box instead. */}
         <BaseSidebar.Root className="absolute h-full">
@@ -42,7 +44,7 @@ export default function BaseSidebarPage() {
 
                 <BaseSidebar.MenuItem>
                   <BaseSidebar.MenuButton
-                    render={<Link href="/inbox" />}
+                    render={<ZLink href="/inbox" />}
                     nativeButton={false}
                   >
                     <InboxIcon />
@@ -69,14 +71,14 @@ export default function BaseSidebarPage() {
                     <BaseSidebar.MenuSub>
                       <BaseSidebar.MenuSubItem>
                         <BaseSidebar.MenuSubButton
-                          render={<Link href="/projects/design-system" />}
+                          render={<ZLink href="/projects/design-system" />}
                         >
                           Design System
                         </BaseSidebar.MenuSubButton>
                       </BaseSidebar.MenuSubItem>
                       <BaseSidebar.MenuSubItem>
                         <BaseSidebar.MenuSubButton
-                          render={<Link href="/projects/marketing" />}
+                          render={<ZLink href="/projects/marketing" />}
                         >
                           Marketing Site
                         </BaseSidebar.MenuSubButton>
@@ -94,7 +96,7 @@ export default function BaseSidebarPage() {
               <BaseSidebar.Menu>
                 <BaseSidebar.MenuItem>
                   <BaseSidebar.MenuButton
-                    render={<Link href="/settings" />}
+                    render={<ZLink href="/settings" />}
                     nativeButton={false}
                   >
                     <SettingsIcon />
@@ -103,7 +105,7 @@ export default function BaseSidebarPage() {
                 </BaseSidebar.MenuItem>
                 <BaseSidebar.MenuItem>
                   <BaseSidebar.MenuButton
-                    render={<Link href="/verified" />}
+                    render={<ZLink href="/verified" />}
                     nativeButton={false}
                   >
                     <BadgeCheckIcon />
@@ -119,7 +121,9 @@ export default function BaseSidebarPage() {
           </BaseSidebar.Footer>
         </BaseSidebar.Root>
 
-        <BaseSidebar.Inset className="flex items-center justify-center gap-2 p-6">
+        <BaseSidebar.Inset
+          className="flex items-center justify-center gap-2 p-6"
+        >
           <BaseSidebar.Trigger variant="outline" />
           <p className="text-muted-foreground text-sm">
             Main content — toggle the sidebar with the trigger.
