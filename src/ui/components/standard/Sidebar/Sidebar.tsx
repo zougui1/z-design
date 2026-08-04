@@ -364,7 +364,19 @@ export const Sidebar = ({
       {...slotProps?.provider}
       // With a banner the provider stacks vertically: the full-width banner on
       // top, the sidebar + content row beneath it.
-      className={cn(banner != null && "flex-col", slotProps?.provider?.className)}
+      className={cn(
+        banner != null && [
+          "flex-col",
+          // A full-width bar is conceptually fixed-height and must never absorb
+          // the content row's overflow, so pin every banner element (everything
+          // but the trailing row wrapper) to its own height even when the
+          // consumer's element forgets `shrink-0`. Applied here rather than via
+          // a wrapper element: a wrapper would become the containing block of a
+          // `sticky` banner and silently kill its stickiness.
+          "[&>*:not(:last-child)]:shrink-0",
+        ],
+        slotProps?.provider?.className,
+      )}
     >
       {banner != null ? (
         <>
@@ -372,7 +384,10 @@ export const Sidebar = ({
               server layout), so it arrives without React's key-validation flag.
               Keying both siblings avoids a spurious list-key warning. */}
           <Fragment key="banner">{banner}</Fragment>
-          <div key="row" className="flex w-full flex-1">
+          {/* `min-h-0` lets the row shrink below its content size, so tall
+              content scrolls inside the inset instead of stretching the column
+              past the provider's height and squeezing the banner. */}
+          <div key="row" className="flex min-h-0 w-full flex-1">
             {body}
           </div>
         </>
