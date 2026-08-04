@@ -27,10 +27,7 @@ export default function RootLayout({
       <body className="relative min-h-svh">
         <AppSidebar
           banner={
-            <Header
-              className="border-border bg-background/85 flex h-(--header-height)
-                items-center gap-4 border-b px-6 backdrop-blur-xs"
-            >
+            <Header>
               <BaseSidebar.Trigger className="-ml-2 md:hidden" />
 
               <Link href="/">
