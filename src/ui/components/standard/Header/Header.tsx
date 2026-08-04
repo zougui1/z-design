@@ -4,7 +4,8 @@ import { useRender } from "@base-ui/react";
 import { type VariantProps, tv } from "tailwind-variants";
 
 const styles = tv({
-  base: "sticky top-0 z-40 w-full",
+  base: `sticky top-0 z-40 w-full border-border bg-background/85
+    flex h-(--header-height) items-center gap-4 border-b px-6 backdrop-blur-xs`,
 
   variants: {
     /**
