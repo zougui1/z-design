@@ -1,10 +1,11 @@
 "use client";
 
-import { BaseAlertDialog, BaseButton } from "../../base";
+import { BaseAlertDialog } from "../../base";
 
 export interface AlertDialogProps
   extends Omit<BaseAlertDialog.Root.Props<unknown>, "children"> {
-  trigger?: React.ReactNode;
+  /** Rendered as the trigger element. Omit for fully controlled use. */
+  trigger?: React.ReactElement;
   children?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -13,7 +14,6 @@ export interface AlertDialogProps
   actionLabel?: React.ReactNode;
   onAction?: BaseAlertDialog.Action.Props["onClick"];
   slotProps?: {
-    trigger?: Partial<BaseButton.Props>;
     portal?: Partial<BaseAlertDialog.Portal.Props>;
     backdrop?: Partial<BaseAlertDialog.Backdrop.Props>;
     popup?: Partial<BaseAlertDialog.Popup.Props>;
@@ -41,11 +41,7 @@ export const AlertDialog = ({
 }: AlertDialogProps) => {
   return (
     <BaseAlertDialog.Root {...props}>
-      {trigger != null && (
-        <BaseAlertDialog.Trigger render={<BaseButton {...slotProps?.trigger} />}>
-          {trigger}
-        </BaseAlertDialog.Trigger>
-      )}
+      {trigger && <BaseAlertDialog.Trigger render={trigger} />}
 
       <BaseAlertDialog.Portal {...slotProps?.portal}>
         <BaseAlertDialog.Backdrop {...slotProps?.backdrop} />
