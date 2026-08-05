@@ -1,4 +1,4 @@
-import { AlertDialog, Container, Typography } from "~/ui/components";
+import { AlertDialog, Button, Container, Typography } from "~/ui/components";
 
 export default function AlertDialogPage() {
   return (
@@ -6,7 +6,7 @@ export default function AlertDialogPage() {
       <div className="flex flex-col gap-4">
         <Typography.H2>AlertDialog</Typography.H2>
         <AlertDialog
-          trigger="Delete account"
+          trigger={<Button>Delete account</Button>}
           title="Are you absolutely sure?"
           description="This action cannot be undone. This will permanently delete your account."
           actionLabel="Delete"
