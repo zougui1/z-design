@@ -9,6 +9,8 @@ import {
 import { Button } from "~/ui/components/standard/Button";
 
 import { type AppName, apps } from "./apps.data";
+import { withDomainMode } from "./domain.data";
+import { useCurrentHostname } from "./useCurrentHostname";
 
 export interface AppMenuProps extends Omit<
   AppMenuBaseProps,
@@ -42,13 +44,18 @@ export const AppMenu = ({
   trigger = defaultTrigger,
   ...props
 }: AppMenuProps) => {
+  const host = useCurrentHostname();
   const hiddenSet = new Set(((hidden ?? current) ? [current] : []) as string[]);
   const items = Object.values(apps)
     .filter((app) => !hiddenSet.has(app.name))
     .map((app) => ({
       ...app,
+      // Stay on the machine the user picked: from `trackers.pi.zougui.com`,
+      // link to `firestone.pi.zougui.com` rather than the auto domain.
+      url: host ? withDomainMode(app.url, host.mode) : app.url,
       // Apps only expose a favicon, so use it as the icon rather than a bundled
       // SVG. Plain <img> (not next/image) to avoid per-domain remote config.
+      // Always off the auto domain, which is up whenever either machine is.
       icon: (
         // eslint-disable-next-line @next/next/no-img-element
         <img

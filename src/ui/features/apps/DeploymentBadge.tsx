@@ -22,14 +22,13 @@ const deployTargetColors: Record<DeployTarget, string> = {
   localhost: "oklch(0.45 0.15 27)", // dark red
 };
 
-export interface DeploymentBadgeProps extends Omit<
-  BadgeProps,
-  "children" | "icon"
-> {
+export interface DeploymentBadgeProps extends Omit<BadgeProps, "icon"> {
   /** Where the app is deployed. Typically sourced from a public env var. */
   target: DeployTarget;
   /** Override the default per-target icon. Pass `null` to hide it. */
   icon?: React.ReactNode;
+  /** Extra content rendered after the target's label. */
+  children?: React.ReactNode;
 }
 
 /**
@@ -41,6 +40,7 @@ export const DeploymentBadge = ({
   target,
   icon,
   style,
+  children,
   ...props
 }: DeploymentBadgeProps) => {
   const Icon = deployTargetIcons[target];
@@ -59,6 +59,7 @@ export const DeploymentBadge = ({
       {...props}
     >
       {deployTargetLabels[target]}
+      {children}
     </Badge>
   );
 };
