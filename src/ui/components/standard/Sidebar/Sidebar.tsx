@@ -148,6 +148,59 @@ const SidebarHeaderSlot = ({
   );
 };
 
+/**
+ * Returns a click handler that closes the mobile drawer. Navigating from the
+ * drawer should dismiss it, otherwise it stays covering the newly loaded page.
+ * Must be called inside the Provider subtree, hence the small link components
+ * below rather than calling it from `Sidebar` itself.
+ */
+const useCloseMobileSidebar = () => {
+  const { isMobile, setOpenMobile } = SidebarBase.useSidebar();
+
+  return () => {
+    if (isMobile) setOpenMobile(false);
+  };
+};
+
+const SidebarMenuLink = ({
+  href,
+  onClick,
+  ...props
+}: SidebarBase.MenuButtonProps & { href: string }) => {
+  const closeMobileSidebar = useCloseMobileSidebar();
+
+  return (
+    <SidebarBase.MenuButton
+      {...props}
+      render={<Link href={href as any} />}
+      nativeButton={false}
+      onClick={(event) => {
+        onClick?.(event);
+        closeMobileSidebar();
+      }}
+    />
+  );
+};
+
+const SidebarMenuSubLink = ({
+  href,
+  onClick,
+  ...props
+}: SidebarBase.MenuSubButtonProps & { href: string }) => {
+  const closeMobileSidebar = useCloseMobileSidebar();
+
+  return (
+    <SidebarBase.MenuSubButton
+      {...props}
+      render={<Link href={href as any} />}
+      onClick={(event) => {
+        onClick?.(event);
+        closeMobileSidebar();
+      }}
+    />
+  );
+};
+
 export const Sidebar = ({
   title,
   header,
@@ -227,14 +280,13 @@ export const Sidebar = ({
     return (
       <SidebarBase.MenuItem key={keyOf(item)} className={item.className}>
         {item.href ? (
-          <SidebarBase.MenuButton
+          <SidebarMenuLink
+            href={item.href}
             tooltip={toTooltip(item.label)}
             isActive={active(item)}
-            render={<Link href={item.href as any} />}
-            nativeButton={false}
           >
             {content}
-          </SidebarBase.MenuButton>
+          </SidebarMenuLink>
         ) : (
           <SidebarBase.MenuButton tooltip={toTooltip(item.label)}>
             {content}
@@ -274,13 +326,10 @@ export const Sidebar = ({
                 className={sub.className}
               >
                 {sub.href ? (
-                  <SidebarBase.MenuSubButton
-                    isActive={active(sub)}
-                    render={<Link href={sub.href as any} />}
-                  >
+                  <SidebarMenuSubLink href={sub.href} isActive={active(sub)}>
                     {sub.icon}
                     <span>{sub.label}</span>
-                  </SidebarBase.MenuSubButton>
+                  </SidebarMenuSubLink>
                 ) : (
                   <SidebarBase.MenuSubButton>
                     {sub.icon}
@@ -303,7 +352,7 @@ export const Sidebar = ({
       <header
         className={cn(
           `bg-background border-border sticky top-0 z-10 flex h-12 shrink-0
-          items-center gap-2 border-b px-4`,
+            items-center gap-2 border-b px-4`,
           // The trigger is the bar's only content on mobile; with no toolbar
           // there's nothing to show on desktop, so drop the empty bar.
           !toolbar && "md:hidden",
