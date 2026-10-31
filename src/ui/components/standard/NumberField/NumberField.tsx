@@ -12,6 +12,10 @@ export interface NumberFieldProps
   errors?: { message?: string }[];
   description?: React.ReactNode;
   placeholder?: string;
+  /** Disables only the decrement button. The rest of the field stays enabled. */
+  decrementDisabled?: boolean;
+  /** Disables only the increment button. The rest of the field stays enabled. */
+  incrementDisabled?: boolean;
   slotProps?: {
     root?: Partial<
       Omit<BaseField.Root.Props, "children" | "dirty" | "touched" | "invalid">
@@ -33,6 +37,8 @@ export const NumberField = ({
   description,
   placeholder,
   disabled,
+  decrementDisabled,
+  incrementDisabled,
   dirty,
   touched,
   invalid,
@@ -61,12 +67,15 @@ export const NumberField = ({
             // single bordered container; buttons + input sit borderless inside
             `border-border bg-background-light focus-within:border-primary
             focus-within:ring-primary/50 aria-invalid:border-destructive
-            aria-invalid:ring-destructive/50 has-disabled:opacity-50
-            flex h-9 w-full items-center overflow-hidden rounded-sm border
-            shadow-sm transition-colors focus-within:ring-3`
+            aria-invalid:ring-destructive/50 flex h-9 w-full items-center
+            overflow-hidden rounded-sm border shadow-sm transition-colors
+            focus-within:ring-3 data-disabled:opacity-50`
           }
         >
-          <BaseNumberField.Decrement {...slotProps?.decrement}>
+          <BaseNumberField.Decrement
+            {...slotProps?.decrement}
+            disabled={decrementDisabled || slotProps?.decrement?.disabled}
+          >
             <Minus />
           </BaseNumberField.Decrement>
 
@@ -76,15 +85,17 @@ export const NumberField = ({
               <BaseNumberField.Input
                 placeholder={placeholder}
                 {...slotProps?.input}
-                className={`h-full w-full min-w-0 flex-1 border-x
-                  border-border bg-transparent px-2 text-center text-sm
-                  tabular-nums outline-none
-                  disabled:cursor-not-allowed`}
+                className={`border-border h-full w-full min-w-0 flex-1 border-x
+                bg-transparent px-2 text-center text-sm tabular-nums
+                outline-none disabled:cursor-not-allowed`}
               />
             }
           />
 
-          <BaseNumberField.Increment {...slotProps?.increment}>
+          <BaseNumberField.Increment
+            {...slotProps?.increment}
+            disabled={incrementDisabled || slotProps?.increment?.disabled}
+          >
             <Plus />
           </BaseNumberField.Increment>
         </BaseNumberField.Group>
